@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>From address:</b>
+  <%= @problem_report_email.from_address %>
+</p>
+
+<p>
+  <b>From user:</b>
+  <%= @problem_report_email.from_user_id %>
+</p>
+
+<p>
+  <b>To address:</b>
+  <%= @problem_report_email.to_address %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @problem_report_email.message %>
+</p>
+
+<p>
+  <b>Sent on:</b>
+  <%= @problem_report_email.sent_on %>
+</p>
+
+
+<%= link_to 'Edit', edit_problem_report_email_path(@problem_report_email) %> |
+<%= link_to 'Back', problem_report_emails_path %>

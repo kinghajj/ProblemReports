@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  problem_report_record_id: 1
+  created_date: 2013-02-02 15:34:02
+  comment: MyString
+
+two:
+  user_id: 1
+  problem_report_record_id: 1
+  created_date: 2013-02-02 15:34:02
+  comment: MyString

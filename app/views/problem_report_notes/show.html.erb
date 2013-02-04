@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @problem_report_note.user_id %>
+</p>
+
+<p>
+  <b>Problem report record:</b>
+  <%= @problem_report_note.problem_report_record_id %>
+</p>
+
+<p>
+  <b>Created date:</b>
+  <%= @problem_report_note.created_date %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @problem_report_note.comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_problem_report_note_path(@problem_report_note) %> |
+<%= link_to 'Back', problem_report_notes_path %>

@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  subject: MyString
+  description: MyString
+  catagory_id: 1
+  priority: 1
+  date_entered: 2013-02-02
+  date_completed: 2013-02-02
+  date_due: 2013-02-02
+  hours_worked: 9.99
+  system_type_id: 1
+  escalation_id: 1
+  problem_type_id: 1
+  room_building: MyString
+  room_number: MyString
+  computer_name: MyString
+  solution: MyString
+  status_id: 1
+  submitted_by_id: 1
+  completed_by_id: 1
+  submitters_name: MyString
+  submitters_email: MyString
+
+two:
+  subject: MyString
+  description: MyString
+  catagory_id: 1
+  priority: 1
+  date_entered: 2013-02-02
+  date_completed: 2013-02-02
+  date_due: 2013-02-02
+  hours_worked: 9.99
+  system_type_id: 1
+  escalation_id: 1
+  problem_type_id: 1
+  room_building: MyString
+  room_number: MyString
+  computer_name: MyString
+  solution: MyString
+  status_id: 1
+  submitted_by_id: 1
+  completed_by_id: 1
+  submitters_name: MyString
+  submitters_email: MyString

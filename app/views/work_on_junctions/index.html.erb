@@ -1,0 +1,29 @@
+<h1>Listing work_on_junctions</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Problem report record</th>
+    <th>Hours</th>
+    <th>Last viewed</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @work_on_junctions.each do |work_on_junction| %>
+  <tr>
+    <td><%= work_on_junction.worker_id %></td>
+    <td><%= work_on_junction.report_worked_on_id %></td>
+    <td><%= work_on_junction.hours %></td>
+    <td><%= work_on_junction.last_viewed %></td>
+    <td><%= link_to 'Show', work_on_junction %></td>
+    <td><%= link_to 'Edit', edit_work_on_junction_path(work_on_junction) %></td>
+    <td><%= link_to 'Destroy', work_on_junction, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Work on junction', new_work_on_junction_path %>

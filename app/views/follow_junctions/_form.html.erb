@@ -1,0 +1,29 @@
+<%= form_for(@follow_junction) do |f| %>
+  <% if @follow_junction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@follow_junction.errors.count, "error") %> prohibited this follow_junction from being saved:</h2>
+
+      <ul>
+      <% @follow_junction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :follower_id %><br />
+    <%= f.number_field :follower_id %>
+  </div>
+  <div class="field">
+    <%= f.label :report_followed_id %><br />
+    <%= f.number_field :report_followed_id %>
+  </div>
+  <div class="field">
+    <%= f.label :last_viewed %><br />
+    <%= f.datetime_select :last_viewed %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

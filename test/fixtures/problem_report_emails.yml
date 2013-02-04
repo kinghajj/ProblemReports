@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  from_address: MyString
+  from_user_id: 1
+  to_address: MyString
+  message: MyString
+  sent_on: 2013-02-02 15:40:25
+
+two:
+  from_address: MyString
+  from_user_id: 1
+  to_address: MyString
+  message: MyString
+  sent_on: 2013-02-02 15:40:25

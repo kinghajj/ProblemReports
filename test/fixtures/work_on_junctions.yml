@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  problem_report_record_id: 1
+  hours: 9.99
+  last_viewed: 2013-02-02 15:42:17
+
+two:
+  user_id: 1
+  problem_report_record_id: 1
+  hours: 9.99
+  last_viewed: 2013-02-02 15:42:17

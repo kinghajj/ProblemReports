@@ -1,0 +1,31 @@
+<h1>Listing problem_report_emails</h1>
+
+<table>
+  <tr>
+    <th>From address</th>
+    <th>From user</th>
+    <th>To address</th>
+    <th>Message</th>
+    <th>Sent on</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @problem_report_emails.each do |problem_report_email| %>
+  <tr>
+    <td><%= problem_report_email.from_address %></td>
+    <td><%= problem_report_email.from_user_id %></td>
+    <td><%= problem_report_email.to_address %></td>
+    <td><%= problem_report_email.message %></td>
+    <td><%= problem_report_email.sent_on %></td>
+    <td><%= link_to 'Show', problem_report_email %></td>
+    <td><%= link_to 'Edit', edit_problem_report_email_path(problem_report_email) %></td>
+    <td><%= link_to 'Destroy', problem_report_email, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Problem report email', new_problem_report_email_path %>

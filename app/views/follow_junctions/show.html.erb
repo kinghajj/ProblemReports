@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @follow_junction.follower_id %>
+</p>
+
+<p>
+  <b>Problem report record:</b>
+  <%= @follow_junction.report_followed_id %>
+</p>
+
+<p>
+  <b>Last viewed:</b>
+  <%= @follow_junction.last_viewed %>
+</p>
+
+
+<%= link_to 'Edit', edit_follow_junction_path(@follow_junction) %> |
+<%= link_to 'Back', follow_junctions_path %>

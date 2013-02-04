@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @work_on_junction.worker_id %>
+</p>
+
+<p>
+  <b>Problem report record:</b>
+  <%= @work_on_junction.report_worked_on_id %>
+</p>
+
+<p>
+  <b>Hours:</b>
+  <%= @work_on_junction.hours %>
+</p>
+
+<p>
+  <b>Last viewed:</b>
+  <%= @work_on_junction.last_viewed %>
+</p>
+
+
+<%= link_to 'Edit', edit_work_on_junction_path(@work_on_junction) %> |
+<%= link_to 'Back', work_on_junctions_path %>

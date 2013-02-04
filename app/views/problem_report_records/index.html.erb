@@ -1,0 +1,61 @@
+<h1>Listing problem_report_records</h1>
+
+<table>
+  <tr>
+    <th>Subject</th>
+    <th>Description</th>
+    <th>Catagory</th>
+    <th>Priority</th>
+    <th>Date entered</th>
+    <th>Date completed</th>
+    <th>Date due</th>
+    <th>Hours worked</th>
+    <th>System type</th>
+    <th>Escalation</th>
+    <th>Problem type</th>
+    <th>Room building</th>
+    <th>Room number</th>
+    <th>Computer name</th>
+    <th>Solution</th>
+    <th>Status</th>
+    <th>Submitted by</th>
+    <th>Completed by</th>
+    <th>Submitters name</th>
+    <th>Submitters email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @problem_report_records.each do |problem_report_record| %>
+  <tr>
+    <td><%= problem_report_record.subject %></td>
+    <td><%= problem_report_record.description %></td>
+    <td><%= problem_report_record.catagory_id %></td>
+    <td><%= problem_report_record.priority %></td>
+    <td><%= problem_report_record.date_entered %></td>
+    <td><%= problem_report_record.date_completed %></td>
+    <td><%= problem_report_record.date_due %></td>
+    <td><%= problem_report_record.hours_worked %></td>
+    <td><%= problem_report_record.system_type_id %></td>
+    <td><%= problem_report_record.escalation_id %></td>
+    <td><%= problem_report_record.problem_type_id %></td>
+    <td><%= problem_report_record.room_building %></td>
+    <td><%= problem_report_record.room_number %></td>
+    <td><%= problem_report_record.computer_name %></td>
+    <td><%= problem_report_record.solution %></td>
+    <td><%= problem_report_record.status_id %></td>
+    <td><%= problem_report_record.submitted_by_id %></td>
+    <td><%= problem_report_record.completed_by_id %></td>
+    <td><%= problem_report_record.submitters_name %></td>
+    <td><%= problem_report_record.submitters_email %></td>
+    <td><%= link_to 'Show', problem_report_record %></td>
+    <td><%= link_to 'Edit', edit_problem_report_record_path(problem_report_record) %></td>
+    <td><%= link_to 'Destroy', problem_report_record, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Problem report record', new_problem_report_record_path %>

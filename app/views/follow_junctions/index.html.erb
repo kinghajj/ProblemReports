@@ -1,0 +1,27 @@
+<h1>Listing follow_junctions</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Problem report record</th>
+    <th>Last viewed</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @follow_junctions.each do |follow_junction| %>
+  <tr>
+    <td><%= follow_junction.follower_id %></td>
+    <td><%= follow_junction.report_followed_id %></td>
+    <td><%= follow_junction.last_viewed %></td>
+    <td><%= link_to 'Show', follow_junction %></td>
+    <td><%= link_to 'Edit', edit_follow_junction_path(follow_junction) %></td>
+    <td><%= link_to 'Destroy', follow_junction, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Follow junction', new_follow_junction_path %>

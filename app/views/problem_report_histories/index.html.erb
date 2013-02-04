@@ -1,0 +1,29 @@
+<h1>Listing problem_report_histories</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Problem report record</th>
+    <th>Created date</th>
+    <th>Comment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @problem_report_histories.each do |problem_report_history| %>
+  <tr>
+    <td><%= problem_report_history.user_id %></td>
+    <td><%= problem_report_history.problem_report_record_id %></td>
+    <td><%= problem_report_history.created_date %></td>
+    <td><%= problem_report_history.comment %></td>
+    <td><%= link_to 'Show', problem_report_history %></td>
+    <td><%= link_to 'Edit', edit_problem_report_history_path(problem_report_history) %></td>
+    <td><%= link_to 'Destroy', problem_report_history, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Problem report history', new_problem_report_history_path %>

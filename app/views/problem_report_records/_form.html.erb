@@ -1,0 +1,97 @@
+<%= form_for(@problem_report_record) do |f| %>
+  <% if @problem_report_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@problem_report_record.errors.count, "error") %> prohibited this problem_report_record from being saved:</h2>
+
+      <ul>
+      <% @problem_report_record.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :catagory_id %><br />
+    <%= f.number_field :catagory_id %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %><br />
+    <%= f.number_field :priority %>
+  </div>
+  <div class="field">
+    <%= f.label :date_entered %><br />
+    <%= f.date_select :date_entered %>
+  </div>
+  <div class="field">
+    <%= f.label :date_completed %><br />
+    <%= f.date_select :date_completed %>
+  </div>
+  <div class="field">
+    <%= f.label :date_due %><br />
+    <%= f.date_select :date_due %>
+  </div>
+  <div class="field">
+    <%= f.label :hours_worked %><br />
+    <%= f.text_field :hours_worked %>
+  </div>
+  <div class="field">
+    <%= f.label :system_type_id %><br />
+    <%= f.number_field :system_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :escalation_id %><br />
+    <%= f.number_field :escalation_id %>
+  </div>
+  <div class="field">
+    <%= f.label :problem_type_id %><br />
+    <%= f.number_field :problem_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :room_building %><br />
+    <%= f.text_field :room_building %>
+  </div>
+  <div class="field">
+    <%= f.label :room_number %><br />
+    <%= f.text_field :room_number %>
+  </div>
+  <div class="field">
+    <%= f.label :computer_name %><br />
+    <%= f.text_field :computer_name %>
+  </div>
+  <div class="field">
+    <%= f.label :solution %><br />
+    <%= f.text_field :solution %>
+  </div>
+  <div class="field">
+    <%= f.label :status_id %><br />
+    <%= f.number_field :status_id %>
+  </div>
+  <div class="field">
+    <%= f.label :submitted_by_id %><br />
+    <%= f.number_field :submitted_by_id %>
+  </div>
+  <div class="field">
+    <%= f.label :completed_by_id %><br />
+    <%= f.number_field :completed_by_id %>
+  </div>
+  <div class="field">
+    <%= f.label :submitters_name %><br />
+    <%= f.text_field :submitters_name %>
+  </div>
+  <div class="field">
+    <%= f.label :submitters_email %><br />
+    <%= f.text_field :submitters_email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

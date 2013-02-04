@@ -1,0 +1,33 @@
+<%= form_for(@work_on_junction) do |f| %>
+  <% if @work_on_junction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@work_on_junction.errors.count, "error") %> prohibited this work_on_junction from being saved:</h2>
+
+      <ul>
+      <% @work_on_junction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :worker_id %><br />
+    <%= f.number_field :worker_id %>
+  </div>
+  <div class="field">
+    <%= f.label :report_worked_on_id %><br />
+    <%= f.number_field :report_worked_on_id %>
+  </div>
+  <div class="field">
+    <%= f.label :hours %><br />
+    <%= f.text_field :hours %>
+  </div>
+  <div class="field">
+    <%= f.label :last_viewed %><br />
+    <%= f.datetime_select :last_viewed %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
