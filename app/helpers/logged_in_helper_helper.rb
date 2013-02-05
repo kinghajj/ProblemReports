@@ -20,14 +20,14 @@ module LoggedInHelperHelper
 	end
 
 	def auth_user?
-		!@current_user.nil?
+		!self.current_user.nil?
 	end
 
 	def admin?
-		if(@current_user.nil?)
+		if(self.current_user.nil?)
 			false
 		else
-			@current_user.position.admin_permisions
+			self.current_user.position.admin_permisions
 		end
 	end
 end
