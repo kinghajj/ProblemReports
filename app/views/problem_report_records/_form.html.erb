@@ -20,12 +20,12 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :catagory_id %><br />
-    <%= f.number_field :catagory_id %>
+    <%= f.label :category_id %><br />
+    <%= f.select :category_id , options_for_select(Category.all.map{ |cat| [cat.name,cat.id]}), :prompt => "Select Category", :selected=>@problem_report_record.category_id %>
   </div>
   <div class="field">
-    <%= f.label :priority %><br />
-    <%= f.number_field :priority %>
+    <%= f.label :priority_id %><br />
+    <%= f.select :priority_id , options_for_select(Priority.all.map{ |prior| [prior.name,prior.id]}), :prompt => "Select Priority", :selected=>@problem_report_record.priority_id %>
   </div>
   <div class="field">
     <%= f.label :date_entered %><br />
@@ -45,15 +45,15 @@
   </div>
   <div class="field">
     <%= f.label :system_type_id %><br />
-    <%= f.number_field :system_type_id %>
+    <%= f.select :system_type_id , options_for_select(System.all.map{ |sys| [sys.name,sys.id]}), :prompt => "Select System", :selected=>@problem_report_record.system_type_id %>
   </div>
   <div class="field">
     <%= f.label :escalation_id %><br />
-    <%= f.number_field :escalation_id %>
+    <%= f.select :escalation_id , options_for_select(Escalation.all.map{ |esc| [esc.name,esc.id]}), :prompt => "Select Escalation", :selected=>@problem_report_record.escalation_id %>
   </div>
   <div class="field">
     <%= f.label :problem_type_id %><br />
-    <%= f.number_field :problem_type_id %>
+    <%= f.select :problem_type_id , options_for_select(ProblemType.all.map{ |prob| [prob.name,prob.id]}), :prompt => "Select Problem Type", :selected=>@problem_report_record.problem_type_id %>
   </div>
   <div class="field">
     <%= f.label :room_building %><br />
@@ -73,7 +73,7 @@
   </div>
   <div class="field">
     <%= f.label :status_id %><br />
-    <%= f.number_field :status_id %>
+    <%= f.select :status_id , options_for_select(Status.all.map{ |stat| [stat.name,stat.id]}), :prompt => "Select Status", :selected=>@problem_report_record.status_id %>
   </div>
   <div class="field">
     <%= f.label :submitted_by_id %><br />

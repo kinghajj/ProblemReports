@@ -17,7 +17,11 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.ecs_id %></td>
-    <td><%= user.user_name %></td>
+    <td><%= user.user_name %>
+        <% if(user == current_user) %>
+            (Logged In)
+        <% end %>
+    </td>
     <td><%= user.first_name %></td>
     <td><%= user.last_name %></td>
     <td><%= user.position_id %></td>
@@ -26,10 +30,12 @@
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Login', "/users/login/#{user.id}", :method => "POST" %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
+<%= link_to 'Sign Out' , "users/logout", :method=> "POST" if auth_user? %>
 <%= link_to 'New User', new_user_path %>

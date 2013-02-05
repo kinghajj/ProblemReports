@@ -1,4 +1,8 @@
 ProblemReport::Application.routes.draw do
+  resources :statuses
+
+  resources :priorities
+
   resources :follow_junctions
 
   resources :work_on_junctions
@@ -22,6 +26,9 @@ ProblemReport::Application.routes.draw do
   resources :users
 
   resources :problem_report_records
+
+  match 'users/login/:id', to: 'users#login', via: :post
+  match 'users/logout/', to: 'users#logout', via: :post
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

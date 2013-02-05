@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130204055422) do
+ActiveRecord::Schema.define(:version => 20130205043826) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,12 @@ ActiveRecord::Schema.define(:version => 20130204055422) do
     t.boolean  "admin_permisions"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "priorities", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "problem_report_emails", :force => true do |t|
@@ -70,8 +76,8 @@ ActiveRecord::Schema.define(:version => 20130204055422) do
   create_table "problem_report_records", :force => true do |t|
     t.string   "subject"
     t.string   "description"
-    t.integer  "catagory_id"
-    t.integer  "priority"
+    t.integer  "category_id"
+    t.integer  "priority_id"
     t.date     "date_entered"
     t.date     "date_completed"
     t.date     "date_due"
@@ -93,6 +99,12 @@ ActiveRecord::Schema.define(:version => 20130204055422) do
   end
 
   create_table "problem_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "statuses", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
