@@ -42,7 +42,7 @@ body
 
 #content
 {
-	width:60em;
+	width:80em;
 	margin: 0px auto;
 	background-color:white;
 	padding:1em;
@@ -83,3 +83,7 @@ body
 	box-shadow: 2px 2px 2px #888888;
 }
 
+.float_field
+{
+	float:left;
+}

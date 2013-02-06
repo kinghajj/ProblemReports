@@ -11,86 +11,108 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :subject %><br />
-    <%= f.text_field :subject %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :category_id %><br />
-    <%= f.select :category_id , options_for_select(Category.all.map{ |cat| [cat.name,cat.id]}), :prompt => "Select Category", :selected=>@problem_report_record.category_id %>
-  </div>
-  <div class="field">
-    <%= f.label :priority_id %><br />
-    <%= f.select :priority_id , options_for_select(Priority.all.map{ |prior| [prior.name,prior.id]}), :prompt => "Select Priority", :selected=>@problem_report_record.priority_id %>
-  </div>
-  <div class="field">
-    <%= f.label :date_entered %><br />
-    <%= f.date_select :date_entered %>
-  </div>
-  <div class="field">
-    <%= f.label :date_completed %><br />
-    <%= f.date_select :date_completed %>
-  </div>
-  <div class="field">
-    <%= f.label :date_due %><br />
-    <%= f.date_select :date_due %>
-  </div>
-  <div class="field">
-    <%= f.label :hours_worked %><br />
-    <%= f.text_field :hours_worked %>
-  </div>
-  <div class="field">
-    <%= f.label :system_type_id %><br />
-    <%= f.select :system_type_id , options_for_select(System.all.map{ |sys| [sys.name,sys.id]}), :prompt => "Select System", :selected=>@problem_report_record.system_type_id %>
-  </div>
-  <div class="field">
-    <%= f.label :escalation_id %><br />
-    <%= f.select :escalation_id , options_for_select(Escalation.all.map{ |esc| [esc.name,esc.id]}), :prompt => "Select Escalation", :selected=>@problem_report_record.escalation_id %>
-  </div>
-  <div class="field">
-    <%= f.label :problem_type_id %><br />
-    <%= f.select :problem_type_id , options_for_select(ProblemType.all.map{ |prob| [prob.name,prob.id]}), :prompt => "Select Problem Type", :selected=>@problem_report_record.problem_type_id %>
-  </div>
-  <div class="field">
-    <%= f.label :room_building %><br />
-    <%= f.text_field :room_building %>
-  </div>
-  <div class="field">
-    <%= f.label :room_number %><br />
-    <%= f.text_field :room_number %>
-  </div>
-  <div class="field">
-    <%= f.label :computer_name %><br />
-    <%= f.text_field :computer_name %>
-  </div>
-  <div class="field">
-    <%= f.label :solution %><br />
-    <%= f.text_field :solution %>
-  </div>
-  <div class="field">
-    <%= f.label :status_id %><br />
-    <%= f.select :status_id , options_for_select(Status.all.map{ |stat| [stat.name,stat.id]}), :prompt => "Select Status", :selected=>@problem_report_record.status_id %>
-  </div>
-  <div class="field">
-    <%= f.label :submitted_by_id %><br />
-    <%= f.number_field :submitted_by_id %>
-  </div>
-  <div class="field">
-    <%= f.label :completed_by_id %><br />
-    <%= f.number_field :completed_by_id %>
-  </div>
-  <div class="field">
-    <%= f.label :submitters_name %><br />
-    <%= f.text_field :submitters_name %>
-  </div>
-  <div class="field">
-    <%= f.label :submitters_email %><br />
-    <%= f.text_field :submitters_email %>
-  </div>
+  <fieldset>
+    <legend>What</legend>
+    <div class="field">
+      <%= f.label :subject %><br />
+      <%= f.text_field :subject %>
+    </div>
+     <div class="field">
+      <%= f.label :category_id %><br />
+      <%= f.select :category_id , options_for_select(Category.all.map{ |cat| [cat.name,cat.id]}), :prompt => "Select Category", :selected=>@problem_report_record.category_id %>
+    </div>
+    <div class="field">
+      <%= f.label :system_type_id %><br />
+      <%= f.select :system_type_id , options_for_select(System.all.map{ |sys| [sys.name,sys.id]}), :prompt => "Select System", :selected=>@problem_report_record.system_type_id %>
+    </div>
+    <div class="field">
+      <%= f.label :problem_type_id %><br />
+      <%= f.select :problem_type_id , options_for_select(ProblemType.all.map{ |prob| [prob.name,prob.id]}), :prompt => "Select Problem Type", :selected=>@problem_report_record.problem_type_id %>
+    </div>
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description , :cols => "30", :rows => "5" %>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Where and When</legend>
+    <div class="field">
+      <%= f.label :room_building %><br />
+      <%= f.text_field :room_building %>
+    </div>
+    <div class="field">
+      <%= f.label :room_number %><br />
+      <%= f.text_field :room_number %>
+    </div>
+    <div class="field">
+      <%= f.label :computer_name %><br />
+      <%= f.text_field :computer_name %>
+    </div>
+    <div class="field">
+      <%= f.label :date_entered %><br />
+      <%= f.date_select :date_entered %>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Who</legend>
+    <div class="field">
+      <%= f.label :submitters_name %><br />
+      <%= f.text_field :submitters_name %>
+    </div>
+    <div class="field">
+      <%= f.label :submitters_email %><br />
+      <%= f.text_field :submitters_email %>
+    </div>
+
+    <% if auth_user? %>
+      <div class="field">
+        <%= f.label :submitted_by_id %><br />
+        <%= f.select :submitted_by_id , options_for_select(User.all.map{ |usr| [usr.user_name,usr.id]}), :prompt => "Select User", :selected=>@problem_report_record.submitted_by_id %>
+      </div>
+      <div class="field">
+        <%= f.label :completed_by_id %><br />
+        <%= f.select :completed_by_id , options_for_select(User.all.map{ |usr| [usr.user_name,usr.id]}), :prompt => "Select User", :selected=>@problem_report_record.completed_by_id %>
+      </div>
+    <% end %>
+
+  </fieldset>
+  <% if auth_user? %>
+    <fieldset>
+      <legend>Other</legend>
+      <div class="field">
+        <%= f.label :status_id %><br />
+        <%= f.select :status_id , options_for_select(Status.all.map{ |stat| [stat.name,stat.id]}), :prompt => "Select Status", :selected=>@problem_report_record.status_id %>
+      </div>
+      <div class="field">
+        <%= f.label :escalation_id %><br />
+        <%= f.select :escalation_id , options_for_select(Escalation.all.map{ |esc| [esc.name,esc.id]}), :prompt => "Select Escalation", :selected=>@problem_report_record.escalation_id %>
+      </div>
+      <div class="field">
+        <%= f.label :priority_id %><br />
+        <%= f.select :priority_id , options_for_select(Priority.all.map{ |prior| [prior.name,prior.id]}), :prompt => "Select Priority", :selected=>@problem_report_record.priority_id %>
+      </div>
+      <div class="field">
+        <%= f.label :date_due %><br />
+        <%= f.date_select :date_due %>
+      </div>
+      <div class="field">
+        <%= f.label :date_completed %><br />
+        <%= f.date_select :date_completed %>
+      </div>
+
+      <div class="field">
+        <%= f.label :hours_worked %><br />
+        <%= f.text_field :hours_worked %>
+      </div>
+      <div class="field">
+        <%= f.label :solution %><br />
+        <%= f.text_field :solution %>
+      </div>
+    </fieldset>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
