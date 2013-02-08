@@ -1,0 +1,57 @@
+<table>
+  <tr>
+    <th><%= sortable('subject',action) %></th>
+    <th><%= sortable('description',action) %></th>
+    <th><%= sortable('category_id',action,"Catagory") %></th>
+    <th><%= sortable('priority_id',action,"Priority") %></th>
+    <th><%= sortable('date_entered',action,"Date entered") %></th>
+    <th><%= sortable('date_completed',action,"Date completed") %></th>
+    <th><%= sortable('date_due',action,"Date due") %></th>
+    <th><%= sortable('hours_worked',action,"Hours worked") %></th>
+    <th><%= sortable('system_type_id',action,"System type") %></th>
+    <th><%= sortable('escalation_id',action,"Escalation") %></th>
+    <th><%= sortable('problem_type_id',action,"Problem type") %> </th>
+    <th><%= sortable('room_building',action)%></th>
+    <th><%= sortable('room_number',action)%></th>
+    <th><%= sortable('computer_name',action)%></th>
+    <th><%= sortable('solution',action)%></th>
+    <th><%= sortable('status_id',action, "Status") %></th>
+    <th><%= sortable('submitted_by_id',action ,"Submitted by") %> </th>
+    <th><%= sortable('completed_by_id',action , "Completed by") %></th>
+    <th><%= sortable('submitters_name',action, "Submitters name") %></th>
+    <th><%= sortable('submitters_email',action, "Submitters email") %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% problem_report_records.each do |problem_report_record| %>
+  <tr>
+    <td><%= problem_report_record.subject %></td>
+    <td><%= problem_report_record.description %></td>
+    <td><%= problem_report_record.category_id %></td>
+    <td><%= problem_report_record.priority_id %></td>
+    <td><%= problem_report_record.date_entered %></td>
+    <td><%= problem_report_record.date_completed %></td>
+    <td><%= problem_report_record.date_due %></td>
+    <td><%= problem_report_record.hours_worked %></td>
+    <td><%= problem_report_record.system_type_id %></td>
+    <td><%= problem_report_record.escalation_id %></td>
+    <td><%= problem_report_record.problem_type_id %></td>
+    <td><%= problem_report_record.room_building %></td>
+    <td><%= problem_report_record.room_number %></td>
+    <td><%= problem_report_record.computer_name %></td>
+    <td><%= problem_report_record.solution %></td>
+    <td><%= problem_report_record.status_id %></td>
+    <td><%= problem_report_record.submitted_by_id %></td>
+    <td><%= problem_report_record.completed_by_id %></td>
+    <td><%= problem_report_record.submitters_name %></td>
+    <td><%= problem_report_record.submitters_email %></td>
+    <td><%= link_to 'Show', problem_report_record %></td>
+    <td><%= link_to 'Edit', edit_problem_report_record_path(problem_report_record) %></td>
+    <td><%= link_to 'Destroy', problem_report_record, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate problem_report_records, :params => {:controller => "problem_report_records", :action => action,:column => params[:column], :direction => params[:direction]}%>

@@ -1,12 +1,15 @@
 class ProblemReportRecordsController < ApplicationController
+  require 'will_paginate/array'
+  helper_method :defaultColumn , :defaultSortOrder,:workingOnPath,:secondPath
+
   # GET /problem_report_records
   # GET /problem_report_records.json
   def index
-    @problem_report_records = ProblemReportRecord.all
-
+    @reports_worked_on = getWorkedOnReports
+    @all_reports = getAllReports
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @problem_report_records }
+      format.json { render json: @reports_worked_on }
     end
   end
 
@@ -78,6 +81,57 @@ class ProblemReportRecordsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to problem_report_records_url }
       format.json { head :no_content }
+    end
+  end
+
+
+  def defaultColumn
+    'subject'
+  end
+
+  def defaultSortOrder
+    'asc'
+  end
+
+  def workingOnPath
+    'updateWorkingOnTable'
+  end
+
+  def secondPath
+    'updateSecondTable'
+  end
+
+  def getWorkedOnReports
+    column = params[:column] ? params[:column] : defaultColumn
+    order = params[:direction] ? params[:direction] : defaultSortOrder
+    user = current_user
+    if(user)
+      user.report_worked_on.paginate(page: params[:page], :per_page => 1).order(column + " " + order)
+    end
+    #records = ProblemReportRecord.paginate(page: params[:page], :per_page => 1).order(column + " " + order)
+  end
+
+  def getAllReports
+    column = params[:column] ? params[:column] : defaultColumn
+    order = params[:direction] ? params[:direction] : defaultSortOrder
+    ProblemReportRecord.paginate(page: params[:page], :per_page => 1).order(column + " " + order)
+  end
+
+  def updateWorkingOnTable
+    @reports_worked_on = getWorkedOnReports
+
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+  end
+
+  def updateSecondTable
+    @all_reports = getAllReports
+
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
     end
   end
 end
