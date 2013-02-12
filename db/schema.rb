@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130205043826) do
+ActiveRecord::Schema.define(:version => 20130212051552) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -124,8 +124,27 @@ ActiveRecord::Schema.define(:version => 20130205043826) do
     t.integer  "position_id"
     t.string   "main_phone"
     t.string   "email"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.boolean  "show_description"
+    t.boolean  "show_catagory"
+    t.boolean  "show_priority"
+    t.boolean  "show_date_entered"
+    t.boolean  "show_date_completed"
+    t.boolean  "show_due_date"
+    t.boolean  "show_hours_worked"
+    t.boolean  "show_system_type"
+    t.boolean  "show_escalation"
+    t.boolean  "show_problem_type"
+    t.boolean  "show_room_building"
+    t.boolean  "show_room_number"
+    t.boolean  "show_computer_name"
+    t.boolean  "show_solution"
+    t.boolean  "show_status"
+    t.boolean  "show_submitted_by"
+    t.boolean  "show_completed_by"
+    t.boolean  "show_submitters_name"
+    t.boolean  "show_submitters_email"
   end
 
   create_table "work_on_junctions", :force => true do |t|

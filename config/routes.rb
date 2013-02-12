@@ -31,7 +31,10 @@ ProblemReport::Application.routes.draw do
   match 'users/logout/', to: 'users#logout', via: :post
 
   match 'updateWorkingOnTable/', to: 'problem_report_records#updateWorkingOnTable', via: :get
-  match 'update_second_table/', to: 'problem_report_records#updateSecondTable', via: :get
+  match 'updateAllReportsTable/', to: 'problem_report_records#updateAllReportsTable', via: :get
+  match 'updateFollowReportsTable/', to: 'problem_report_records#updateFollowReportsTable', via: :get
+  match 'updateUnClaimedReportsTable/', to: 'problem_report_records#updateUnClaimedReportsTable', via: :get
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

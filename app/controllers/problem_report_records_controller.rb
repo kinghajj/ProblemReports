@@ -1,12 +1,15 @@
 class ProblemReportRecordsController < ApplicationController
   require 'will_paginate/array'
-  helper_method :defaultColumn , :defaultSortOrder,:workingOnPath,:secondPath
+  helper_method :defaultColumn , :defaultSortOrder,:workingOnPath,:allReportPath,:followReportPath,:unclaimedReportsPath
 
   # GET /problem_report_records
   # GET /problem_report_records.json
   def index
     @reports_worked_on = getWorkedOnReports
     @all_reports = getAllReports
+    @followed_reports = getFollowReports
+    @unclaimed_reports = getUnclaimedReports
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @reports_worked_on }
@@ -97,8 +100,16 @@ class ProblemReportRecordsController < ApplicationController
     'updateWorkingOnTable'
   end
 
-  def secondPath
-    'updateSecondTable'
+  def allReportPath
+    'updateAllReportsTable'
+  end
+
+  def followReportPath
+    'updateFollowReportsTable'
+  end
+
+  def unclaimedReportsPath
+    'updateUnClaimedReportsTable'
   end
 
   def getWorkedOnReports
@@ -117,6 +128,25 @@ class ProblemReportRecordsController < ApplicationController
     ProblemReportRecord.paginate(page: params[:page], :per_page => 1).order(column + " " + order)
   end
 
+  def getFollowReports
+    column = params[:column] ? params[:column] : defaultColumn
+    order = params[:direction] ? params[:direction] : defaultSortOrder
+    user = current_user
+    if(user)
+      user.report_followed.paginate(page: params[:page], :per_page => 1).order(column + " " + order)
+    end
+  end
+
+  def getUnclaimedReports
+    column = params[:column] ? params[:column] : defaultColumn
+    order = params[:direction] ? params[:direction] : defaultSortOrder
+    reportsWithJunction = Set.new
+    WorkOnJunction.all.each{ |rep| reportsWithJunction.add(rep.report_worked_on_id) }
+
+    ProblemReportRecord.where("id NOT IN (?)",reportsWithJunction).paginate(page: params[:page], :per_page => 1).order(column + " " + order)
+    
+  end
+
   def updateWorkingOnTable
     @reports_worked_on = getWorkedOnReports
 
@@ -126,8 +156,26 @@ class ProblemReportRecordsController < ApplicationController
     end
   end
 
-  def updateSecondTable
+  def updateAllReportsTable
     @all_reports = getAllReports
+
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+  end
+
+  def updateFollowReportsTable
+    @followed_reports = getFollowReports
+
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+  end
+
+  def updateUnClaimedReportsTable
+    @unclaimed_reports = getUnclaimedReports
 
     respond_to do |format|
       format.html { render action: "index" }

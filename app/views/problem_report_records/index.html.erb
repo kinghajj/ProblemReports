@@ -1,24 +1,45 @@
-<h1>Listing problem_report_records</h1>
-<div id="maintable">
-<%= render :partial =>"infotable", :locals => {:problem_report_records => @reports_worked_on, :action => workingOnPath} %>
-</div>
-<div id="second">
-<%= render :partial =>"infotable", :locals => {:problem_report_records => @all_reports, :action => secondPath} %>
+  <% content_for(:head) do %>
+	  <%= javascript_include_tag "http://code.jquery.com/ui/1.10.0/jquery-ui.js" %>
+	  <%= stylesheet_link_tag    "smoothness/jquery-ui-1.10.0.custom.css", :media => "all" %>
+
+	  <script>
+	  	$(document).ready(function(){
+
+	  		$('#tables').tabs();
+
+	  		$(document).on("click",'.pagination a',function($e)
+	        {
+	            $.getScript(this.href);
+	           
+	            return false;
+	        })
+	  	});
+	  </script>
+  <% end %>
+
+<br/>
+<div id = "tables">
+	<ul>
+		<li><a href="#working-on-reports">My Reports</a></li>
+		<li><a href="#all-reports">All Reports</a></li>
+		<li><a href="#followed-reports">Followed Reports</a></li>
+		<li><a href="#unclaimed-reports">Unclaimed Reports</a></li>
+	</ul>
+	<div id="working-on-reports">
+		<%= render :partial =>"infotable", :locals => {:problem_report_records => @reports_worked_on, :action => workingOnPath} %>
+	</div>
+	<div id="all-reports">
+		<%= render :partial =>"infotable", :locals => {:problem_report_records => @all_reports, :action => allReportPath} %>
+	</div>
+	<div id="followed-reports">
+		<%= render :partial =>'infotable', :locals => {:problem_report_records => @followed_reports,:action => followReportPath} %>
+	</div>
+	<div id="unclaimed-reports">
+		<%= render :partial =>'infotable', :locals => {:problem_report_records => @unclaimed_reports,:action => unclaimedReportsPath} %>
+	</div>
 </div>
 <br />
 
 <%= hidden_field_tag 'page', '1' %>
 <%= link_to 'New Problem report record', new_problem_report_record_path %>
 
-<script type="text/javascript">
-$(document).ready(function()
-    {
-        $(document).on("click",'.pagination a',function($e)
-        {
-            $.getScript(this.href);
-           
-            return false;
-        })
-    });
-
-</script>

@@ -8,8 +8,8 @@ class ProblemReportRecord < ActiveRecord::Base
 	belongs_to :status
 	belongs_to :priority
 
-	belongs_to :sumbitting_user, primary_key: "submitted_by_id" , class_name: "user"
-	belongs_to :completing_user, primary_key: "completed_by_id" , class_name: "user"
+	belongs_to :sumbitting_user, primary_key: "submitted_by_id" , class_name: "User"
+	belongs_to :completing_user, primary_key: "completed_by_id" , class_name: "User"
 
 	has_many :being_worked_on_relationship, foreign_key: "report_worked_on_id" , class_name: "WorkOnJunction", :dependent => :destroy
 	has_many :worker, through: :being_worked_on_relationship
@@ -26,6 +26,68 @@ class ProblemReportRecord < ActiveRecord::Base
 	validates :problem_type_id, :presence => true
 	validates :priority_id, :presence => true
 
+	def category_name
+		if(category.nil?)
+			''
+		else
+			category.name
+		end
+	end
 
+	def system_type_name
+		if(system_type.nil?)
+			''
+		else
+			system_type.name
+		end
+	end
+
+	def escalation_name
+		if(escalation.nil?)
+			''
+		else
+			escalation.name
+		end
+	end
+
+	def problem_type_name
+		if(problem_type.nil?)
+			''
+		else
+			problem_type.name
+		end
+	end
+
+	def status_name
+		if(status.nil?)
+			''
+		else
+			status.name
+		end
+	end
+
+	def priority_name
+		if(priority.nil?)
+			''
+		else
+			priority.name
+		end
+	end
+
+	def submitting_users_name
+		if(sumbitting_user.nil?)
+			''
+		else
+			sumbitting_user.user_name
+		end
+	end
+
+	def completers_name
+		if(completing_user.nil?)
+			''
+		else
+			completing_user.user_name
+		end
+	end
 
 end

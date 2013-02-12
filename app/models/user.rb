@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-	attr_accessible :ecs_id , :user_name , :first_name , :last_name , :position_id , :main_phone , :email
+	attr_accessible :ecs_id , :user_name ,:show_description, :first_name , :last_name , :position_id , :main_phone , :email,:show_catagory , :show_priority ,:show_date_entered , :show_date_completed ,:show_due_date , :show_hours_worked ,
+	:show_system_type , :show_escalation ,:show_problem_type , :show_room_building ,:show_room_number , :show_computer_name ,:show_solution , :show_status ,:show_submitted_by , :show_completed_by ,:show_submitters_name ,:show_submitters_email
 
 	belongs_to :position
 	
@@ -8,6 +9,9 @@ class User < ActiveRecord::Base
 
 	has_many :working_on_junction_relationship, foreign_key: "worker_id" , class_name: "WorkOnJunction",  :dependent => :destroy
 	has_many :report_worked_on, through: :working_on_junction_relationship
+
+	has_many :created_reports, foreign_key: "submitted_by_id", class_name: "ProblemReportRecord"
+	has_many :completed_reports, foreign_key: "completed_by_id", class_name: "ProblemReportRecord"
 
 	validates :ecs_id, :presence => true
 	validates :user_name, :presence => true
