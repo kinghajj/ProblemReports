@@ -320,6 +320,7 @@ class ProblemReportRecordsController < ApplicationController
 
       if(!report.nil?)
         current_user.workOnReport report
+      end
 
       respond_to do |format|
       format.html { render action: "index" }
@@ -342,6 +343,7 @@ class ProblemReportRecordsController < ApplicationController
 
       if(!report.nil?)
         current_user.quitWorkingOnReport report
+      end
 
       respond_to do |format|
       format.html { render action: "index" }
@@ -364,6 +366,7 @@ class ProblemReportRecordsController < ApplicationController
 
       if(!report.nil?)
         current_user.followReport report
+      end
 
       respond_to do |format|
       format.html { render action: "index" }
@@ -386,6 +389,7 @@ class ProblemReportRecordsController < ApplicationController
 
       if(!report.nil?)
         current_user.unfollowReport report
+      end
 
       respond_to do |format|
       format.html { render action: "index" }
