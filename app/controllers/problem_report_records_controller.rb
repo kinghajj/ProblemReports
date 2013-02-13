@@ -182,4 +182,48 @@ class ProblemReportRecordsController < ApplicationController
       format.js {}
     end
   end
+
+  def workOnReport
+      report = ProblemReportRecord.find(params[:id])
+      current_user.workOnReport report
+
+      respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+  end
+
+  def quitWorkingOnReport
+      report = ProblemReportRecord.find(params[:id])
+      current_user.quitWorkingOnReport report
+
+      respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+  end
+
+  def followReport
+      report = ProblemReportRecord.find(params[:id])
+      current_user.followReport report
+
+      respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+  end
+
+  def unfollowReport
+      report = ProblemReportRecord.find(params[:id])
+      current_user.unfollowReport report
+
+      respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+  end
+
+
+
+
 end

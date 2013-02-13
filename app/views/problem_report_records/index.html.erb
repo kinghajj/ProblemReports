@@ -14,6 +14,15 @@
 	            return false;
 	        })
 	  	});
+
+	  	function refreshTables()
+	  	{
+	  		$("#refresh-<%= workingOnPath %>").click();
+	  		$("#refresh-<%= allReportPath %>").click();
+	  		$("#refresh-<%= followReportPath %>").click();
+	  		$("#refresh-<%= unclaimedReportsPath %>").click();
+	  	}
+
 	  </script>
   <% end %>
 

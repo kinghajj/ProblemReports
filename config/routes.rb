@@ -34,6 +34,11 @@ ProblemReport::Application.routes.draw do
   match 'updateAllReportsTable/', to: 'problem_report_records#updateAllReportsTable', via: :get
   match 'updateFollowReportsTable/', to: 'problem_report_records#updateFollowReportsTable', via: :get
   match 'updateUnClaimedReportsTable/', to: 'problem_report_records#updateUnClaimedReportsTable', via: :get
+  match 'workOnReport/', to: 'problem_report_records#workOnReport', via: :post
+  match 'quitWorkingOnReport/', to: 'problem_report_records#quitWorkingOnReport', via: :delete
+  match 'followReport/', to: 'problem_report_records#followReport', via: :post
+  match 'unfollowReport/', to: 'problem_report_records#unfollowReport', via: :delete
+
 
 
   # The priority is based upon order of creation:

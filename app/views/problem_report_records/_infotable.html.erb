@@ -1,3 +1,5 @@
+<%=link_to 'Refresh', {:controller => "problem_report_records", :action => action,:column => params[:column], :direction => params[:direction], :page => params[:page]}, {:id => "refresh-#{action}",:method=>'GET',:remote=>true} %>
+
 <table>
   <tr>
     <th><%= sortable('subject',action) %></th>
@@ -22,12 +24,14 @@
     <th><%= sortable('submitters_email',action, "Submitters email") if current_user.show_submitters_email %></th>
     <th></th>
     <th></th>
+    <!--<th></th>
     <th></th>
+    <th></th>-->
   </tr>
 
 <% problem_report_records.each do |problem_report_record| %>
   <tr>
-    <td><%= problem_report_record.subject %></td>
+    <td><%= link_to problem_report_record.subject, problem_report_record %></td>
     <td><%= problem_report_record.description  if current_user.show_description%></td>
     <td><%= problem_report_record.category_name if current_user.show_catagory %></td>
     <td><%= problem_report_record.priority_name  if current_user.show_priority %></td>
@@ -47,9 +51,23 @@
     <td><%= problem_report_record.completers_name if current_user.show_completed_by %></td>
     <td><%= problem_report_record.submitters_name if current_user.show_submitters_name %></td>
     <td><%= problem_report_record.submitters_email if current_user.show_submitters_email %></td>
-    <td><%= link_to 'Show', problem_report_record %></td>
+    <td>
+        <% if !current_user.workingOnReport? problem_report_record %>
+            <%=link_to 'Work On', {:controller => "problem_report_records", :action => 'workOnReport',:id =>problem_report_record.id}, {:method=>'POST',:remote=>true} %>
+        <% else %>
+            <%=link_to 'Stop Working On', {:controller => "problem_report_records", :action => 'quitWorkingOnReport',:id =>problem_report_record.id}, {:method=>'DELETE',:remote=>true} %>
+        <% end %>
+    </td>
+    <td>
+        <% if !current_user.followingReport? problem_report_record %>
+            <%=link_to 'Follow', {:controller => "problem_report_records", :action => 'followReport',:id =>problem_report_record.id}, {:method=>'POST',:remote=>true} %>
+        <% else %>
+            <%=link_to 'Unfollow', {:controller => "problem_report_records", :action => 'unfollowReport',:id =>problem_report_record.id}, {:method=>'DELETE',:remote=>true} %>
+        <% end %>
+    </td>
+    <!--<td><%= link_to 'Show', problem_report_record %></td>
     <td><%= link_to 'Edit', edit_problem_report_record_path(problem_report_record) %></td>
-    <td><%= link_to 'Destroy', problem_report_record, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', problem_report_record, confirm: 'Are you sure?', method: :delete %></td>-->
   </tr>
 <% end %>
 </table>
