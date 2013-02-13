@@ -21,6 +21,16 @@ class User < ActiveRecord::Base
 
 
 	# ------------ THE FOLLOW METHODS MANAGE FOLLOWING AND WORKING ON REPORT MANAGEMENT ----------
+
+=begin
+
+	@author Chris Kipers
+	@date 2/12/13
+
+	This method creates a works on junction object between the user and the specified problem report record if it does not exist yet
+
+=end
+
 	def workOnReport report
 		if(!self.workingOnReport? report)
 			newJunction = WorkOnJunction.new(:worker_id => self.id, :report_worked_on_id => report.id, :hours => 0, :last_viewed => DateTime.now)
@@ -28,6 +38,14 @@ class User < ActiveRecord::Base
 		end
 	end
 
+=begin
+
+	@author Chris Kipers
+	@date 2/12/13
+
+	This method deletes works on junction objects between the user and the specified problem report record 
+
+=end
 	def quitWorkingOnReport report
 		junctions = WorkOnJunction.where("worker_id = #{self.id} AND report_worked_on_id = #{report.id}")
 
@@ -36,6 +54,15 @@ class User < ActiveRecord::Base
 		end
 	end
 
+
+=begin
+
+	@author Chris Kipers
+	@date 2/12/13
+
+	This method creates a follow junction object between the user and the specified problem report record if it does not exist yet
+
+=end
 	def followReport report
 		if(!self.followingReport? report)
 			newJunction = FollowJunction.new(:follower_id => self.id, :report_followed_id => report.id, :last_viewed => DateTime.now)
@@ -43,6 +70,14 @@ class User < ActiveRecord::Base
 		end
 	end
 
+=begin
+
+	@author Chris Kipers
+	@date 2/12/13
+
+	This method deletes follow junction objects between the user and the specified problem report record 
+
+=end
 	def unfollowReport report
 		junctions = FollowJunction.where("follower_id = #{self.id} AND report_followed_id = #{report.id}")
 
@@ -51,6 +86,16 @@ class User < ActiveRecord::Base
 		end
 	end
 
+=begin
+
+	@author Chris Kipers
+	@date 2/12/13
+
+	This method updates the last_viewed field on FollowJunction and WorkOnJunction objects between
+	the user and specific problem report record. This method is used to clear the notifications the user gets for 
+	specific problem report record.
+
+=end
 	def updateLastViewed report
 		followJunctions = FollowJunction.where("follower_id = #{self.id} AND report_followed_id = #{report.id}")
 
@@ -72,10 +117,28 @@ class User < ActiveRecord::Base
 
 	end
 
+=begin
+
+	@author Chris Kipers
+	@date 2/12/13
+
+	This method is used to see if there is already a works on junction between the user and the 
+	specified problem report record 
+
+=end
 	def workingOnReport? report
 		WorkOnJunction.exists?(:worker_id => self.id, :report_worked_on_id => report.id)
 	end
 
+=begin
+
+	@author Chris Kipers
+	@date 2/12/13
+
+	This method is used to see if there is already a follows junction between the user and the 
+	specified problem report record 
+
+=end
 	def followingReport? report
 		FollowJunction.exists?(:follower_id => self.id, :report_followed_id => report.id)
 	end
