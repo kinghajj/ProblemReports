@@ -87,31 +87,94 @@ class ProblemReportRecordsController < ApplicationController
     end
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is an accessor for the default column to be used in sorting 
+
+=end
 
   def defaultColumn
     'subject'
   end
 
+
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is an accessor for the default order to be used in sorting 
+
+=end
+
   def defaultSortOrder
     'asc'
   end
+
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is an accessor for the path to update the working on table. We have an accessor because this value
+  will be passed as a local variable to a partial and I wanted to keep this value in one place.
+
+=end
 
   def workingOnPath
     'updateWorkingOnTable'
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is an accessor for the path to update the all report table. We have an accessor because this value
+  will be passed as a local variable to a partial and I wanted to keep this value in one place.
+
+=end
   def allReportPath
     'updateAllReportsTable'
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is an accessor for the path to update the following report table. We have an accessor because this value
+  will be passed as a local variable to a partial and I wanted to keep this value in one place.
+
+=end
   def followReportPath
     'updateFollowReportsTable'
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is an accessor for the path to update the unclaimed report table. We have an accessor because this value
+  will be passed as a local variable to a partial and I wanted to keep this value in one place.
+
+=end
   def unclaimedReportsPath
     'updateUnClaimedReportsTable'
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is used to retrive all the problem reports the user is working on.
+
+=end
   def getWorkedOnReports
     column = params[:column] ? params[:column] : defaultColumn
     order = params[:direction] ? params[:direction] : defaultSortOrder
@@ -119,15 +182,30 @@ class ProblemReportRecordsController < ApplicationController
     if(user)
       user.report_worked_on.paginate(page: params[:page], :per_page => 1).order(column + " " + order)
     end
-    #records = ProblemReportRecord.paginate(page: params[:page], :per_page => 1).order(column + " " + order)
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is used to retrive all the problem reports.
+
+=end
   def getAllReports
     column = params[:column] ? params[:column] : defaultColumn
     order = params[:direction] ? params[:direction] : defaultSortOrder
     ProblemReportRecord.paginate(page: params[:page], :per_page => 1).order(column + " " + order)
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is used to retrive all the problem reports the user is following.
+
+=end
   def getFollowReports
     column = params[:column] ? params[:column] : defaultColumn
     order = params[:direction] ? params[:direction] : defaultSortOrder
@@ -137,6 +215,14 @@ class ProblemReportRecordsController < ApplicationController
     end
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is used to retrive all the problem reports that no users are working on.
+
+=end
   def getUnclaimedReports
     column = params[:column] ? params[:column] : defaultColumn
     order = params[:direction] ? params[:direction] : defaultSortOrder
@@ -147,6 +233,15 @@ class ProblemReportRecordsController < ApplicationController
     
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is used to update the working on table. It does this by requerying the problem reports
+  and then using ajax replaces the table with the table parcial using the newly queried problem reports.
+
+=end
   def updateWorkingOnTable
     @reports_worked_on = getWorkedOnReports
 
@@ -156,6 +251,15 @@ class ProblemReportRecordsController < ApplicationController
     end
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is used to update the all problem reports on table. It does this by requerying the problem reports
+  and then using ajax replaces the table with the table parcial using the newly queried problem reports.
+
+=end
   def updateAllReportsTable
     @all_reports = getAllReports
 
@@ -165,6 +269,15 @@ class ProblemReportRecordsController < ApplicationController
     end
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is used to update the following report table. It does this by requerying the problem reports
+  and then using ajax replaces the table with the table parcial using the newly queried problem reports.
+
+=end
   def updateFollowReportsTable
     @followed_reports = getFollowReports
 
@@ -174,6 +287,15 @@ class ProblemReportRecordsController < ApplicationController
     end
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is used to update the unclaimed report table. It does this by requerying the problem reports
+  and then using ajax replaces the table with the table parcial using the newly queried problem reports.
+
+=end
   def updateUnClaimedReportsTable
     @unclaimed_reports = getUnclaimedReports
 
@@ -183,9 +305,21 @@ class ProblemReportRecordsController < ApplicationController
     end
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is used to create a work on junction between the user and the specified problem report. After
+  the junction is created all the tables on the index page are refreshed. This is achieved by an ajax script that
+  calls the refreshTables js function.
+
+=end
   def workOnReport
       report = ProblemReportRecord.find(params[:id])
-      current_user.workOnReport report
+
+      if(!report.nil?)
+        current_user.workOnReport report
 
       respond_to do |format|
       format.html { render action: "index" }
@@ -193,9 +327,21 @@ class ProblemReportRecordsController < ApplicationController
     end
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is used to delete the work on junction between the user and the specified problem report. After
+  the junction is deleted all the tables on the index page are refreshed. This is achieved by an ajax script that
+  calls the refreshTables js function.
+
+=end
   def quitWorkingOnReport
       report = ProblemReportRecord.find(params[:id])
-      current_user.quitWorkingOnReport report
+
+      if(!report.nil?)
+        current_user.quitWorkingOnReport report
 
       respond_to do |format|
       format.html { render action: "index" }
@@ -203,9 +349,21 @@ class ProblemReportRecordsController < ApplicationController
     end
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is used to create a follow junction between the user and the specified problem report. After
+  the junction is created all the tables on the index page are refreshed. This is achieved by an ajax script that
+  calls the refreshTables js function.
+
+=end
   def followReport
       report = ProblemReportRecord.find(params[:id])
-      current_user.followReport report
+
+      if(!report.nil?)
+        current_user.followReport report
 
       respond_to do |format|
       format.html { render action: "index" }
@@ -213,9 +371,21 @@ class ProblemReportRecordsController < ApplicationController
     end
   end
 
+=begin
+
+  @author Chris Kipers
+  @date 2/12/13
+
+  This method is used to delete the follow junction between the user and the specified problem report. After
+  the junction is deleted all the tables on the index page are refreshed. This is achieved by an ajax script that
+  calls the refreshTables js function.
+
+=end
   def unfollowReport
       report = ProblemReportRecord.find(params[:id])
-      current_user.unfollowReport report
+
+      if(!report.nil?)
+        current_user.unfollowReport report
 
       respond_to do |format|
       format.html { render action: "index" }
