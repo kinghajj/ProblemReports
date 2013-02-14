@@ -1,4 +1,7 @@
 ProblemReport::Application.routes.draw do
+
+  root :to => 'visitor#index'
+
   resources :statuses
 
   resources :priorities
@@ -38,6 +41,8 @@ ProblemReport::Application.routes.draw do
   match 'quitWorkingOnReport/', to: 'problem_report_records#quitWorkingOnReport', via: :delete
   match 'followReport/', to: 'problem_report_records#followReport', via: :post
   match 'unfollowReport/', to: 'problem_report_records#unfollowReport', via: :delete
+
+  match 'visitor/', to: 'visitor#index', via: :get
 
 
 
