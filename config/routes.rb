@@ -41,7 +41,9 @@ ProblemReport::Application.routes.draw do
   match 'quitWorkingOnReport/', to: 'problem_report_records#quitWorkingOnReport', via: :delete
   match 'followReport/', to: 'problem_report_records#followReport', via: :post
   match 'unfollowReport/', to: 'problem_report_records#unfollowReport', via: :delete
-
+  match 'requestAssigningForm', to:'problem_report_records#requestAssigningForm', via: :get
+  match 'assignProblemReports', to:'problem_report_records#assignProblemReports', via: :put
+  
   match 'visitor/', to: 'visitor#index', via: :get
 
 

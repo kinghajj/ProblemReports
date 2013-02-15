@@ -90,4 +90,61 @@ class ProblemReportRecord < ActiveRecord::Base
 		end
 	end
 
+	def assignProblemReports workers
+
+		if workers.nil?
+			workers = Array.new
+		end
+		
+	    previousWorkers = Set.new
+	    assignedWorkers = Set.new
+
+	    newWorkers = Set.new
+	    deleteWorkers = Set.new
+
+	    self.worker.each{|worker| previousWorkers.add(worker.id)}
+	    workers.each{|workerId| assignedWorkers.add(workerId)}
+
+	    #loop to find new workers
+
+	    assignedWorkers.each do |curWorker|
+
+	      if(!previousWorkers.member? curWorker)
+	          newWorkers.add(curWorker)
+	      end
+
+	    end
+
+	    #loop to find workers to delete
+
+	    previousWorkers.each do |curWorker|
+
+	      if(!assignedWorkers.member? curWorker)
+	          deleteWorkers.add(curWorker)
+	      end
+
+	    end
+
+	    #Query groups in bulk to reduce SQL Queries 
+
+	    usersToAssign = User.where('id IN (?)',newWorkers);
+	    usersToUnAssign = User.where('id IN (?)',deleteWorkers);
+
+	    #actually do the assigning
+
+	    if(!usersToAssign.nil?)
+		    usersToAssign.each do |user|
+		      user.workOnReport self
+		    end
+		end
+
+	    #actually do the unassigning
+	    if(!usersToUnAssign.nil?)
+		    usersToUnAssign.each do |user|
+		      user.quitWorkingOnReport self
+		    end
+		end
+
+	  end
+
 end

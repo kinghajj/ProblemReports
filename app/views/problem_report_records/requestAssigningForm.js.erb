@@ -1,0 +1,3 @@
+$('#assign-ticket-div').html("<%= escape_javascript(render :partial =>'assign_ticket', :locals => {:ticket => @report, :workers => @workers}) %>");
+$('#assign-ticket-div').dialog( "option", "title", "<%= @report.subject %>" );
+$('#assign-ticket-div').dialog('open');

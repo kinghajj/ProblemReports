@@ -65,6 +65,11 @@
             <%=link_to 'Unfollow', {:controller => "problem_report_records", :action => 'unfollowReport',:id =>problem_report_record.id}, {:method=>'DELETE',:remote=>true} %>
         <% end %>
     </td>
+    <% if admin? %>
+        <td>
+            <%=link_to 'Assign', {:controller => "problem_report_records", :action => 'requestAssigningForm',:id =>problem_report_record.id}, {:method=>'GET',:remote=>true} %>
+        </td>
+    <% end %>
     <!--<td><%= link_to 'Show', problem_report_record %></td>
     <td><%= link_to 'Edit', edit_problem_report_record_path(problem_report_record) %></td>
     <td><%= link_to 'Destroy', problem_report_record, confirm: 'Are you sure?', method: :delete %></td>-->

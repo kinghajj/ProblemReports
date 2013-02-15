@@ -305,6 +305,9 @@ class ProblemReportRecordsController < ApplicationController
     end
   end
 
+
+#---------------------------- These methods have to do with working on and following tickets-------
+
 =begin
 
   @author Chris Kipers
@@ -397,7 +400,29 @@ class ProblemReportRecordsController < ApplicationController
     end
   end
 
+  def requestAssigningForm
+    @report = ProblemReportRecord.find(params[:id])
+    @workers = @report.worker
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+  end
 
+  def assignProblemReports
+    workers = params[:worker]
+    report = ProblemReportRecord.find(params[:id])
+
+    if !report.nil?
+      report.assignProblemReports workers
+    end
+    
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+
+  end
 
 
 end
