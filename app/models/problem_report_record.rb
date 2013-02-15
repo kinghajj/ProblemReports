@@ -95,7 +95,7 @@ class ProblemReportRecord < ActiveRecord::Base
 		if workers.nil?
 			workers = Array.new
 		end
-		
+
 	    previousWorkers = Set.new
 	    assignedWorkers = Set.new
 
@@ -103,7 +103,7 @@ class ProblemReportRecord < ActiveRecord::Base
 	    deleteWorkers = Set.new
 
 	    self.worker.each{|worker| previousWorkers.add(worker.id)}
-	    workers.each{|workerId| assignedWorkers.add(workerId)}
+	    workers.each{|workerId| assignedWorkers.add(workerId.to_i)}
 
 	    #loop to find new workers
 

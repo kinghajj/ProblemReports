@@ -229,8 +229,12 @@ class ProblemReportRecordsController < ApplicationController
     reportsWithJunction = Set.new
     WorkOnJunction.all.each{ |rep| reportsWithJunction.add(rep.report_worked_on_id) }
 
-    ProblemReportRecord.where("id NOT IN (?)",reportsWithJunction).paginate(page: params[:page], :per_page => 1).order(column + " " + order)
-    
+    # The if is need to fix bug if there are no junction objects at all, which is increadably rare
+    if(reportsWithJunction.size > 0)
+      ProblemReportRecord.where("id NOT IN (?)",reportsWithJunction).paginate(page: params[:page], :per_page => 1).order(column + " " + order)
+    else
+      getAllReports
+    end
   end
 
 =begin
