@@ -69,9 +69,8 @@
 <br />
 
 <div id="assign-ticket-div">
-	<%= render :partial =>'assign_ticket', :locals => {:ticket => @all_reports[0], :workers => @all_reports[0].worker} %>
+
 </div>
 
-<%= hidden_field_tag 'page', '1' %>
 <%= link_to 'New Problem report record', new_problem_report_record_path %>
 

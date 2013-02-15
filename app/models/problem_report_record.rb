@@ -17,6 +17,8 @@ class ProblemReportRecord < ActiveRecord::Base
 	has_many :being_followed_by_relationship, foreign_key: "report_followed_id" , class_name: "FollowJunction", :dependent => :destroy
 	has_many :follower, through: :being_followed_by_relationship
 
+	has_many :problem_report_notes
+
 	validates :subject, :presence => true
 	validates :description, :presence => true
 	validates :category_id, :presence => true
