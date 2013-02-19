@@ -1,6 +1,39 @@
+<% content_for(:head) do %>
+	  <%= javascript_include_tag "http://code.jquery.com/ui/1.10.0/jquery-ui.js" %>
+	  <%= stylesheet_link_tag    "smoothness/jquery-ui-1.10.0.custom.css", :media => "all" %>
+
+	  <script>
+	  	$(document).ready(function(){
+	  		$('#new-note').dialog({ modal: true,draggable: false,title: "New Note"});
+	  		$('#new-note').dialog('close');
+
+	  		$('#new-note-button').click(function(){
+	  			$('#new-note').dialog('open')
+	  		});
+	  	});
+	  </script>
+  <% end %>
+
 <h1>Editing problem_report_record</h1>
 
 <%= render 'form' %>
+
+
+<div id = "notes-section">
+    <h1> Notes </h1>
+    <input type="button" id="new-note-button" value="Add Note"/>
+    <div id="notes">
+    	<%= render :partial =>'notes', :locals => {:notes => @problem_report_record.problem_report_notes,:id => @problem_report_record.id} %>
+	</div>
+</div>
+
+<div id="new-note">
+	<%= form_tag '/addNewNote', :method => 'POST', :remote => true do %>
+		<%= text_area_tag :note,nil, :id =>"new-note-input" %>
+		<%= hidden_field_tag :id, @problem_report_record.id %>
+		<%= submit_tag("Save") %>
+	<% end %>
+</div>
 
 <%= link_to 'Show', @problem_report_record %> |
 <%= link_to 'Back', problem_report_records_path %>

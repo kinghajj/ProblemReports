@@ -117,12 +117,4 @@
     <%= f.submit %>
   </div>
 
-  <% if !@problem_report_record.id.nil? %>
-    <div class = "notes">
-        <h1> Notes </h1>
-        <%= render :partial =>'notes', :locals => {:notes => @problem_report_record.problem_report_notes,:id => @problem_report_record.id} %>
-    </div>
-
-  <% end %>
-
 <% end %>

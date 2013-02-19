@@ -1,0 +1,3 @@
+$('#new-note').dialog('close');
+$('#new-note-input').val('');
+$('#notes').html("<%= escape_javascript( render :partial =>'notes', :locals => {:notes => @report.problem_report_notes,:id => @report.id}) %> ");

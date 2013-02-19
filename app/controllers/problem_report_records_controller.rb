@@ -167,6 +167,10 @@ class ProblemReportRecordsController < ApplicationController
     'updateUnClaimedReportsTable'
   end
 
+  def problemsPerPage
+    5
+  end
+
 =begin
 
   @author Chris Kipers
@@ -180,7 +184,7 @@ class ProblemReportRecordsController < ApplicationController
     order = params[:direction] ? params[:direction] : defaultSortOrder
     user = current_user
     if(user)
-      user.report_worked_on.paginate(page: params[:page], :per_page => 1).order(column + " " + order)
+      user.report_worked_on.paginate(page: params[:page], :per_page => problemsPerPage).order(column + " " + order)
     end
   end
 
@@ -195,7 +199,7 @@ class ProblemReportRecordsController < ApplicationController
   def getAllReports
     column = params[:column] ? params[:column] : defaultColumn
     order = params[:direction] ? params[:direction] : defaultSortOrder
-    ProblemReportRecord.paginate(page: params[:page], :per_page => 1).order(column + " " + order)
+    ProblemReportRecord.paginate(page: params[:page], :per_page => problemsPerPage).order(column + " " + order)
   end
 
 =begin
@@ -211,7 +215,7 @@ class ProblemReportRecordsController < ApplicationController
     order = params[:direction] ? params[:direction] : defaultSortOrder
     user = current_user
     if(user)
-      user.report_followed.paginate(page: params[:page], :per_page => 1).order(column + " " + order)
+      user.report_followed.paginate(page: params[:page], :per_page => problemsPerPage).order(column + " " + order)
     end
   end
 
@@ -231,7 +235,7 @@ class ProblemReportRecordsController < ApplicationController
 
     # The if is need to fix bug if there are no junction objects at all, which is increadably rare
     if(reportsWithJunction.size > 0)
-      ProblemReportRecord.where("id NOT IN (?)",reportsWithJunction).paginate(page: params[:page], :per_page => 1).order(column + " " + order)
+      ProblemReportRecord.where("id NOT IN (?)",reportsWithJunction).paginate(page: params[:page], :per_page => problemsPerPage).order(column + " " + order)
     else
       getAllReports
     end
@@ -426,6 +430,25 @@ class ProblemReportRecordsController < ApplicationController
       format.js {}
     end
 
+  end
+
+  #-------------- This section has to do with adding notes -------------------
+
+  def addNewNote
+    noteText = params[:note]
+    @report = ProblemReportRecord.find(params[:id])
+
+    if !@report.nil?
+      if auth_user?
+        note = ProblemReportNote.new(:user_id => current_user.id, :problem_report_record_id => @report.id, :comment => noteText)
+        note.save
+      end
+    end
+    
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
   end
 
 
