@@ -8,7 +8,8 @@
 	  		$('#new-note').dialog('close');
 
 	  		$('#new-note-button').click(function(){
-	  			$('#new-note').dialog('open')
+	  			$('#new-note').html('<%= escape_javascript( render 'new_note') %>');
+	  			$('#new-note').dialog('open');
 	  		});
 	  	});
 	  </script>
@@ -17,7 +18,6 @@
 <h1>Editing problem_report_record</h1>
 
 <%= render 'form' %>
-
 
 <div id = "notes-section">
     <h1> Notes </h1>
@@ -28,11 +28,6 @@
 </div>
 
 <div id="new-note">
-	<%= form_tag '/addNewNote', :method => 'POST', :remote => true do %>
-		<%= text_area_tag :note,nil, :id =>"new-note-input" %>
-		<%= hidden_field_tag :id, @problem_report_record.id %>
-		<%= submit_tag("Save") %>
-	<% end %>
 </div>
 
 <%= link_to 'Show', @problem_report_record %> |

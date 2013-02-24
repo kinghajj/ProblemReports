@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212051552) do
+ActiveRecord::Schema.define(:version => 20130224172327) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20130212051552) do
     t.string   "comment"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+    t.decimal  "time_spent"
   end
 
   create_table "problem_report_records", :force => true do |t|
@@ -81,7 +82,6 @@ ActiveRecord::Schema.define(:version => 20130212051552) do
     t.date     "date_entered"
     t.date     "date_completed"
     t.date     "date_due"
-    t.decimal  "hours_worked"
     t.integer  "system_type_id"
     t.integer  "escalation_id"
     t.integer  "problem_type_id"
@@ -145,12 +145,12 @@ ActiveRecord::Schema.define(:version => 20130212051552) do
     t.boolean  "show_completed_by"
     t.boolean  "show_submitters_name"
     t.boolean  "show_submitters_email"
+    t.boolean  "show_subject"
   end
 
   create_table "work_on_junctions", :force => true do |t|
     t.integer  "worker_id"
     t.integer  "report_worked_on_id"
-    t.decimal  "hours"
     t.datetime "last_viewed"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false

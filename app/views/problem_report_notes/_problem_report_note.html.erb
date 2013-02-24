@@ -1,1 +1,9 @@
-<%= problem_report_note.user.user_name if  !problem_report_note.user.nil? %> | <%= problem_report_note.comment %> | <%= problem_report_note.created_at %>
+<%= problem_report_note.user.user_name if  !problem_report_note.user.nil? %> | <%= problem_report_note.comment %> | <%= problem_report_note.created_at %> | Time Spent <%= problem_report_note.time_spent %>
+
+<% if problem_report_note.hasBeenModified? %>
+	Last Modified: <%= problem_report_note.updated_at %>
+<% end %>
+
+<% if problem_report_note.user_id == current_user.id %>
+	<%=link_to 'Edit', {:controller => "problem_report_records", :action => 'requestNoteToModify',:id =>problem_report_note.id}, {:method=>'POST',:remote=>true} %>
+<% end %>

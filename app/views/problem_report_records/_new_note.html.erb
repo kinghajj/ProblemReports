@@ -1,0 +1,8 @@
+<%= form_tag '/addNewNote', :method => 'POST', :remote => true do %>
+	<label> Comment </label>
+	<%= text_area_tag :note,nil, :id =>"new-note-input" %>
+	<label> Time Spent (Minutes) </label>
+	<%= number_field_tag :time_spent, :id =>"new-note-time" %>
+	<%= hidden_field_tag :id, @problem_report_record.id %>
+	<%= submit_tag("Save") %>
+<% end %>

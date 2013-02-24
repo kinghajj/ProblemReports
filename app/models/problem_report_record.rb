@@ -1,5 +1,5 @@
 class ProblemReportRecord < ActiveRecord::Base
-	attr_accessible :subject , :description , :category_id , :priority_id , :date_entered , :date_completed , :date_due , :hours_worked , :system_type_id , :escalation_id , :problem_type_id , :room_building , :room_number , :computer_name , :solution , :status_id , :submitted_by_id , :completed_by_id , :submitters_name , :submitters_email 
+	attr_accessible :subject , :description , :category_id , :priority_id , :date_entered , :date_completed , :date_due , :system_type_id , :escalation_id , :problem_type_id , :room_building , :room_number , :computer_name , :solution , :status_id , :submitted_by_id , :completed_by_id , :submitters_name , :submitters_email 
 
 	belongs_to :category
 	belongs_to :system_type

@@ -2,14 +2,14 @@
 
 <table>
   <tr>
-    <th><%= sortable('subject',action) %></th>
+    <th><%= sortable('id',action) %></th>
+    <th><%= sortable('subject',action) if current_user.show_subject %></th>
     <th><%= sortable('description',action) if current_user.show_description%></th>
     <th><%= sortable('category_id',action,"Catagory") if current_user.show_catagory %></th>
     <th><%= sortable('priority_id',action,"Priority") if current_user.show_priority %></th>
     <th><%= sortable('date_entered',action,"Date entered") if current_user.show_date_entered %></th>
     <th><%= sortable('date_completed',action,"Date completed") if current_user.show_date_completed %></th>
     <th><%= sortable('date_due',action,"Date due") if current_user.show_due_date %></th>
-    <th><%= sortable('hours_worked',action,"Hours worked") if current_user.show_hours_worked %></th>
     <th><%= sortable('system_type_id',action,"System type") if current_user.show_system_type %></th>
     <th><%= sortable('escalation_id',action,"Escalation") if current_user.show_escalation %></th>
     <th><%= sortable('problem_type_id',action,"Problem type") if current_user.show_problem_type %> </th>
@@ -31,14 +31,14 @@
 
 <% problem_report_records.each do |problem_report_record| %>
   <tr>
-    <td><%= link_to problem_report_record.subject, problem_report_record %></td>
+    <td><%= link_to problem_report_record.id, problem_report_record %></td>
+    <td><%= problem_report_record.subject if current_user.show_subject %>
     <td><%= problem_report_record.description  if current_user.show_description%></td>
     <td><%= problem_report_record.category_name if current_user.show_catagory %></td>
     <td><%= problem_report_record.priority_name  if current_user.show_priority %></td>
     <td><%= problem_report_record.date_entered if current_user.show_date_entered %></td>
     <td><%= problem_report_record.date_completed if current_user.show_date_completed %></td>
     <td><%= problem_report_record.date_due if current_user.show_due_date %></td>
-    <td><%= problem_report_record.hours_worked if current_user.show_hours_worked %></td>
     <td><%= problem_report_record.system_type_name if current_user.show_system_type %></td>
     <td><%= problem_report_record.escalation_name if current_user.show_escalation %></td>
     <td><%= problem_report_record.problem_type_name if current_user.show_problem_type %></td>

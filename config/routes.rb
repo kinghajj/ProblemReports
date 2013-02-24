@@ -43,6 +43,8 @@ ProblemReport::Application.routes.draw do
   match 'unfollowReport/', to: 'problem_report_records#unfollowReport', via: :delete
   match 'requestAssigningForm', to:'problem_report_records#requestAssigningForm', via: :get
   match 'assignProblemReports', to:'problem_report_records#assignProblemReports', via: :put
+  match 'requestNoteToModify', to: 'problem_report_records#requestNoteToModify', via: :post
+  match 'modifyNote', to: 'problem_report_records#modifyNote', via: :put
 
   match 'addNewNote', to:'problem_report_records#addNewNote', via: :post
   

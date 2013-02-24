@@ -436,11 +436,12 @@ class ProblemReportRecordsController < ApplicationController
 
   def addNewNote
     noteText = params[:note]
+    timeSpent = params[:time_spent]
     @report = ProblemReportRecord.find(params[:id])
 
     if !@report.nil?
       if auth_user?
-        note = ProblemReportNote.new(:user_id => current_user.id, :problem_report_record_id => @report.id, :comment => noteText)
+        note = ProblemReportNote.new(:user_id => current_user.id, :problem_report_record_id => @report.id, :comment => noteText, :time_spent => timeSpent)
         note.save
       end
     end
@@ -451,5 +452,29 @@ class ProblemReportRecordsController < ApplicationController
     end
   end
 
+  def requestNoteToModify
+
+    @note = ProblemReportNote.find(params[:id]);
+
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+    
+  end
+
+  def modifyNote
+    @note = ProblemReportNote.find(params[:id]);
+    @note.comment = params[:note]
+    @note.time_spent = params[:time_spent]
+    @note.save
+    @report = ProblemReportRecord.find(@note.problem_report_record_id)
+
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+
+  end
 
 end
