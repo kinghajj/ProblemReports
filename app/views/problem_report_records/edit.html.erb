@@ -27,6 +27,14 @@
 	</div>
 </div>
 
+<div>
+	<h1> History </h1>
+	<div id="histories">
+		<%= render :partial =>'problem_report_histories', :locals => {:histories => @problem_report_record.problem_report_histories} %>
+	</div>
+
+</div>
+
 <div id="new-note">
 </div>
 

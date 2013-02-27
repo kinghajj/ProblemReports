@@ -1,5 +1,5 @@
 class ProblemReportRecord < ActiveRecord::Base
-	attr_accessible :subject , :description , :category_id , :priority_id , :date_entered , :date_completed , :date_due , :system_type_id , :escalation_id , :problem_type_id , :room_building , :room_number , :computer_name , :solution , :status_id , :submitted_by_id , :completed_by_id , :submitters_name , :submitters_email 
+	attr_accessible :subject , :description , :category_id , :priority_id , :date_entered , :date_completed , :date_due , :system_type_id , :escalation_id , :problem_type_id , :room_building , :room_number , :computer_name , :solution , :status_id , :submitted_by_id , :completed_by_id , :submitters_name , :submitters_email,  :last_modified_by_id
 
 	belongs_to :category
 	belongs_to :system_type
@@ -8,8 +8,9 @@ class ProblemReportRecord < ActiveRecord::Base
 	belongs_to :status
 	belongs_to :priority
 
-	belongs_to :sumbitting_user, primary_key: "submitted_by_id" , class_name: "User"
-	belongs_to :completing_user, primary_key: "completed_by_id" , class_name: "User"
+	belongs_to :sumbitting_user, foreign_key: "submitted_by_id" , class_name: "User"
+	belongs_to :completing_user, foreign_key: "completed_by_id" , class_name: "User"
+	belongs_to :last_modified_by, foreign_key: "last_modified_by_id", class_name: "User"
 
 	has_many :being_worked_on_relationship, foreign_key: "report_worked_on_id" , class_name: "WorkOnJunction", :dependent => :destroy
 	has_many :worker, through: :being_worked_on_relationship
@@ -18,6 +19,7 @@ class ProblemReportRecord < ActiveRecord::Base
 	has_many :follower, through: :being_followed_by_relationship
 
 	has_many :problem_report_notes
+	has_many :problem_report_histories
 
 	validates :subject, :presence => true
 	validates :description, :presence => true
@@ -27,6 +29,13 @@ class ProblemReportRecord < ActiveRecord::Base
 	validates :status_id, :presence => true
 	validates :problem_type_id, :presence => true
 	validates :priority_id, :presence => true
+
+	after_save do |ticket|
+
+		if(!ticket.id_changed?)
+			ProblemReportHistory.createHistoryForTicketChange ticket
+		end
+	end
 
 	def category_name
 		if(category.nil?)

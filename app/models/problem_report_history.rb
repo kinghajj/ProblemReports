@@ -49,7 +49,7 @@ class ProblemReportHistory < ActiveRecord::Base
 	end
 
 	def self.createHistoryForNoteChange note
-		if(note.changed?)
+		if(ProblemReportHistory.objectChanged? note)
 			newHistory = ProblemReportHistory.new
 			newHistory.user_id = note.user_id
 			newHistory.problem_report_record_id = note.problem_report_record_id
@@ -62,8 +62,18 @@ class ProblemReportHistory < ActiveRecord::Base
 		end
 	end
 
-	def self.createHistoryForTicketChange ticket, user
+	def self.createHistoryForTicketChange ticket
 
+		if(ProblemReportHistory.objectChanged? ticket)
+			newHistory = ProblemReportHistory.new
+			newHistory.user_id = ticket.last_modified_by_id
+			newHistory.problem_report_record_id = ticket.id
+
+			newHistory.subject = "#{ticket.last_modified_by.user_name} modified the ticket."
+
+			newHistory.comment = ProblemReportHistory.getObjectChanges ticket
+			newHistory.save
+		end
 
 	end
 
@@ -79,6 +89,13 @@ class ProblemReportHistory < ActiveRecord::Base
 			end
 
 			ticketChanges
+		end
+
+		def self.objectChanged? object
+			map = object.changes
+			map.delete_if{|k,v| k == 'updated_at'}
+
+			map.count > 0
 		end
 
 end

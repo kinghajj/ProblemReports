@@ -47,6 +47,7 @@ class ProblemReportRecordsController < ApplicationController
   # POST /problem_report_records.json
   def create
     @problem_report_record = ProblemReportRecord.new(params[:problem_report_record])
+    isModifying = !@problem_report_record.id.nil?
 
     respond_to do |format|
       if @problem_report_record.save
@@ -65,7 +66,7 @@ class ProblemReportRecordsController < ApplicationController
     @problem_report_record = ProblemReportRecord.find(params[:id])
 
     respond_to do |format|
-      if @problem_report_record.update_attributes(params[:problem_report_record])
+      if @problem_report_record.update_attributes(params[:problem_report_record].merge(:last_modified_by_id => current_user.id))
         format.html { redirect_to @problem_report_record, notice: 'Problem report record was successfully updated.' }
         format.json { head :no_content }
       else
