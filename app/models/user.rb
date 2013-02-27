@@ -31,10 +31,18 @@ class User < ActiveRecord::Base
 
 =end
 
-	def workOnReport report
+	def workOnReport report, assignee = nil
+
+		if assignee.nil?
+			assignee = self
+		end
+
 		if(!self.workingOnReport? report)
-			newJunction = WorkOnJunction.new(:worker_id => self.id, :report_worked_on_id => report.id, :hours => 0, :last_viewed => DateTime.now)
-			newJunction.save
+			newJunction = WorkOnJunction.new(:worker_id => self.id, :report_worked_on_id => report.id, :last_viewed => DateTime.now)
+			
+			if newJunction.save
+				ProblemReportHistory.createHistoryForWorkOnJunctionSave newJunction, assignee
+			end
 		end
 	end
 
@@ -46,10 +54,16 @@ class User < ActiveRecord::Base
 	This method deletes works on junction objects between the user and the specified problem report record 
 
 =end
-	def quitWorkingOnReport report
+	def quitWorkingOnReport report, assignee = nil
+
+		if assignee.nil?
+			assignee = self
+		end
+
 		junctions = WorkOnJunction.where("worker_id = #{self.id} AND report_worked_on_id = #{report.id}")
 
 		if(!junctions.nil?)
+			ProblemReportHistory.createHistoryForWorkOnJunctionDelete junctions[0], assignee
 			junctions.destroy_all
 		end
 	end

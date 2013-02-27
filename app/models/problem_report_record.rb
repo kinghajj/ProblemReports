@@ -92,7 +92,7 @@ class ProblemReportRecord < ActiveRecord::Base
 		end
 	end
 
-	def assignProblemReports workers
+	def assignProblemReports workers, assignee
 
 		if workers.nil?
 			workers = Array.new
@@ -136,14 +136,14 @@ class ProblemReportRecord < ActiveRecord::Base
 
 	    if(!usersToAssign.nil?)
 		    usersToAssign.each do |user|
-		      user.workOnReport self
+		      user.workOnReport self, assignee
 		    end
 		end
 
 	    #actually do the unassigning
 	    if(!usersToUnAssign.nil?)
 		    usersToUnAssign.each do |user|
-		      user.quitWorkingOnReport self
+		      user.quitWorkingOnReport self, assignee
 		    end
 		end
 

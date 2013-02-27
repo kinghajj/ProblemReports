@@ -422,7 +422,7 @@ class ProblemReportRecordsController < ApplicationController
     report = ProblemReportRecord.find(params[:id])
 
     if !report.nil?
-      report.assignProblemReports workers
+      report.assignProblemReports workers, current_user
     end
     
     respond_to do |format|

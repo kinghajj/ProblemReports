@@ -4,7 +4,7 @@
   <tr>
     <th>User</th>
     <th>Problem report record</th>
-    <th>Created date</th>
+    <th>Subject</th>
     <th>Comment</th>
     <th></th>
     <th></th>
@@ -15,7 +15,7 @@
   <tr>
     <td><%= problem_report_history.user_id %></td>
     <td><%= problem_report_history.problem_report_record_id %></td>
-    <td><%= problem_report_history.created_date %></td>
+    <td><%= problem_report_history.subject %></td>
     <td><%= problem_report_history.comment %></td>
     <td><%= link_to 'Show', problem_report_history %></td>
     <td><%= link_to 'Edit', edit_problem_report_history_path(problem_report_history) %></td>

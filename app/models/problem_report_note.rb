@@ -4,6 +4,16 @@ class ProblemReportNote < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :problem_report_record
 
+	after_create do |newNote|
+		ProblemReportHistory.createHistoryForNoteSave newNote
+	end
+
+	after_save do |updatedNote|
+		if(!updatedNote.id_changed?)
+			ProblemReportHistory.createHistoryForNoteChange updatedNote
+		end
+	end
+
 	def hasBeenModified?
 		if self.updated_at.nil? || self.updated_at == self.created_at
 			false
