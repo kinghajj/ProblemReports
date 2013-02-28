@@ -114,19 +114,23 @@ class User < ActiveRecord::Base
 		followJunctions = FollowJunction.where("follower_id = #{self.id} AND report_followed_id = #{report.id}")
 
 		if(!followJunctions.nil?)
-			followJunctions.each do |fj|
-				fj.last_viewed = DateTime.now
+			FollowJunction.transaction do
+				followJunctions.each do |fj|
+					fj.last_viewed = DateTime.now
+					fj.save
+				end
 			end
-			followJunctions.update_all
 		end
 
 		workingJunctions = WorkOnJunction.where("worker_id = #{self.id} AND report_worked_on_id = #{report.id}")
 
 		if(!workingJunctions.nil?)
-			workingJunctions.each do |wj|
-				wj.last_viewed = DateTime.now
+			WorkOnJunction.transaction do
+				workingJunctions.each do |wj|
+					wj.last_viewed = DateTime.now
+					wj.save
+				end
 			end
-			workingJunctions.update_all
 		end
 
 	end
@@ -159,5 +163,13 @@ class User < ActiveRecord::Base
 
 	#------------------------------------------------------------------------------------------
 
+	def getNotifications
+		problemReportIdSet = Set.new
+
+		ProblemReportHistory.joins("JOIN work_on_junctions ON problem_report_histories.problem_report_record_id = work_on_junctions.report_worked_on_id AND problem_report_histories.created_at > work_on_junctions.last_viewed").where("work_on_junctions.worker_id = ? AND problem_report_histories.user_id != ?",self.id,self.id)
+
+
+
+	end
 	
 end

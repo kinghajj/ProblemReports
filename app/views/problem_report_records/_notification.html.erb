@@ -1,0 +1,7 @@
+<h1>Notifications</h1>
+<ul>
+	<% current_user.getNotifications.each do |history| %>
+		<li><%= history.subject %> </li>
+	<% end %>
+
+</ul>

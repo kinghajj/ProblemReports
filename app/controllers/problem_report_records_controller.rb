@@ -21,6 +21,10 @@ class ProblemReportRecordsController < ApplicationController
   def show
     @problem_report_record = ProblemReportRecord.find(params[:id])
 
+    if(auth_user?)
+      current_user.updateLastViewed @problem_report_record
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @problem_report_record }
@@ -41,6 +45,11 @@ class ProblemReportRecordsController < ApplicationController
   # GET /problem_report_records/1/edit
   def edit
     @problem_report_record = ProblemReportRecord.find(params[:id])
+
+    if(auth_user?)
+      current_user.updateLastViewed @problem_report_record
+    end
+    
   end
 
   # POST /problem_report_records
