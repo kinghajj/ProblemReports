@@ -1,7 +1,18 @@
-<h1>Notifications</h1>
-<ul>
-	<% current_user.getNotifications.each do |history| %>
-		<li><%= history.subject %> </li>
-	<% end %>
+<% @notifications = current_user.getNotifications %>
+<% if @notifications.size > 0 %>
+	<div id="notifications">
+		<h1>Notifications</h1>
+		<ul>
+			<% @notifications.each do |note| %>
+				<li><%= link_to "#{note.ticket.subject} (#{note.ticket.id})" ,edit_problem_report_record_path(note.ticket) %> </li>
+				<ul>
+					<% note.histories.each do |hist| %>
+						<li><%= hist.subject %></li>
+					<% end %>
 
-</ul>
+				</ul>
+			<% end %>
+
+		</ul>
+	</div>
+<% end %>

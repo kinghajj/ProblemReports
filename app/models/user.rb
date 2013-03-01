@@ -166,8 +166,8 @@ class User < ActiveRecord::Base
 	def getNotifications
 		problemReportIdSet = Set.new
 
-		ProblemReportHistory.joins("JOIN work_on_junctions ON problem_report_histories.problem_report_record_id = work_on_junctions.report_worked_on_id AND problem_report_histories.created_at > work_on_junctions.last_viewed").where("work_on_junctions.worker_id = ? AND problem_report_histories.user_id != ?",self.id,self.id)
-
+		histories = ProblemReportHistory.joins("JOIN work_on_junctions ON problem_report_histories.problem_report_record_id = work_on_junctions.report_worked_on_id AND problem_report_histories.created_at > work_on_junctions.last_viewed").where("work_on_junctions.worker_id = ? AND problem_report_histories.user_id != ?",self.id,self.id)
+		Notification.buildNotifications histories
 
 
 	end
