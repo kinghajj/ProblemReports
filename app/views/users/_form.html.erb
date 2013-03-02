@@ -29,8 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :position_id %><br />
-    <%= f.select :position_id , options_for_select(Position.all.map{ |pos| [pos.name,pos.id]}), :prompt => "Select Position", :selected=>@user.position_id %>
-
+    <%= f.select :position_id , options_from_collection_for_select(Position.all,"id","name",@user.position_id), :prompt => "Select Position" %>
   </div>
   <div class="field">
     <%= f.label :main_phone %><br />

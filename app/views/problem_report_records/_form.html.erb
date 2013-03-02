@@ -19,15 +19,15 @@
     </div>
      <div class="field">
       <%= f.label :category_id %><br />
-      <%= f.select :category_id , options_for_select(Category.all.map{ |cat| [cat.name,cat.id]}), :prompt => "Select Category", :selected=>@problem_report_record.category_id %>
+      <%= f.select :category_id , options_from_collection_for_select(Category.all,"id","name",@problem_report_record.category_id), :prompt => "Select Category" %>
     </div>
     <div class="field">
       <%= f.label :system_type_id %><br />
-      <%= f.select :system_type_id , options_for_select(System.all.map{ |sys| [sys.name,sys.id]}), :prompt => "Select System", :selected=>@problem_report_record.system_type_id %>
+      <%= f.select :system_type_id , options_from_collection_for_select(System.all,"id","name",@problem_report_record.system_type_id), :prompt => "Select System" %>
     </div>
     <div class="field">
       <%= f.label :problem_type_id %><br />
-      <%= f.select :problem_type_id , options_for_select(ProblemType.all.map{ |prob| [prob.name,prob.id]}), :prompt => "Select Problem Type", :selected=>@problem_report_record.problem_type_id %>
+      <%= f.select :problem_type_id , options_from_collection_for_select(ProblemType.all,"id","name",@problem_report_record.problem_type_id), :prompt => "Select Problem Type" %>
     </div>
     <div class="field">
       <%= f.label :description %><br />
@@ -69,11 +69,11 @@
     <% if auth_user? %>
       <div class="field">
         <%= f.label :submitted_by_id %><br />
-        <%= f.select :submitted_by_id , options_for_select(User.all.map{ |usr| [usr.user_name,usr.id]}), :prompt => "Select User", :selected=>@problem_report_record.submitted_by_id %>
+        <%= f.select :submitted_by_id , options_from_collection_for_select(User.all,"id","user_name",@problem_report_record.submitted_by_id), :prompt => "Select User" %>
       </div>
       <div class="field">
         <%= f.label :completed_by_id %><br />
-        <%= f.select :completed_by_id , options_for_select(User.all.map{ |usr| [usr.user_name,usr.id]}), :prompt => "Select User", :selected=>@problem_report_record.completed_by_id %>
+        <%= f.select :completed_by_id , options_from_collection_for_select(User.all,"id","user_name",@problem_report_record.completed_by_id), :prompt => "Select User" %>
       </div>
     <% end %>
 
@@ -83,15 +83,15 @@
       <legend>Other</legend>
       <div class="field">
         <%= f.label :status_id %><br />
-        <%= f.select :status_id , options_for_select(Status.all.map{ |stat| [stat.name,stat.id]}), :prompt => "Select Status", :selected=>@problem_report_record.status_id %>
+        <%= f.select :status_id , options_from_collection_for_select(Status.all,"id","name",@problem_report_record.status_id), :prompt => "Select Status" %>
       </div>
       <div class="field">
         <%= f.label :escalation_id %><br />
-        <%= f.select :escalation_id , options_for_select(Escalation.all.map{ |esc| [esc.name,esc.id]}), :prompt => "Select Escalation", :selected=>@problem_report_record.escalation_id %>
+        <%= f.select :escalation_id , options_from_collection_for_select(Escalation.all,"id","name",@problem_report_record.escalation_id), :prompt => "Select Escalation" %>
       </div>
       <div class="field">
         <%= f.label :priority_id %><br />
-        <%= f.select :priority_id , options_for_select(Priority.all.map{ |prior| [prior.name,prior.id]}), :prompt => "Select Priority", :selected=>@problem_report_record.priority_id %>
+        <%= f.select :priority_id , options_from_collection_for_select(Priority.all,"id","name",@problem_report_record.priority_id), :prompt => "Select Priority" %>
       </div>
       <div class="field">
         <%= f.label :date_due %><br />

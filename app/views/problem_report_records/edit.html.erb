@@ -24,7 +24,7 @@
 <h1>Editing problem_report_record</h1>
 <% if !@problem_report_record.isInitialized? %>
 	<div id="init-button-section">
-		<%= link_to "Initialize", {:action => "initializeStatus", :id => @problem_report_record.id},:method => 'post',:remote => true,:id => 'init-button' %>
+		<%= button_to "Initialize", {:action => "initializeStatus", :id => @problem_report_record.id},:method => 'post',:remote => true,:id => 'init-button' %>
 	</div>
 <% end %>
 <%= render 'form' %>
