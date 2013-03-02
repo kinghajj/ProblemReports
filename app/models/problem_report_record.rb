@@ -37,6 +37,22 @@ class ProblemReportRecord < ActiveRecord::Base
 		end
 	end
 
+	def isInitialized?
+		!status.uninitialized
+	end
+
+	def initializeStatus user
+		initStatus = Status.where('initialized = ?', true).limit(1)
+		self.status_id = initStatus[0].id
+		self.last_modified_by_id = user.id
+
+		if(!self.submitters_email.nil?)
+			EcsMailer.start_email(self,user).deliver
+		end
+		
+		self.save
+	end
+
 	def category_name
 		if(category.nil?)
 			''

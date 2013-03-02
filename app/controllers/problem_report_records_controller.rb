@@ -141,4 +141,16 @@ class ProblemReportRecordsController < ApplicationController
 
   end
 
+  def initializeStatus
+    @problem_report_record = ProblemReportRecord.find(params[:id])
+    @problem_report_record.initializeStatus current_user
+
+    respond_to do |format|
+      format.html { redirect_to "/problem_report_records/#{@problem_report_record.id}/edit" }
+      format.js {}
+    end
+
+
+  end
+
 end

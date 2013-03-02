@@ -47,6 +47,7 @@ ProblemReport::Application.routes.draw do
 
   match 'requestNoteToModify', to: 'problem_report_records#requestNoteToModify', via: :post
   match 'modifyNote', to: 'problem_report_records#modifyNote', via: :put
+  match 'initializeStatus', to: 'problem_report_records#initializeStatus',via: :post
 
   match 'addNewNote', to:'problem_report_records#addNewNote', via: :post
   
