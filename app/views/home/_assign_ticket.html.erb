@@ -1,0 +1,20 @@
+<%= form_tag 'assignProblemReports', :method => 'PUT', :remote => true do %>
+	
+	<% workers.each do |worker| %>
+		<div class="worker">
+			<%= select_tag 'worker[]' , options_for_select(User.all.map{ |usr| [usr.user_name,usr.id]},worker.id), :prompt => "Select User" %>
+			<a class="remove_worker">Remove</a>
+		</div>
+	<% end %>
+	
+	<% if workers.size == 0 %>
+		<div class="worker">
+			<%= select_tag 'worker[]' , options_for_select(User.all.map{ |usr| [usr.user_name,usr.id]}), :prompt => "Select User" %>
+			<a class="remove_worker">Remove</a>
+		</div>
+	<% end %>
+	
+	<%= hidden_field_tag :id, ticket.id %>
+	<a class="add_worker">Add User</a>
+	<%= submit_tag("Save") %>
+<% end %>

@@ -33,16 +33,18 @@ ProblemReport::Application.routes.draw do
   match 'users/login/:id', to: 'users#login', via: :post
   match 'users/logout/', to: 'users#logout', via: :post
 
-  match 'updateWorkingOnTable/', to: 'problem_report_records#updateWorkingOnTable', via: :get
-  match 'updateAllReportsTable/', to: 'problem_report_records#updateAllReportsTable', via: :get
-  match 'updateFollowReportsTable/', to: 'problem_report_records#updateFollowReportsTable', via: :get
-  match 'updateUnClaimedReportsTable/', to: 'problem_report_records#updateUnClaimedReportsTable', via: :get
-  match 'workOnReport/', to: 'problem_report_records#workOnReport', via: :post
-  match 'quitWorkingOnReport/', to: 'problem_report_records#quitWorkingOnReport', via: :delete
-  match 'followReport/', to: 'problem_report_records#followReport', via: :post
-  match 'unfollowReport/', to: 'problem_report_records#unfollowReport', via: :delete
-  match 'requestAssigningForm', to:'problem_report_records#requestAssigningForm', via: :get
-  match 'assignProblemReports', to:'problem_report_records#assignProblemReports', via: :put
+  match 'home', to: 'home#index', via: :get
+  match 'updateWorkingOnTable/', to: 'home#updateWorkingOnTable', via: :get
+  match 'updateAllReportsTable/', to: 'home#updateAllReportsTable', via: :get
+  match 'updateFollowReportsTable/', to: 'home#updateFollowReportsTable', via: :get
+  match 'updateUnClaimedReportsTable/', to: 'home#updateUnClaimedReportsTable', via: :get
+  match 'workOnReport/', to: 'home#workOnReport', via: :post
+  match 'quitWorkingOnReport/', to: 'home#quitWorkingOnReport', via: :delete
+  match 'followReport/', to: 'home#followReport', via: :post
+  match 'unfollowReport/', to: 'home#unfollowReport', via: :delete
+  match 'requestAssigningForm', to:'home#requestAssigningForm', via: :get
+  match 'assignProblemReports', to:'home#assignProblemReports', via: :put
+
   match 'requestNoteToModify', to: 'problem_report_records#requestNoteToModify', via: :post
   match 'modifyNote', to: 'problem_report_records#modifyNote', via: :put
 
