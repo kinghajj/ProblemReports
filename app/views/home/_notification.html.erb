@@ -7,7 +7,11 @@
 				<li><%= link_to "#{note.ticket.subject} (#{note.ticket.id})" ,edit_problem_report_record_path(note.ticket) %> </li>
 				<ul>
 					<% note.histories.each do |hist| %>
-						<li><%= hist.subject %></li>
+						<li><%= hist.subject %> <a class="expand">+</a>
+						<div style="display:none">
+							<%= hist.comment %>
+						</div>
+						</li>
 					<% end %>
 
 				</ul>
@@ -16,3 +20,20 @@
 		</ul>
 	</div>
 <% end %>
+
+<script>
+	$(document).on('click','.expand',function(){
+		$(this).removeClass('expand');
+		$(this).addClass('minimize');
+		$(this).html('-');
+		$(this).next('div').show();
+	});
+
+	$(document).on('click','.minimize',function(){
+		$(this).removeClass('minimize');
+		$(this).addClass('expand');
+		$(this).html('+');
+		$(this).next('div').hide();
+	});
+
+</script>

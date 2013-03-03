@@ -93,7 +93,7 @@ class ProblemReportHistory < ActiveRecord::Base
 
 		def self.objectChanged? object
 			map = object.changes
-			map.delete_if{|k,v| k == 'updated_at'}
+			map.delete_if{|k,v| k == 'updated_at' || k == 'last_modified_by_id'}
 
 			map.count > 0
 		end

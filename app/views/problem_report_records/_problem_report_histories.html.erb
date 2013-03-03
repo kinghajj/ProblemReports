@@ -1,5 +1,5 @@
 <ul>
-	<% histories.each do |history| %>
+	<% histories.sort_by(&:created_at).reverse.each do |history| %>
 		<li> <%= render history %></li>
 	<% end %>
 </ul>
