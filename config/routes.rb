@@ -44,6 +44,7 @@ ProblemReport::Application.routes.draw do
   match 'unfollowReport/', to: 'home#unfollowReport', via: :delete
   match 'requestAssigningForm', to:'home#requestAssigningForm', via: :get
   match 'assignProblemReports', to:'home#assignProblemReports', via: :put
+  match 'clearNotification', to:'home#clearNotification', via: :put
 
   match 'requestNoteToModify', to: 'problem_report_records#requestNoteToModify', via: :post
   match 'modifyNote', to: 'problem_report_records#modifyNote', via: :put

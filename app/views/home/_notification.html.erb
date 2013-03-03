@@ -4,7 +4,9 @@
 		<h1>Notifications</h1>
 		<ul>
 			<% @notifications.each do |note| %>
-				<li><%= link_to "#{note.ticket.subject} (#{note.ticket.id})" ,edit_problem_report_record_path(note.ticket) %> </li>
+				<li><%= link_to "#{note.ticket.subject} (#{note.ticket.id})" ,edit_problem_report_record_path(note.ticket) %> 
+					<%= link_to "clear", {:controller => "home", :action => "clearNotification",:id => note.ticket.id}, {:method=>'PUT',:remote=>true} %>
+				</li>
 				<ul>
 					<% note.histories.each do |hist| %>
 						<li><%= hist.subject %> <a class="expand">+</a>
