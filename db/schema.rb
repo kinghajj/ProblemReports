@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302192429) do
+ActiveRecord::Schema.define(:version => 20130309235728) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(:version => 20130302192429) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.integer  "last_modified_by_id"
+    t.boolean  "initialized"
   end
 
   create_table "problem_types", :force => true do |t|
@@ -108,10 +109,9 @@ ActiveRecord::Schema.define(:version => 20130302192429) do
 
   create_table "statuses", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.boolean  "uninitialized"
-    t.boolean  "initialized"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.boolean  "first_status"
     t.boolean  "complete"
   end
 
@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(:version => 20130302192429) do
     t.boolean  "show_submitters_name"
     t.boolean  "show_submitters_email"
     t.boolean  "show_subject"
+    t.string   "email_signature"
   end
 
   create_table "work_on_junctions", :force => true do |t|

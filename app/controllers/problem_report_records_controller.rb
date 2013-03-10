@@ -107,6 +107,7 @@ class ProblemReportRecordsController < ApplicationController
       if auth_user?
         note = ProblemReportNote.new(:user_id => current_user.id, :problem_report_record_id => @report.id, :comment => noteText, :time_spent => timeSpent)
         note.save
+        @report.initializeStatus current_user, true
       end
     end
     
@@ -143,14 +144,26 @@ class ProblemReportRecordsController < ApplicationController
 
   def initializeStatus
     @problem_report_record = ProblemReportRecord.find(params[:id])
-    @problem_report_record.initializeStatus current_user
+    @problem_report_record.initializeStatus current_user, true
 
     respond_to do |format|
       format.html { redirect_to "/problem_report_records/#{@problem_report_record.id}/edit" }
       format.js {}
     end
-
-
   end
 
+  def sendEmail
+    @problem_report_record = ProblemReportRecord.find(params[:id])
+    message = params[:message]
+
+    if !@problem_report_record.submitters_email.nil?
+      EcsMailer.send_email(current_user,@problem_report_record.submitters_email,@problem_report_record,message).deliver
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to "/problem_report_records/#{@problem_report_record.id}/edit" }
+      format.js {}
+    end
+
+  end
 end

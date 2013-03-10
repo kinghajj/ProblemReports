@@ -1,3 +1,4 @@
+$('#init-button-section').remove();
 $('#new-note').dialog('close');
-$('#notes').html("<%= escape_javascript( render :partial =>'notes', :locals => {:notes => @report.problem_report_notes,:id => @report.id}) %> ");
+$('#notes').html("<%= escape_javascript( render :partial =>'notes', :locals => {:notes => @report.getFeed,:id => @report.id}) %> ");
 $('#histories').html("<%= escape_javascript( render :partial =>'problem_report_histories', :locals => {:histories => @report.problem_report_histories}) %> ");

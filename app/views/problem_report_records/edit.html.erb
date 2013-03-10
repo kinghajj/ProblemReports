@@ -1,28 +1,31 @@
 <% content_for(:head) do %>
 	  <%= javascript_include_tag "http://code.jquery.com/ui/1.10.0/jquery-ui.js" %>
+	  <%= javascript_include_tag "spin" %>
 	  <%= stylesheet_link_tag    "smoothness/jquery-ui-1.10.0.custom.css", :media => "all" %>
 
 	  <script>
 	  	$(document).ready(function(){
 	  		$('#new-note').dialog({ modal: true,draggable: false,title: "New Note"});
 	  		$('#new-note').dialog('close');
+	  		$('#email-form').dialog({ modal: true,draggable: false,title: "Send Email"});
+	  		$('#email-form').dialog('close');
+	  		
 
 	  		$('#new-note-button').click(function(){
 	  			$('#new-note').html('<%= escape_javascript( render 'new_note') %>');
 	  			$('#new-note').dialog('open');
 	  		});
 
-	  		<% if !@problem_report_record.isInitialized? %>
-	  			$(':input').attr('disabled','diabled');
-	  			$('#init-button').removeAttr('disabled');
-	  		<% end %>
-	  	});
-
+	  		$('#send-email-button').click(function(){
+	  			$('#email-form').dialog('open');
+	  			stopSpin('spin');
+	  		});
+	  	})
 	  </script>
   <% end %>
 
 <h1>Editing problem_report_record</h1>
-<% if !@problem_report_record.isInitialized? %>
+<% if !@problem_report_record.initialized %>
 	<div id="init-button-section">
 		<%= button_to "Initialize", {:action => "initializeStatus", :id => @problem_report_record.id},:method => 'post',:remote => true,:id => 'init-button' %>
 	</div>
@@ -30,10 +33,11 @@
 <%= render 'form' %>
 
 <div id = "notes-section">
-    <h1> Notes </h1>
+    <h1> Notes &amp Emails</h1>
     <input type="button" id="new-note-button" value="Add Note"/>
+    <input type="button" id="send-email-button" value="Send Email"/>
     <div id="notes">
-    	<%= render :partial =>'notes', :locals => {:notes => @problem_report_record.problem_report_notes,:id => @problem_report_record.id} %>
+    	<%= render :partial =>'notes', :locals => {:notes => @problem_report_record.getFeed,:id => @problem_report_record.id} %>
 	</div>
 </div>
 
@@ -45,6 +49,16 @@
 </div>
 
 <div id="new-note">
+</div>
+<div id="email-form">
+	<%= form_tag '/sendEmail', :method => 'POST', :remote => true do %>
+	<label> Message </label>
+	<%= text_area_tag :message, nil,:id =>"email-message" %>
+	<%= hidden_field_tag :id, @problem_report_record.id %>
+	<%= submit_tag("Send",:onclick => "startSpin('email-spinner');") %>
+	<div id="email-spinner">
+	</div>
+<% end %>
 </div>
 
 <%= link_to 'Show', @problem_report_record %> |

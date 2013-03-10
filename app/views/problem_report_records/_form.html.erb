@@ -1,3 +1,14 @@
+<% content_for(:head) do %>
+    <%= javascript_include_tag "http://code.jquery.com/ui/1.10.0/jquery-ui.js" %>
+    <%= stylesheet_link_tag    "smoothness/jquery-ui-1.10.0.custom.css", :media => "all" %>
+
+    <script>
+      $(document).ready(function(){
+        $( ".date" ).datepicker({dateFormat: "yy-mm-dd"});
+      })
+    </script>
+  <% end %>
+
 <%= form_for(@problem_report_record) do |f| %>
   <% if @problem_report_record.errors.any? %>
     <div id="error_explanation">
@@ -51,7 +62,7 @@
     </div>
     <div class="field">
       <%= f.label :date_entered %><br />
-      <%= f.date_select :date_entered %>
+      <%= f.text_field :date_entered ,:class => "date" %>
     </div>
   </fieldset>
 
@@ -95,11 +106,11 @@
       </div>
       <div class="field">
         <%= f.label :date_due %><br />
-        <%= f.date_select :date_due %>
+        <%= f.text_field :date_due ,:class => "date" %>
       </div>
       <div class="field">
         <%= f.label :date_completed %><br />
-        <%= f.date_select :date_completed %>
+        <%= f.text_field :date_completed ,:class => "date" %>
       </div>
 
       <div class="field">

@@ -31,7 +31,7 @@
 
 <% problem_report_records.each do |problem_report_record| %>
   <tr>
-    <td><%= link_to problem_report_record.id, problem_report_record %></td>
+    <td><%= link_to problem_report_record.id, edit_problem_report_record_path(problem_report_record) %></td>
     <td><%= problem_report_record.subject if current_user.show_subject %>
     <td><%= problem_report_record.description  if current_user.show_description%></td>
     <td><%= problem_report_record.category_name if current_user.show_catagory %></td>

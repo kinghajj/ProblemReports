@@ -9,6 +9,14 @@ class EcsMailer < ActionMailer::Base
   	@submitterEmail = ticket.submitters_email
 
   	mail(:to => @submitterEmail,:subject => "Ticket #{@ticketSubject} has been started.")
+  end
+  def send_email(user,recipient,ticket,message)
+  	@message = message
+  	@signature = user.email_signature
+    @ticket = ticket
+  	mail(:to => recipient, :subject => "Message about #{ticket.subject}.")
 
+  	emailRecord = ProblemReportEmail.new(:from_user_id => user.id, :to_address => recipient, :message => @message, :problem_report_record_id => ticket.id)
+  	emailRecord.save
   end
 end

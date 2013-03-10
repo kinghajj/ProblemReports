@@ -1,0 +1,8 @@
+Sent From: <%= problem_report_email.user.user_name if !problem_report_email.from_user_id.nil? %> <%= problem_report_email.from_address if !problem_report_email.from_address.nil? %> |
+Sent To: <%= problem_report_email.to_address if !problem_report_email.to_address.nil? %> 
+<% if problem_report_email.to_address.nil? %>
+ECS Staff
+<% end %> |
+Message: <%= problem_report_email.message %> | Send On: <%= problem_report_email.created_at %>
+
+

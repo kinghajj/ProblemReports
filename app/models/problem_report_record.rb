@@ -1,5 +1,5 @@
 class ProblemReportRecord < ActiveRecord::Base
-	attr_accessible :subject , :description , :category_id , :priority_id , :date_entered , :date_completed , :date_due , :system_type_id , :escalation_id , :problem_type_id , :room_building , :room_number , :computer_name , :solution , :status_id , :submitted_by_id , :completed_by_id , :submitters_name , :submitters_email,  :last_modified_by_id
+	attr_accessible :subject , :description , :category_id , :priority_id , :date_entered , :date_completed , :date_due , :system_type_id , :escalation_id , :problem_type_id , :room_building , :room_number , :computer_name , :solution , :status_id , :submitted_by_id , :completed_by_id , :submitters_name , :submitters_email,  :last_modified_by_id, :initialized
 
 	belongs_to :category
 	belongs_to :system_type
@@ -20,15 +20,31 @@ class ProblemReportRecord < ActiveRecord::Base
 
 	has_many :problem_report_notes
 	has_many :problem_report_histories
+	has_many :problem_report_emails
 
 	validates :subject, :presence => true
 	validates :description, :presence => true
 	validates :category_id, :presence => true
 	validates :system_type_id, :presence => true
-	validates :escalation_id, :presence => true
-	validates :status_id, :presence => true
+	#validates :escalation_id, :presence => true
+	#validates :status_id, :presence => true
 	validates :problem_type_id, :presence => true
-	validates :priority_id, :presence => true
+	#validates :priority_id, :presence => true
+
+	before_create do |newTicket|
+		if(newTicket.status_id.nil?)
+			newStatus = Status.where('first_status = ?',true).first
+			newTicket.status_id = newStatus.id
+		end
+	end
+
+	before_save do |ticket|
+		if(!ticket.id_changed?)
+			if(!ticket.initialized)
+				self.initializeStatus ticket.last_modified_by, false
+			end
+		end
+	end
 
 	after_save do |ticket|
 
@@ -37,20 +53,18 @@ class ProblemReportRecord < ActiveRecord::Base
 		end
 	end
 
-	def isInitialized?
-		!status.uninitialized
-	end
-
-	def initializeStatus user
-		initStatus = Status.where('initialized = ?', true).limit(1)
-		self.status_id = initStatus[0].id
+	def initializeStatus user, saveRecord
+		
+		self.initialized = true
 		self.last_modified_by_id = user.id
 
 		if(!self.submitters_email.nil?)
 			EcsMailer.start_email(self,user).deliver
 		end
 		
-		self.save
+		if saveRecord
+			self.save
+		end
 	end
 
 	def category_name
@@ -172,6 +186,16 @@ class ProblemReportRecord < ActiveRecord::Base
 		    end
 		end
 
+	  end
+
+	  def getFeed
+	  	allNotes = self.problem_report_notes
+	  	allEmails = self.problem_report_emails
+	  	allFeedItems = Array.new
+	  	allFeedItems.concat allNotes
+	  	allFeedItems.concat allEmails
+	  	allFeedItems.sort!{|a,b| a.created_at <=> b.created_at}
+	  	return allFeedItems
 	  end
 
 end
