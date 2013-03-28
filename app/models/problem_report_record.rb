@@ -39,7 +39,7 @@ class ProblemReportRecord < ActiveRecord::Base
 	end
 
 	before_save do |ticket|
-		if(!ticket.id_changed?)
+		if(!ticket.id_changed? && !ticket.id.nil?)
 			if(!ticket.initialized)
 				self.initializeStatus ticket.last_modified_by, false
 			end
