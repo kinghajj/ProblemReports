@@ -56,17 +56,8 @@
 		<li><a href="#followed-reports">Followed Tickets</a></li>
 		<li><a href="#unclaimed-reports">Unclaimed Tickets</a></li>
 	</ul>
-	<div id="working-on-reports">
-		<%= render :partial =>"infotable", :locals => {:problem_report_records => @reports_worked_on, :action => workingOnPath} %>
-	</div>
 	<div id="all-reports">
 		<%= render :partial =>"infotable", :locals => {:problem_report_records => @all_reports, :action => allReportPath} %>
-	</div>
-	<div id="followed-reports">
-		<%= render :partial =>'infotable', :locals => {:problem_report_records => @followed_reports,:action => followReportPath} %>
-	</div>
-	<div id="unclaimed-reports">
-		<%= render :partial =>'infotable', :locals => {:problem_report_records => @unclaimed_reports,:action => unclaimedReportsPath} %>
 	</div>
 </div>
 <br />

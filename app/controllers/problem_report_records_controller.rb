@@ -1,11 +1,16 @@
 class ProblemReportRecordsController < ApplicationController
   require 'will_paginate/array'
+  helper_method :defaultColumn , :defaultSortOrder,:workingOnPath,:allReportPath,:followReportPath,:unclaimedReportsPath
 
   # GET /problem_report_records
   # GET /problem_report_records.json
   def index
 
-    @all_reports = ProblemReportRecord.all
+    if params[:search]
+      @all_reports = getSearchedReports
+    else
+      @all_reports = getAllReports
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -166,4 +171,95 @@ class ProblemReportRecordsController < ApplicationController
     end
 
   end
+
+
+
+#-----Mike: Added These methods to be able to use info table view---------------------------------------------------------------------
+
+
+  def allReportPath
+    'updateAllReportsTable'
+  end
+
+  def updateAllReportsTable
+    @all_reports = getAllReports
+
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+  end
+
+  def defaultColumn
+    'subject'
+  end
+
+  def defaultSortOrder
+    'asc'
+  end
+
+  def problemsPerPage
+    5
+  end
+
+  def getAllReports
+    column = params[:column] ? params[:column] : defaultColumn
+    order = params[:direction] ? params[:direction] : defaultSortOrder
+    ProblemReportRecord.paginate(page: params[:page], :per_page => problemsPerPage).order(column + " " + order)
+  end
+
+  def getSearchedReports
+    column = params[:column] ? params[:column] : defaultColumn
+    order = params[:direction] ? params[:direction] : defaultSortOrder
+    ProblemReportRecord.search(params[:search]).paginate(page: params[:page], :per_page => problemsPerPage).order(column + " " + order)
+  end
+
+  def workOnReport
+    report = ProblemReportRecord.find(params[:id])
+
+    if(!report.nil?)
+      current_user.workOnReport report
+    end
+
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+  end
+
+  def followReport
+    report = ProblemReportRecord.find(params[:id])
+
+    if(!report.nil?)
+      current_user.followReport report
+    end
+
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+  end
+
+  def requestAssigningForm
+    @report = ProblemReportRecord.find(params[:id])
+    @workers = @report.worker
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+  end
+
+  def unfollowReport
+    report = ProblemReportRecord.find(params[:id])
+
+    if(!report.nil?)
+      current_user.unfollowReport report
+    end
+
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+  end
+
 end

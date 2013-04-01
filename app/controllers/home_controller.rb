@@ -10,7 +10,7 @@ class HomeController < ApplicationController
 
 	    respond_to do |format|
 	      format.html # index.html.erb
-	      format.json { render json: @reports_worked_on }
+	      format.json { render json: @all_reports  }
 	    end
 	  end
 

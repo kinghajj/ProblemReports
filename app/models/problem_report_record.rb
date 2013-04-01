@@ -196,6 +196,14 @@ class ProblemReportRecord < ActiveRecord::Base
 	  	allFeedItems.concat allEmails
 	  	allFeedItems.sort!{|a,b| a.created_at <=> b.created_at}
 	  	return allFeedItems
-	  end
+    end
+
+    def self.search(search)
+      if search
+        where("lower(subject) like ?", "%#{search}%").order("lower(subject)")
+      else
+        scoped
+      end
+    end
 
 end
