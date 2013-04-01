@@ -1,15 +1,19 @@
-  This page is depricated. Please use the home page.
+<div id="notification-section">
+  <%= render "notification" %>
+</div>
 
-<%= link_to 'New Problem report record', new_problem_report_record_path %>
+<div>
+    <%= link_to 'New Problem report record', new_problem_report_record_path %>
+</div>
 
-  <div>
+<div>
       <%= form_tag search_path, :method => 'get' do %>
           <p>
             <%= text_field_tag :search, params[:search] %>
             <%= submit_tag "Search", :name => nil %>
           </p>
       <% end %>
-  </div>
+</div>
 
   <div>
     <%= render :partial =>"infotable", :locals => {:problem_report_records => @all_reports , :action => allReportPath} %>
