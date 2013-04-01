@@ -249,6 +249,19 @@ class ProblemReportRecordsController < ApplicationController
     end
   end
 
+  def quitWorkingOnReport
+    report = ProblemReportRecord.find(params[:id])
+
+    if(!report.nil?)
+      current_user.quitWorkingOnReport report
+    end
+
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.js {}
+    end
+  end
+
   def unfollowReport
     report = ProblemReportRecord.find(params[:id])
 

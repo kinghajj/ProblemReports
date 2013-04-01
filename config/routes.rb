@@ -55,12 +55,15 @@ ProblemReport::Application.routes.draw do
   
   match 'visitor/', to: 'visitor#index', via: :get
 
+
+  #Mike added routes for search
   match "search" => "problem_report_records#index", :via => :get
   match 'updateWorkingOnTable/', to: 'problem_report_records#updateAllReportsTable', via: :get
   match 'workOnReport/', to: 'problem_report_records#workOnReport', via: :post
   match 'followReport/', to: 'problem_report_records#followReport', via: :post
   match 'unfollowReport/', to: 'problem_report_records#unfollowReport', via: :delete
   match 'requestAssigningForm', to:'problem_report_records#requestAssigningForm', via: :get
+  match 'quitWorkingOnReport/', to:'problem_report_records#quitWorkingOnReport', via: :delete
 
 
 
