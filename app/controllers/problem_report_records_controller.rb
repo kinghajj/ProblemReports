@@ -182,7 +182,7 @@ class ProblemReportRecordsController < ApplicationController
   end
 
   def updateAllReportsTable
-    @all_reports = getAllReports
+    @all_reports = getSearchedReports
 
     respond_to do |format|
       format.html { render action: "index" }

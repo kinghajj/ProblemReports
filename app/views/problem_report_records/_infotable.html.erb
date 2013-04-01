@@ -1,80 +1,102 @@
 <%=link_to 'Refresh', {:controller => "problem_report_records", :action => action,:column => params[:column], :direction => params[:direction], :page => params[:page]}, {:id => "refresh-#{action}",:method=>'GET',:remote=>true} %>
 
-<table>
-  <tr>
-    <th><%= sortable('id',action) %></th>
-    <th><%= sortable('subject',action) if current_user.show_subject %></th>
-    <th><%= sortable('description',action) if current_user.show_description%></th>
-    <th><%= sortable('category_id',action,"Catagory") if current_user.show_catagory %></th>
-    <th><%= sortable('priority_id',action,"Priority") if current_user.show_priority %></th>
-    <th><%= sortable('date_entered',action,"Date entered") if current_user.show_date_entered %></th>
-    <th><%= sortable('date_completed',action,"Date completed") if current_user.show_date_completed %></th>
-    <th><%= sortable('date_due',action,"Date due") if current_user.show_due_date %></th>
-    <th><%= sortable('system_type_id',action,"System type") if current_user.show_system_type %></th>
-    <th><%= sortable('escalation_id',action,"Escalation") if current_user.show_escalation %></th>
-    <th><%= sortable('problem_type_id',action,"Problem type") if current_user.show_problem_type %> </th>
-    <th><%= sortable('room_building',action) if current_user.show_room_building %></th>
-    <th><%= sortable('room_number',action) if current_user.show_room_number %></th>
-    <th><%= sortable('computer_name',action) if current_user.show_computer_name %></th>
-    <th><%= sortable('solution',action) if current_user.show_solution %></th>
-    <th><%= sortable('status_id',action, "Status") if current_user.show_status %></th>
-    <th><%= sortable('submitted_by_id',action ,"Submitted by") if current_user.show_submitted_by %> </th>
-    <th><%= sortable('completed_by_id',action , "Completed by") if current_user.show_completed_by %></th>
-    <th><%= sortable('submitters_name',action, "Submitters name") if current_user.show_submitters_name %></th>
-    <th><%= sortable('submitters_email',action, "Submitters email") if current_user.show_submitters_email %></th>
-    <th></th>
-    <th></th>
-    <!--<th></th>
-    <th></th>
-    <th></th>-->
-  </tr>
 
-<% problem_report_records.each do |problem_report_record| %>
-  <tr>
-    <td><%= link_to problem_report_record.id, problem_report_record %></td>
-    <td><%= problem_report_record.subject if current_user.show_subject %>
-    <td><%= problem_report_record.description  if current_user.show_description%></td>
-    <td><%= problem_report_record.category_name if current_user.show_catagory %></td>
-    <td><%= problem_report_record.priority_name  if current_user.show_priority %></td>
-    <td><%= problem_report_record.date_entered if current_user.show_date_entered %></td>
-    <td><%= problem_report_record.date_completed if current_user.show_date_completed %></td>
-    <td><%= problem_report_record.date_due if current_user.show_due_date %></td>
-    <td><%= problem_report_record.system_type_name if current_user.show_system_type %></td>
-    <td><%= problem_report_record.escalation_name if current_user.show_escalation %></td>
-    <td><%= problem_report_record.problem_type_name if current_user.show_problem_type %></td>
-    <td><%= problem_report_record.room_building if current_user.show_room_building %></td>
-    <td><%= problem_report_record.room_number if current_user.show_room_number %></td>
-    <td><%= problem_report_record.computer_name if current_user.show_computer_name %></td>
-    <td><%= problem_report_record.solution if current_user.show_solution %></td>
-    <td><%= problem_report_record.status.name if current_user.show_status %></td>
-    <td><%= problem_report_record.submitting_users_name if current_user.show_submitted_by %></td>
-    <td><%= problem_report_record.completers_name if current_user.show_completed_by %></td>
-    <td><%= problem_report_record.submitters_name if current_user.show_submitters_name %></td>
-    <td><%= problem_report_record.submitters_email if current_user.show_submitters_email %></td>
-    <td>
-        <% if !current_user.workingOnReport? problem_report_record %>
-            <%=link_to 'Work On', {:controller => "problem_report_records", :action => 'workOnReport',:id =>problem_report_record.id}, {:method=>'POST',:remote=>true} %>
-        <% else %>
-            <%=link_to 'Stop Working On', {:controller => "problem_report_records", :action => 'quitWorkingOnReport',:id =>problem_report_record.id}, {:method=>'DELETE',:remote=>true} %>
+<% if current_user %>
+    <table>
+      <tr>
+        <th><%= sortable('id',action) %></th>
+        <th><%= sortable('subject',action) if current_user.show_subject %></th>
+        <th><%= sortable('description',action) if current_user.show_description%></th>
+        <th><%= sortable('category_id',action,"Catagory") if current_user.show_catagory %></th>
+        <th><%= sortable('priority_id',action,"Priority") if current_user.show_priority %></th>
+        <th><%= sortable('date_entered',action,"Date entered") if current_user.show_date_entered %></th>
+        <th><%= sortable('date_completed',action,"Date completed") if current_user.show_date_completed %></th>
+        <th><%= sortable('date_due',action,"Date due") if current_user.show_due_date %></th>
+        <th><%= sortable('system_type_id',action,"System type") if current_user.show_system_type %></th>
+        <th><%= sortable('escalation_id',action,"Escalation") if current_user.show_escalation %></th>
+        <th><%= sortable('problem_type_id',action,"Problem type") if current_user.show_problem_type %> </th>
+        <th><%= sortable('room_building',action) if current_user.show_room_building %></th>
+        <th><%= sortable('room_number',action) if current_user.show_room_number %></th>
+        <th><%= sortable('computer_name',action) if current_user.show_computer_name %></th>
+        <th><%= sortable('solution',action) if current_user.show_solution %></th>
+        <th><%= sortable('status_id',action, "Status") if current_user.show_status %></th>
+        <th><%= sortable('submitted_by_id',action ,"Submitted by") if current_user.show_submitted_by %> </th>
+        <th><%= sortable('completed_by_id',action , "Completed by") if current_user.show_completed_by %></th>
+        <th><%= sortable('submitters_name',action, "Submitters name") if current_user.show_submitters_name %></th>
+        <th><%= sortable('submitters_email',action, "Submitters email") if current_user.show_submitters_email %></th>
+        <th></th>
+        <th></th>
+        <!--<th></th>
+        <th></th>
+        <th></th>-->
+      </tr>
+
+
+        <% problem_report_records.each do |problem_report_record| %>
+          <tr>
+            <td><%= link_to problem_report_record.id, problem_report_record %></td>
+            <td><%= problem_report_record.subject if current_user.show_subject %>
+            <td><%= problem_report_record.description  if current_user.show_description%></td>
+            <td><%= problem_report_record.category_name if current_user.show_catagory %></td>
+            <td><%= problem_report_record.priority_name  if current_user.show_priority %></td>
+            <td><%= problem_report_record.date_entered if current_user.show_date_entered %></td>
+            <td><%= problem_report_record.date_completed if current_user.show_date_completed %></td>
+            <td><%= problem_report_record.date_due if current_user.show_due_date %></td>
+            <td><%= problem_report_record.system_type_name if current_user.show_system_type %></td>
+            <td><%= problem_report_record.escalation_name if current_user.show_escalation %></td>
+            <td><%= problem_report_record.problem_type_name if current_user.show_problem_type %></td>
+            <td><%= problem_report_record.room_building if current_user.show_room_building %></td>
+            <td><%= problem_report_record.room_number if current_user.show_room_number %></td>
+            <td><%= problem_report_record.computer_name if current_user.show_computer_name %></td>
+            <td><%= problem_report_record.solution if current_user.show_solution %></td>
+            <td><%= problem_report_record.status.name if current_user.show_status %></td>
+            <td><%= problem_report_record.submitting_users_name if current_user.show_submitted_by %></td>
+            <td><%= problem_report_record.completers_name if current_user.show_completed_by %></td>
+            <td><%= problem_report_record.submitters_name if current_user.show_submitters_name %></td>
+            <td><%= problem_report_record.submitters_email if current_user.show_submitters_email %></td>
+            <td>
+                <% if !current_user.workingOnReport? problem_report_record %>
+                    <%=link_to 'Work On', {:controller => "problem_report_records", :action => 'workOnReport',:id =>problem_report_record.id}, {:method=>'POST',:remote=>true} %>
+                <% else %>
+                    <%=link_to 'Stop Working On', {:controller => "problem_report_records", :action => 'quitWorkingOnReport',:id =>problem_report_record.id}, {:method=>'DELETE',:remote=>true} %>
+                <% end %>
+            </td>
+            <td>
+                <% if !current_user.followingReport? problem_report_record %>
+                    <%=link_to 'Follow', {:controller => "problem_report_records", :action => 'followReport',:id =>problem_report_record.id}, {:method=>'POST',:remote=>true} %>
+                <% else %>
+                    <%=link_to 'Unfollow', {:controller => "problem_report_records", :action => 'unfollowReport',:id =>problem_report_record.id}, {:method=>'DELETE',:remote=>true} %>
+                <% end %>
+            </td>
+            <% if admin? %>
+                <td>
+                    <%=link_to 'Assign', {:controller => "problem_report_records", :action => 'requestAssigningForm',:id =>problem_report_record.id}, {:method=>'GET',:remote=>true} %>
+                </td>
+            <% end %>
+            <!--<td><%= link_to 'Show', problem_report_record %></td>
+            <td><%= link_to 'Edit', edit_problem_report_record_path(problem_report_record) %></td>
+            <td><%= link_to 'Destroy', problem_report_record, confirm: 'Are you sure?', method: :delete %></td>-->
+          </tr>
         <% end %>
-    </td>
-    <td>
-        <% if !current_user.followingReport? problem_report_record %>
-            <%=link_to 'Follow', {:controller => "problem_report_records", :action => 'followReport',:id =>problem_report_record.id}, {:method=>'POST',:remote=>true} %>
-        <% else %>
-            <%=link_to 'Unfollow', {:controller => "problem_report_records", :action => 'unfollowReport',:id =>problem_report_record.id}, {:method=>'DELETE',:remote=>true} %>
-        <% end %>
-    </td>
-    <% if admin? %>
-        <td>
-            <%=link_to 'Assign', {:controller => "problem_report_records", :action => 'requestAssigningForm',:id =>problem_report_record.id}, {:method=>'GET',:remote=>true} %>
-        </td>
-    <% end %>
-    <!--<td><%= link_to 'Show', problem_report_record %></td>
-    <td><%= link_to 'Edit', edit_problem_report_record_path(problem_report_record) %></td>
-    <td><%= link_to 'Destroy', problem_report_record, confirm: 'Are you sure?', method: :delete %></td>-->
-  </tr>
+        </table>
+
+
+<%else%>
+    <table>
+      <tr>
+        <th><%= sortable('id',action) %></th>
+        <th><%= sortable('subject',action) %></th>
+        <th><%= sortable('description',action) %></th>
+      </tr>
+
+      <% problem_report_records.each do |problem_report_record| %>
+          <tr>
+            <td><%= link_to problem_report_record.id, problem_report_record %></td>
+            <td><%= problem_report_record.subject  %>
+            <td><%= problem_report_record.description  %></td>
+      <% end %>
+    </table>
+
 <% end %>
-</table>
 
 <%= will_paginate problem_report_records, :params => {:controller => "problem_report_records", :action => action,:column => params[:column], :direction => params[:direction]}%>
