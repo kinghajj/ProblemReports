@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1bae7292-5da4-4b2d-b282-748c2f3d33b0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/problem_report_records_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/problem_report_records_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/problem_report_records_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/problem_report_records_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/problem_report_record.rb" afterPath="$PROJECT_DIR$/app/models/problem_report_record.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/problem_report_records/index.html.erb" afterPath="$PROJECT_DIR$/app/views/problem_report_records/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="ProblemReports.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,7 +29,7 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="10" selection-start="1894" selection-end="1894" vertical-scroll-proportion="0.67840374">
+            <state line="58" column="0" selection-start="1744" selection-end="1907" vertical-scroll-proportion="0.28169015">
               <folding />
             </state>
           </provider>
@@ -43,7 +38,7 @@
       <file leaf-file-name="home_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="255" selection-end="255" vertical-scroll-proportion="-4.08">
+            <state line="12" column="53" selection-start="494" selection-end="494" vertical-scroll-proportion="-8.16">
               <folding />
             </state>
           </provider>
@@ -128,11 +123,11 @@
         <option value="$PROJECT_DIR$/app/views/problem_report_records/_infotable.html.erb" />
         <option value="$PROJECT_DIR$/app/views/problem_report_records/index.html.erb" />
         <option value="$PROJECT_DIR$/app/helpers/problem_report_records_helper.rb" />
-        <option value="$PROJECT_DIR$/app/views/home/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/models/problem_report_record.rb" />
         <option value="$PROJECT_DIR$/app/controllers/problem_report_records_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/home/index.html.erb" />
       </list>
     </option>
   </component>
@@ -750,13 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="255" selection-end="255" vertical-scroll-proportion="-4.08">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/problem_report_records_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="0" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0">
@@ -778,9 +766,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="53" selection-start="494" selection-end="494" vertical-scroll-proportion="-8.16">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="10" selection-start="1894" selection-end="1894" vertical-scroll-proportion="0.67840374">
+        <state line="58" column="0" selection-start="1744" selection-end="1907" vertical-scroll-proportion="0.28169015">
           <folding />
         </state>
       </provider>
