@@ -26,6 +26,8 @@ gem 'will_paginate', '3.0.3'
 
 gem 'recaptcha'
 
+gem 'paperclip'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

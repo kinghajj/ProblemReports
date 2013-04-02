@@ -1,5 +1,7 @@
 ProblemReport::Application.routes.draw do
 
+  resources :attachments
+
   root :to => 'visitor#index'
 
   resources :statuses

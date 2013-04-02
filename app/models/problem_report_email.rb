@@ -3,4 +3,6 @@ class ProblemReportEmail < ActiveRecord::Base
 
 	belongs_to :user , :foreign_key => 'from_user_id'
 	belongs_to :problem_report_record
+
+	has_many :attachments
 end
