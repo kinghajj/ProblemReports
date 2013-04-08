@@ -22,6 +22,8 @@ class ProblemReportRecord < ActiveRecord::Base
 	has_many :problem_report_histories
 	has_many :problem_report_emails
 
+	has_many :attachments
+
 	validates :subject, :presence => true
 	validates :description, :presence => true
 	validates :category_id, :presence => true
