@@ -65,6 +65,9 @@ ProblemReport::Application.routes.draw do
   match 'requestAssigningForm', to:'problem_report_records#requestAssigningForm', via: :get
   match 'quitWorkingOnReport/', to:'problem_report_records#quitWorkingOnReport', via: :delete
 
+  match "report" => "report#index", :via => :get
+  #match 'report', to: 'report#index', via: :get
+
 
 
 
