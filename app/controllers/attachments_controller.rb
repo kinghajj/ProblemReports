@@ -41,14 +41,18 @@ class AttachmentsController < ApplicationController
   # POST /attachments.json
   def create
     @attachment = Attachment.new(params[:attachment])
+    @ticket_id = @attachment.problem_report_record_id
+    @problem_report_record = ProblemReportRecord.find(@attachment.problem_report_record_id)
 
     respond_to do |format|
       if @attachment.save
         format.html { redirect_to @attachment, notice: 'Attachment was successfully created.' }
         format.json { render json: @attachment, status: :created, location: @attachment }
+        format.js {}
       else
         format.html { render action: "new" }
         format.json { render json: @attachment.errors, status: :unprocessable_entity }
+        format.js {}
       end
     end
   end
@@ -73,11 +77,13 @@ class AttachmentsController < ApplicationController
   # DELETE /attachments/1.json
   def destroy
     @attachment = Attachment.find(params[:id])
+    @problem_report_record = ProblemReportRecord.find(@attachment.problem_report_record_id)
     @attachment.destroy
 
     respond_to do |format|
       format.html { redirect_to attachments_url }
       format.json { head :no_content }
+      format.js {}
     end
   end
 end

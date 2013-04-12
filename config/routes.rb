@@ -54,7 +54,6 @@ ProblemReport::Application.routes.draw do
   match 'sendEmail', to: 'problem_report_records#sendEmail', via: :post
 
   match 'addNewNote', to:'problem_report_records#addNewNote', via: :post
-  
   match 'visitor/', to: 'visitor#index', via: :get
 
 

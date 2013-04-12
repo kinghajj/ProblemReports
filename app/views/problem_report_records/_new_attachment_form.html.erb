@@ -1,0 +1,5 @@
+<%= form_for Attachment.new, :html => { :multipart => true }, :remote => true do |f| %>
+	<%= f.file_field :file, :id =>"file-field" %>
+	<%= f.hidden_field :problem_report_record_id,:value => problem_report_record_id %>
+	<%= f.submit("Attach") %>
+<% end %>
