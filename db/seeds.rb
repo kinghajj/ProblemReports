@@ -34,4 +34,9 @@ Status.create(id: 1, name: "status1", created_at: DateTime.now, updated_at: Date
 
 System.create(id: 1, name: "system1", created_at: DateTime.now, updated_at: DateTime.now)
 
+ProblemReportRecord.create(subject: "ProblemReport1", description: "A description of problem report 1", category_id: 1, priority_id: 1, date_entered: DateTime.now, date_completed: DateTime.now, date_due: DateTime.now,
+                    system_type_id: 1, escalation_id: 3, problem_type_id: 1, room_building: "Riverside", room_number: "5029", computer_name: "computer1", solution: "solution1", status_id: 1, submitted_by_id: 5,
+                    completed_by_id: 5, submitters_name: "ecsCraig", submitters_email: "gilesc@ecs.csus.edu", created_at: DateTime.now, updated_at: DateTime.now)
+
+
 
