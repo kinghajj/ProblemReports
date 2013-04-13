@@ -1,0 +1,3 @@
+$('#new-attachment').dialog('close');
+$('#new-attachment').html("<%= escape_javascript( render :partial =>'problem_report_records/new_attachment_form', :locals => {:problem_report_record_id => @ticket_id}) %> ");
+$('#attachments').html("<%= escape_javascript( render :partial =>'problem_report_records/attachments', :locals => {:attachments => @problem_report_record.attachments}) %> ");

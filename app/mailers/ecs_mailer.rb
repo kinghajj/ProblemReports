@@ -10,10 +10,17 @@ class EcsMailer < ActionMailer::Base
 
   	mail(:to => @submitterEmail,:subject => "Ticket #{@ticketSubject} has been started.")
   end
-  def send_email(user,recipient,ticket,message)
+  def send_email(user,recipient,ticket,message,files)
   	@message = message
   	@signature = user.email_signature
     @ticket = ticket
+
+    if(!files.nil?)
+      files.each do |f|
+          attachments[f.original_filename] = f.read
+      end
+    end
+     
   	mail(:to => recipient, :subject => "Message about #{ticket.subject}.")
 
   	emailRecord = ProblemReportEmail.new(:from_user_id => user.id, :to_address => recipient, :message => @message, :problem_report_record_id => ticket.id)

@@ -54,7 +54,6 @@ ProblemReport::Application.routes.draw do
   match 'sendEmail', to: 'problem_report_records#sendEmail', via: :post
 
   match 'addNewNote', to:'problem_report_records#addNewNote', via: :post
-  
   match 'visitor/', to: 'visitor#index', via: :get
 
 
@@ -70,7 +69,8 @@ ProblemReport::Application.routes.draw do
   match "report" => "report#index", :via => :get
   #match 'report', to: 'report#index', via: :get
 
-
+  #routes for admin configuration
+  match "configuration" => "configuration#index", :via => :get
 
 
 

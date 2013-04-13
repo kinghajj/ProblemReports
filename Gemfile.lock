@@ -51,10 +51,18 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.6)
+    listen (0.7.3)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    maildir (2.1.0)
+    mailman (0.6.0)
+      activesupport (>= 2.3.4)
+      i18n (>= 0.4.1)
+      listen (>= 0.4.1)
+      mail (>= 2.0.3)
+      maildir (>= 0.5.0)
     mime-types (1.19)
     multi_json (1.5.0)
     paperclip (3.4.1)
@@ -90,6 +98,7 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     recaptcha (0.3.4)
+    remotipart (1.0.5)
     sass (3.2.5)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -118,9 +127,11 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
+  mailman
   paperclip
   rails (= 3.2.1)
   recaptcha
+  remotipart (~> 1.0)
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)

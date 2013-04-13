@@ -3,3 +3,4 @@ stopSpin('email-spinner');
 $('#email-message').val('');
 $('#notes').html("<%= escape_javascript( render :partial =>'notes', :locals => {:notes => @problem_report_record.getFeed,:id => @problem_report_record.id}) %> ");
 $('#histories').html("<%= escape_javascript( render :partial =>'problem_report_histories', :locals => {:histories => @problem_report_record.problem_report_histories}) %> ");
+$('#attachments').html("<%= escape_javascript( render :partial =>'attachments', :locals => {:attachments => @problem_report_record.attachments}) %> ");

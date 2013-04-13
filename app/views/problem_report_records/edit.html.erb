@@ -9,6 +9,8 @@
 	  		$('#new-note').dialog('close');
 	  		$('#email-form').dialog({ modal: true,draggable: false,title: "Send Email"});
 	  		$('#email-form').dialog('close');
+	  		$('#new-attachment').dialog({ modal: true,draggable: false,title: "Send Email"});
+	  		$('#new-attachment').dialog('close');
 	  		
 
 	  		$('#new-note-button').click(function(){
@@ -16,10 +18,29 @@
 	  			$('#new-note').dialog('open');
 	  		});
 
+	  		$('#new-attachment-button').click(function(){
+	  			$('#new-attachment').dialog('open');
+	  		});
+
 	  		$('#send-email-button').click(function(){
 	  			$('#email-form').dialog('open');
 	  			stopSpin('spin');
 	  		});
+
+	  		$(document).on("click",'.email-add-attachment',function()
+	        {
+	        	var addWorkerHtml = '<div class="email-attachment">' 
+										+ '<%= escape_javascript(file_field_tag "attachment[]") %>'
+										+ '<a class="email-remove-attachment">Remove</a>'
+									+ '</div>';
+	        	$(addWorkerHtml).insertBefore(this);
+	        });
+
+	        $(document).on("click",'.email-remove-attachment',function()
+	        {
+	        	var parentDiv = $(this).parent();
+	        	parentDiv.remove();
+	        });
 	  	})
 	  </script>
   <% end %>
@@ -41,6 +62,15 @@
 	</div>
 </div>
 
+<div id = "attachment-section">
+	<h1> Attachments </h1>
+	<input type="button" id="new-attachment-button" value="Add Attachment"/>
+
+	<div id="attachments">
+		<%= render :partial =>'attachments', :locals => {:attachments => @problem_report_record.attachments} %>
+	</div>
+</div>
+
 <div>
 	<h1> History </h1>
 	<div id="histories">
@@ -54,11 +84,16 @@
 	<%= form_tag '/sendEmail', :method => 'POST', :remote => true do %>
 	<label> Message </label>
 	<%= text_area_tag :message, nil,:id =>"email-message" %>
+	<a class="email-add-attachment">Add Attachment</a>
 	<%= hidden_field_tag :id, @problem_report_record.id %>
 	<%= submit_tag("Send",:onclick => "startSpin('email-spinner');") %>
 	<div id="email-spinner">
 	</div>
-<% end %>
+	<% end %>
+</div>
+
+<div id="new-attachment">
+	<%= render :partial =>'new_attachment_form', :locals => {:problem_report_record_id => @problem_report_record.id} %>
 </div>
 
 <%= link_to 'Show', @problem_report_record %> |

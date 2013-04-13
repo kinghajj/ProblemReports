@@ -1,0 +1,8 @@
+<ul>
+	<% attachments.each do |attachment| %>
+		<li>
+			<%= link_to attachment.file_file_name,attachment.url %> | 
+			<%= link_to 'Delete' , attachment_path(attachment), :method => :delete , :remote => true %>
+		</li>
+	<% end %>
+</ul>

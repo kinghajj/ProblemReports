@@ -1,4 +1,4 @@
-class ReportController < ActionController::Base
+class ReportController < ApplicationController
 
   def index
 
