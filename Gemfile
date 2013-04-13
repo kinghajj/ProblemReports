@@ -28,6 +28,7 @@ gem 'recaptcha'
 
 gem 'paperclip'
 gem "remotipart", "~> 1.0"
+gem 'mailman'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
