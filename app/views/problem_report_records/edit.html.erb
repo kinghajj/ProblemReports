@@ -26,6 +26,21 @@
 	  			$('#email-form').dialog('open');
 	  			stopSpin('spin');
 	  		});
+
+	  		$(document).on("click",'.email-add-attachment',function()
+	        {
+	        	var addWorkerHtml = '<div class="email-attachment">' 
+										+ '<%= escape_javascript(file_field_tag "attachment[]") %>'
+										+ '<a class="email-remove-attachment">Remove</a>'
+									+ '</div>';
+	        	$(addWorkerHtml).insertBefore(this);
+	        });
+
+	        $(document).on("click",'.email-remove-attachment',function()
+	        {
+	        	var parentDiv = $(this).parent();
+	        	parentDiv.remove();
+	        });
 	  	})
 	  </script>
   <% end %>
@@ -69,6 +84,7 @@
 	<%= form_tag '/sendEmail', :method => 'POST', :remote => true do %>
 	<label> Message </label>
 	<%= text_area_tag :message, nil,:id =>"email-message" %>
+	<a class="email-add-attachment">Add Attachment</a>
 	<%= hidden_field_tag :id, @problem_report_record.id %>
 	<%= submit_tag("Send",:onclick => "startSpin('email-spinner');") %>
 	<div id="email-spinner">

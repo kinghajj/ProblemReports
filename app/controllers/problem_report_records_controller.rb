@@ -160,9 +160,17 @@ class ProblemReportRecordsController < ApplicationController
   def sendEmail
     @problem_report_record = ProblemReportRecord.find(params[:id])
     message = params[:message]
+    files = params[:attachment]
 
     if !@problem_report_record.submitters_email.nil?
-      EcsMailer.send_email(current_user,@problem_report_record.submitters_email,@problem_report_record,message).deliver
+      EcsMailer.send_email(current_user,@problem_report_record.submitters_email,@problem_report_record,message,files).deliver
+      emailRecord = ProblemReportEmail.where("from_user_id = #{current_user.id}").order('created_at DESC').first
+      if !emailRecord.nil? && !files.nil?
+        files.each do |f|
+          curAttach = Attachment.new(:problem_report_record_id => @problem_report_record.id, :problem_report_email_id => emailRecord.id, :file => f)
+          curAttach.save
+        end
+      end
     end
     
     respond_to do |format|
