@@ -32,6 +32,15 @@ class User < ActiveRecord::Base
 
 =end
 
+  def self.getNumberOfCompletedProblemReports(user)
+
+    completed = ProblemReportRecord.where("completed_by_id = ?", user.id)
+    completed_count = completed.count
+
+    return completed_count
+
+  end
+
 	def workOnReport report, assignee = nil
 
 		if assignee.nil?
@@ -171,6 +180,6 @@ class User < ActiveRecord::Base
 		Notification.buildNotifications histories
 
 
-	end
+  end
 
 end

@@ -3,6 +3,7 @@
 
         <h1>ECS Statistics</h1>
 
+
         <div id="completed_tickets_chart" style="width:560px; height:300px;"></div>
         <div id="tickets_per_state_chart" style="width:560px; height:300px;"></div>
         <div id="tickets_submitted_per_user_chart" style="width:560px; height:300px;"></div>
@@ -51,11 +52,8 @@
                         enabled: false
                     },
                     series: [{
-                        name: 'Total Hours Worked',
-                        data: [<% @users.each do |user| %> <%= "'#{user.show_hours_worked}'," %> <% end %>]
-                    }, {
                         name: 'Total Solved Problems',
-                        data: [133, 156]
+                        data: [<% @users.each do |user| %> <%= "#{User.getNumberOfCompletedProblemReports(user)}," %> <% end %>]
                     }]
                 });
             });
@@ -69,7 +67,7 @@
                     },
 
                     xAxis: {
-                        categories: [<% @users.each do |user| %> <%= "'#{user.first_name} #{user.last_name}'," %> <% end %>],
+                        categories: [<% @status.each do |status| %> <%= "'#{status.name}'," %> <% end %>],
                         title: {
                             text: null
                         }
