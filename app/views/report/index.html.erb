@@ -1,17 +1,123 @@
 
-  <title>ProblemReport</title>
 
 
+        <h1>ECS Statistics</h1>
 
-        <div id="orders_chart" style="width:560px; height:300px;"></div>
+        <div id="completed_tickets_chart" style="width:560px; height:300px;"></div>
+        <div id="tickets_per_state_chart" style="width:560px; height:300px;"></div>
+        <div id="tickets_submitted_per_user_chart" style="width:560px; height:300px;"></div>
 
 
         <script type="text/javascript" charset="utf-8">
             $(function () {
                 new Highcharts.Chart({
-                    chart: { renderTo: 'orders_chart', type: 'bar' },
+                    chart: { renderTo: 'completed_tickets_chart', type: 'bar' },
                     title: {
-                        text: 'ECS Statistics'
+                        text: 'Completed Problem Reports Per User'
+                    },
+
+                    xAxis: {
+                        categories: [<% @users.each do |user| %> <%= "'#{user.first_name} #{user.last_name}'," %> <% end %>],
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Scale',
+                            align: 'high'
+                        }
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'top',
+                        x: -100,
+                        y: 100,
+                        floating: true,
+                        borderWidth: 1,
+                        backgroundColor: '#FFFFFF',
+                        shadow: true
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Total Hours Worked',
+                        data: [<% @users.each do |user| %> <%= "'#{user.show_hours_worked}'," %> <% end %>]
+                    }, {
+                        name: 'Total Solved Problems',
+                        data: [133, 156]
+                    }]
+                });
+            });
+
+
+            $(function () {
+                new Highcharts.Chart({
+                    chart: { renderTo: 'tickets_per_state_chart', type: 'bar' },
+                    title: {
+                        text: 'Tickets Per State'
+                    },
+
+                    xAxis: {
+                        categories: [<% @users.each do |user| %> <%= "'#{user.first_name} #{user.last_name}'," %> <% end %>],
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Scale',
+                            align: 'high'
+                        }
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'top',
+                        x: -100,
+                        y: 100,
+                        floating: true,
+                        borderWidth: 1,
+                        backgroundColor: '#FFFFFF',
+                        shadow: true
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Total Hours Worked',
+                        data: [<% @users.each do |user| %> <%= "'#{user.show_hours_worked}'," %> <% end %>]
+                    }, {
+                        name: 'Total Solved Problems',
+                        data: [133, 156]
+                    }]
+                });
+            });
+
+
+            $(function () {
+                new Highcharts.Chart({
+                    chart: { renderTo: 'tickets_submitted_per_user_chart', type: 'bar' },
+                    title: {
+                        text: 'Tickets Submitted Per User'
                     },
 
                     xAxis: {
