@@ -33,6 +33,9 @@ class ProblemReportRecord < ActiveRecord::Base
 	validates :problem_type_id, :presence => true
 	#validates :priority_id, :presence => true
 
+
+	#scopes
+	#scope :completed, joins(:status).where("statuses.complete = true");
 	before_create do |newTicket|
 		if(newTicket.status_id.nil?)
 			newStatus = Status.where('first_status = ?',true).first

@@ -69,7 +69,8 @@ ProblemReport::Application.routes.draw do
   match "report" => "report#index", :via => :get
   #match 'report', to: 'report#index', via: :get
 
-
+  #routes for admin configuration
+  match "configuration" => "configuration#index", :via => :get
 
 
 
