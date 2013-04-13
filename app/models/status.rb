@@ -1,5 +1,5 @@
 class Status < ActiveRecord::Base
-	attr_accessible :name, :first_status , :complete
+	attr_accessible :name, :first_status , :complete, :id, :created_at, :updated_at
 
 	has_many :problem_report_records
 

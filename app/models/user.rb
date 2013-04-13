@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	attr_accessible :ecs_id , :user_name ,:show_description, :first_name , :last_name , :position_id , :main_phone , :email,:show_catagory , :show_priority ,:show_date_entered , :show_date_completed ,:show_due_date , :show_hours_worked ,
-	:show_system_type , :show_escalation ,:show_problem_type , :show_room_building ,:show_room_number , :show_computer_name ,:show_solution , :show_status ,:show_submitted_by , :show_completed_by ,:show_submitters_name ,:show_submitters_email,:show_subject,:email_signature
+	:show_system_type , :show_escalation ,:show_problem_type , :show_room_building ,:show_room_number , :show_computer_name ,:show_solution , :show_status ,:show_submitted_by , :show_completed_by ,:show_submitters_name ,:show_submitters_email,:show_subject,:email_signature,
+  :id, :created_at, :updated_at, :show_date_entered, :show_date_completed
 
 	belongs_to :position
 	

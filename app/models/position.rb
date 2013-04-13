@@ -1,5 +1,5 @@
 class Position < ActiveRecord::Base
-	attr_accessible :name, :admin_permisions
+	attr_accessible :id, :name, :admin_permisions, :created_at, :updated_at
 
 	has_many :users
 

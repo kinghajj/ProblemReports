@@ -5,3 +5,33 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+#positions: admin and regular user
+#users
+#status
+#priority
+#escalation type
+
+Position.create(id: 6, name:"admin", admin_permisions: true, created_at: DateTime.now, updated_at: DateTime.now)
+
+
+User.create(id: 5, ecs_id:"gilesc", user_name: "ecsCraig", first_name:"Craig", last_name:"Giles", position_id: 6,
+            main_phone: 123-123-1234, email:"gilesc@ecs.csus.edu", created_at:DateTime.now, updated_at:DateTime.now,
+            show_description: true, show_catagory: false, show_priority: false, show_date_entered: false, show_date_completed: false, show_due_date: false,
+            show_hours_worked: false, show_system_type: false, show_escalation: false, show_problem_type: false, show_room_number: false, show_computer_name: false,
+            show_solution: false, show_status: false, show_submitted_by: false, show_completed_by: false, show_submitters_name: false, show_submitters_email: false,
+            show_subject: true, email_signature: "gilesc@ecs.csus.edu" )
+
+Category.create(id: 1, name: "category1", created_at: DateTime.now, updated_at: DateTime.now)
+
+Escalation.create(id: 3, name: "escalation1", created_at: DateTime.now, updated_at: DateTime.now )
+
+Priority.create(id: 1, name: "priority1", created_at: DateTime.now, updated_at: DateTime.now)
+
+ProblemType.create(id: 1, name: "type1", created_at: DateTime.now, updated_at: DateTime.now)
+
+Status.create(id: 1, name: "status1", created_at: DateTime.now, updated_at: DateTime.now, first_status: true, complete: false)
+
+System.create(id: 1, name: "system1", created_at: DateTime.now, updated_at: DateTime.now)
+
+

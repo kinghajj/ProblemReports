@@ -1,5 +1,5 @@
 class ProblemType < ActiveRecord::Base
-	attr_accessible :name
+	attr_accessible :name, :created_at, :updated_at
 
 	has_many :problem_report_records
 

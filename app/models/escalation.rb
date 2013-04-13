@@ -1,5 +1,5 @@
 class Escalation < ActiveRecord::Base
-	attr_accessible :name
+	attr_accessible :name, :id, :created_at, :updated_at
 
 	has_many :problem_report_records
 
