@@ -161,6 +161,16 @@ class ProblemReportRecordsController < ApplicationController
     @problem_report_record = ProblemReportRecord.find(params[:id])
     message = params[:message]
     files = params[:attachment]
+    tempFiles = Array.new;
+
+    #sanitize file input
+    files.each do |f|
+      if(!f.nil? && !f.blank?)
+        tempFiles.push(f);
+      end
+    end
+
+    files = tempFiles;
 
     if !@problem_report_record.submitters_email.nil?
       EcsMailer.send_email(current_user,@problem_report_record.submitters_email,@problem_report_record,message,files).deliver
