@@ -33,8 +33,8 @@
       <%= f.select :category_id , options_from_collection_for_select(Category.all,"id","name",@problem_report_record.category_id), :prompt => "Select Category" %>
     </div>
     <div class="field">
-      <%= f.label :system_type_id %><br />
-      <%= f.select :system_type_id , options_from_collection_for_select(System.all,"id","name",@problem_report_record.system_type_id), :prompt => "Select System" %>
+      <%= f.label :system_id %><br />
+      <%= f.select :system_id , options_from_collection_for_select(System.all,"id","name",@problem_report_record.system_id), :prompt => "Select System" %>
     </div>
     <div class="field">
       <%= f.label :problem_type_id %><br />
