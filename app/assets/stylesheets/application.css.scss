@@ -9,81 +9,79 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
-*/
+ */
 
-.banner
-{
-	background-color:blue;
-	padding: 1em;
-	color:white;
-	clear:both;
-	text-align: center;
+$blue: #1A82F7;
+$dark: #2F2727;
+
+body {
+  background-color: $blue;
+  color: $dark;
+
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
 }
 
-body
-{
-	
-  	 /* Safari 4-5, Chrome 1-9 */
-  background: -webkit-gradient(linear, left top, right top, from(#1a82f7), to(#2F2727));
-  
-  /* Safari 5.1, Chrome 10+ */
-  background: -webkit-linear-gradient(left, #2F2727, #1a82f7);
-  
-  /* Firefox 3.6+ */
-  background: -moz-linear-gradient(left, #2F2727, #1a82f7);
-  
-  /* IE 10 */
-  background: -ms-linear-gradient(left, #2F2727, #1a82f7);
-  
-  /* Opera 11.10+ */
-  background: -o-linear-gradient(left, #2F2727, #1a82f7);
+a {
+  color: #000;
+  &:visited {
+    color: #666;
+  }
+  &:hover {
+    color: #fff;
+    background-color: #000;
+  }
 }
 
-#content
-{
-	width:80em;
-	margin: 0px auto;
-	background-color:white;
-	padding:1em;
+#content {
+  width: 80em;
+  margin: 0px auto;
+  background-color: white;
+  padding: 1em;
+  border: 3px solid lighten($dark, 20%);
 }
 
-#links
-{
-	text-align:center;
-	max-width:50em;
-	margin:0px auto;
-	background-color:#1975FF;
-	color:white;
-	
-	a
-	{
-		color:white;
-		text-decoration:none;
-	}
+@mixin header-links($bgcolor, $maxwidth) {
+  padding: 3px;
+  background-color: $bgcolor;
+  text-align: center;
+  max-width: $maxwidth;
+  margin: 0px auto;
+  color: white;
+  a {
+    color: white;
+    text-decoration: none;
+    &:hover {
+      background-color: lighten($bgcolor, 25%);
+      color: $dark;
+    }
+  }
+}
+
+#links {
+  @include header-links(darken($blue, 5%), 50em);
 }
 
 #links-two
 {
-	text-align:center;
-	max-width:35em;
-	margin:0px auto;
-	background-color:#9EBFFF;
-	color:white;
-	
-	a
-	{
-		color:white;
-		text-decoration:none;
-	}
+  @include header-links($blue, 35em);
 }
 
 .box-shadow
 {
-	box-shadow: 2px 2px 2px #888888;
+  box-shadow: 2px 2px 2px lighten($dark, 40%);
 }
 
 .float_field
 {
-	float:left;
+  float: left;
+}
+
+#banner {
+  background-color: darken($blue, 10%);
+  padding: 1em;
+  color: white;
+  clear: both;
+  text-align: center;
 }
