@@ -10,7 +10,7 @@
     <th><%= sortable('date_entered',action,"Date entered") if current_user.show_date_entered %></th>
     <th><%= sortable('date_completed',action,"Date completed") if current_user.show_date_completed %></th>
     <th><%= sortable('date_due',action,"Date due") if current_user.show_due_date %></th>
-    <th><%= sortable('system_type_id',action,"System type") if current_user.show_system_type %></th>
+    <th><%= sortable('system_id',action,"System type") if current_user.show_system_type %></th>
     <th><%= sortable('escalation_id',action,"Escalation") if current_user.show_escalation %></th>
     <th><%= sortable('problem_type_id',action,"Problem type") if current_user.show_problem_type %> </th>
     <th><%= sortable('room_building',action) if current_user.show_room_building %></th>
@@ -39,7 +39,7 @@
     <td><%= problem_report_record.date_entered if current_user.show_date_entered %></td>
     <td><%= problem_report_record.date_completed if current_user.show_date_completed %></td>
     <td><%= problem_report_record.date_due if current_user.show_due_date %></td>
-    <td><%= problem_report_record.system_type_name if current_user.show_system_type %></td>
+    <td><%= problem_report_record.system_name if current_user.show_system_type %></td>
     <td><%= problem_report_record.escalation_name if current_user.show_escalation %></td>
     <td><%= problem_report_record.problem_type_name if current_user.show_problem_type %></td>
     <td><%= problem_report_record.room_building if current_user.show_room_building %></td>

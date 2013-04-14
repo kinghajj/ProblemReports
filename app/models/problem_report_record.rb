@@ -1,9 +1,9 @@
 class ProblemReportRecord < ActiveRecord::Base
-	attr_accessible :subject , :description , :category_id , :priority_id , :date_entered , :date_completed , :date_due , :system_type_id , :escalation_id , :problem_type_id , :room_building , :room_number , :computer_name , :solution , :status_id , :submitted_by_id , :completed_by_id , :submitters_name , :submitters_email,  :last_modified_by_id,
+	attr_accessible :subject , :description , :category_id , :priority_id , :date_entered , :date_completed , :date_due , :system_id , :escalation_id , :problem_type_id , :room_building , :room_number , :computer_name , :solution , :status_id , :submitted_by_id , :completed_by_id , :submitters_name , :submitters_email,  :last_modified_by_id,
                   :created_at, :updated_at, :initialized
 
 	belongs_to :category
-	belongs_to :system_type
+	belongs_to :system
 	belongs_to :escalation
 	belongs_to :problem_type
 	belongs_to :status
@@ -28,7 +28,7 @@ class ProblemReportRecord < ActiveRecord::Base
 	validates :subject, :presence => true
 	validates :description, :presence => true
 	validates :category_id, :presence => true
-	validates :system_type_id, :presence => true
+	validates :system_id, :presence => true
 	#validates :escalation_id, :presence => true
 	#validates :status_id, :presence => true
 	validates :problem_type_id, :presence => true
@@ -37,6 +37,10 @@ class ProblemReportRecord < ActiveRecord::Base
 
 	#scopes
 	#scope :completed, joins(:status).where("statuses.complete = true");
+
+	#deligates
+	delegate :name ,:to => :system, :prefix => true
+	
 	before_create do |newTicket|
 		if(newTicket.status_id.nil?)
 			newStatus = Status.where('first_status = ?',true).first
@@ -80,15 +84,17 @@ class ProblemReportRecord < ActiveRecord::Base
 			category.name
 		end
 	end
-
+=begin
 	def system_type_name
+
 		if(system_type.nil?)
 			''
 		else
 			system_type.name
 		end
-	end
 
+	end
+=end
 	def escalation_name
 		if(escalation.nil?)
 			''
