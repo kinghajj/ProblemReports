@@ -37,9 +37,6 @@ class ProblemReportRecord < ActiveRecord::Base
 
 	#scopes
 	#scope :completed, joins(:status).where("statuses.complete = true");
-
-	#deligates
-	delegate :name ,:to => :system, :prefix => true
 	
 	before_create do |newTicket|
 		if(newTicket.status_id.nil?)
@@ -84,17 +81,17 @@ class ProblemReportRecord < ActiveRecord::Base
 			category.name
 		end
 	end
-=begin
-	def system_type_name
 
-		if(system_type.nil?)
+	def system_name
+
+		if(system.nil?)
 			''
 		else
-			system_type.name
+			system.name
 		end
 
 	end
-=end
+
 	def escalation_name
 		if(escalation.nil?)
 			''
