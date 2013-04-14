@@ -1,6 +1,7 @@
 class PositionsController < ApplicationController
   # GET /positions
   # GET /positions.json
+  before_filter :authenticateAdmin
   def index
     @positions = Position.all
 

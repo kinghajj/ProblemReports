@@ -1,6 +1,7 @@
 class ProblemTypesController < ApplicationController
   # GET /problem_types
   # GET /problem_types.json
+  before_filter :authenticateAdmin
   def index
     @problem_types = ProblemType.all
 

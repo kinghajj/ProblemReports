@@ -1,6 +1,7 @@
 class SystemsController < ApplicationController
   # GET /systems
   # GET /systems.json
+  before_filter :authenticateAdmin
   def index
     @systems = System.all
 

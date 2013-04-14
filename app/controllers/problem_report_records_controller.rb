@@ -4,6 +4,7 @@ class ProblemReportRecordsController < ApplicationController
 
   # GET /problem_report_records
   # GET /problem_report_records.json
+  before_filter :authenticate, :except => [:show,:new,:create,:index]
   def index
 
     if params[:search]

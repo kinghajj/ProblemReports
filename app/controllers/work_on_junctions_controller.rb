@@ -1,6 +1,7 @@
 class WorkOnJunctionsController < ApplicationController
   # GET /work_on_junctions
   # GET /work_on_junctions.json
+  before_filter :authenticate
   def index
     @work_on_junctions = WorkOnJunction.all
 

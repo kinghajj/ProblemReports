@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   require 'will_paginate/array'
   helper_method :defaultColumn , :defaultSortOrder,:workingOnPath,:allReportPath,:followReportPath,:unclaimedReportsPath
-
+  before_filter :authenticate
 	def index
 	    @reports_worked_on = getWorkedOnReports
 	    @all_reports = getAllReports

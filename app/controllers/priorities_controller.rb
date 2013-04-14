@@ -1,6 +1,7 @@
 class PrioritiesController < ApplicationController
   # GET /priorities
   # GET /priorities.json
+  before_filter :authenticateAdmin
   def index
     @priorities = Priority.all
 

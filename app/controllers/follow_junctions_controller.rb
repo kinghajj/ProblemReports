@@ -1,6 +1,7 @@
 class FollowJunctionsController < ApplicationController
   # GET /follow_junctions
   # GET /follow_junctions.json
+  before_filter :authenticate
   def index
     @follow_junctions = FollowJunction.all
 

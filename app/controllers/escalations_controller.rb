@@ -1,4 +1,5 @@
 class EscalationsController < ApplicationController
+  before_filter :authenticateAdmin
   # GET /escalations
   # GET /escalations.json
   def index

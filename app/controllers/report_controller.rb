@@ -1,5 +1,5 @@
 class ReportController < ApplicationController
-
+	before_filter :authenticateAdmin
   def index
 
     @users = User.all
