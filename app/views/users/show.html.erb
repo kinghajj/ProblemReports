@@ -1,40 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Ecs:</b>
-  <%= @user.ecs_id %>
-</p>
+<table class="show_user_table">
+  <tr>
+    <th>ECS ID:</th>
+    <td><%= @user.ecs_id %></td>
+  </tr>
+  <tr>
+    <th>User name:</th>
+    <td><%= @user.user_name %></td>
+  </tr>
+  <tr>
+    <th>First name:</th>
+    <td><%= @user.first_name %></td>
+  </tr>
+  <tr>
+    <th>Last name:</th>
+    <td><%= @user.last_name %></td>
+  </tr>
+  <tr>
+    <th>Position:</th>
+    <td><%= @user.position_id %></td>
+  </tr>
+  <tr>
+    <th>Main phone:</th>
+    <td><%= @user.main_phone %></td>
+  </tr>
+  <tr>
+    <th>Email:</th>
+    <td><%= @user.email %></td>
+  </tr>
+</table>
 
-<p>
-  <b>User name:</b>
-  <%= @user.user_name %>
-</p>
-
-<p>
-  <b>First name:</b>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <b>Position:</b>
-  <%= @user.position_id %>
-</p>
-
-<p>
-  <b>Main phone:</b>
-  <%= @user.main_phone %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user), :class => 'button' %>
+<%= link_to 'Back', users_path, :class => 'button' %>

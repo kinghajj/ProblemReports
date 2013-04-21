@@ -11,121 +11,132 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :ecs_id %><br />
-    <%= f.text_field :ecs_id %>
+  <div class="fieldsets">
+    <fieldset>
+      <legend>Basic Info</legend>
+      <div class="field">
+        <%= f.label :ecs_id %><br />
+        <%= f.text_field :ecs_id %>
+      </div>
+      <div class="field">
+        <%= f.label :user_name %><br />
+        <%= f.text_field :user_name %>
+      </div>
+      <div class="field">
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name %>
+      </div>
+      <div class="field">
+        <%= f.label :last_name %><br />
+        <%= f.text_field :last_name %>
+      </div>
+      <div class="field">
+        <%= f.label :position_id %><br />
+        <%= f.select :position_id, options_from_collection_for_select(Position.all,"id","name",@user.position_id), :prompt => "Select Position" %>
+      </div>
+      <div class="field">
+        <%= f.label :main_phone %><br />
+        <%= f.text_field :main_phone %>
+      </div>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.text_field :email %>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Options</legend>
+      <div class="field">
+        <%= f.label :email_signature %><br />
+        <%= f.text_field :email_signature %>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Permissions</legend>
+      <div class="field">
+        <%= f.label :show_subject %><br />
+        <%= f.check_box :show_subject %>
+      </div>
+      <div class="field">
+        <%= f.label :show_description %><br />
+        <%= f.check_box :show_description %>
+      </div>
+      <div class="field">
+        <%= f.label :show_catagory %><br />
+        <%= f.check_box :show_catagory %>
+      </div>
+      <div class="field">
+        <%= f.label :show_priority %><br />
+        <%= f.check_box :show_priority %>
+      </div>
+      <div class="field">
+        <%= f.label :show_date_entered %><br />
+        <%= f.check_box :show_date_entered %>
+      </div>
+      <div class="field">
+        <%= f.label :show_date_completed %><br />
+        <%= f.check_box :show_date_completed %>
+      </div>
+      <div class="field">
+        <%= f.label :show_due_date %><br />
+        <%= f.check_box :show_due_date %>
+      </div>
+      <div class="field">
+        <%= f.label :show_hours_worked %><br />
+        <%= f.check_box :show_hours_worked %>
+      </div>
+      <div class="field">
+        <%= f.label :show_system_type %><br />
+        <%= f.check_box :show_system_type %>
+      </div>
+      <div class="field">
+        <%= f.label :show_escalation %><br />
+        <%= f.check_box :show_escalation %>
+      </div>
+      <div class="field">
+        <%= f.label :show_problem_type %><br />
+        <%= f.check_box :show_problem_type %>
+      </div>
+      <div class="field">
+        <%= f.label :show_room_building %><br />
+        <%= f.check_box :show_room_building %>
+      </div>
+      <div class="field">
+        <%= f.label :show_room_number %><br />
+        <%= f.check_box :show_room_number %>
+      </div>
+      <div class="field">
+        <%= f.label :show_computer_name %><br />
+        <%= f.check_box :show_computer_name %>
+      </div>
+      <div class="field">
+        <%= f.label :show_solution %><br />
+        <%= f.check_box :show_solution %>
+      </div>
+      <div class="field">
+        <%= f.label :show_status %><br />
+        <%= f.check_box :show_status %>
+      </div>
+      <div class="field">
+        <%= f.label :show_submitted_by %><br />
+        <%= f.check_box :show_submitted_by %>
+      </div>
+      <div class="field">
+        <%= f.label :show_completed_by %><br />
+        <%= f.check_box :show_completed_by %>
+      </div>
+      <div class="field">
+        <%= f.label :show_submitters_name %><br />
+        <%= f.check_box :show_submitters_name %>
+      </div>
+      <div class="field">
+        <%= f.label :show_submitters_email %><br />
+        <%= f.check_box :show_submitters_email %>
+      </div>
+    </fieldset>
   </div>
-  <div class="field">
-    <%= f.label :user_name %><br />
-    <%= f.text_field :user_name %>
-  </div>
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :position_id %><br />
-    <%= f.select :position_id , options_from_collection_for_select(Position.all,"id","name",@user.position_id), :prompt => "Select Position" %>
-  </div>
-  <div class="field">
-    <%= f.label :main_phone %><br />
-    <%= f.text_field :main_phone %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :show_subject %><br />
-    <%= f.check_box :show_subject %>
-  </div>
-  <div class="field">
-    <%= f.label :show_description %><br />
-    <%= f.check_box :show_description %>
-  </div>
-  <div class="field">
-    <%= f.label :show_catagory %><br />
-    <%= f.check_box :show_catagory %>
-  </div>
-  <div class="field">
-    <%= f.label :show_priority %><br />
-    <%= f.check_box :show_priority %>
-  </div>
-  <div class="field">
-    <%= f.label :show_date_entered %><br />
-    <%= f.check_box :show_date_entered %>
-  </div>
-  <div class="field">
-    <%= f.label :show_date_completed %><br />
-    <%= f.check_box :show_date_completed %>
-  </div>
-  <div class="field">
-    <%= f.label :show_due_date %><br />
-    <%= f.check_box :show_due_date %>
-  </div>
-  <div class="field">
-    <%= f.label :show_hours_worked %><br />
-    <%= f.check_box :show_hours_worked %>
-  </div>
-  <div class="field">
-    <%= f.label :show_system_type %><br />
-    <%= f.check_box :show_system_type %>
-  </div>
-  <div class="field">
-    <%= f.label :show_escalation %><br />
-    <%= f.check_box :show_escalation %>
-  </div>
-  <div class="field">
-    <%= f.label :show_problem_type %><br />
-    <%= f.check_box :show_problem_type %>
-  </div>
-  <div class="field">
-    <%= f.label :show_room_building %><br />
-    <%= f.check_box :show_room_building %>
-  </div>
-  <div class="field">
-    <%= f.label :show_room_number %><br />
-    <%= f.check_box :show_room_number %>
-  </div>
-  <div class="field">
-    <%= f.label :show_computer_name %><br />
-    <%= f.check_box :show_computer_name %>
-  </div>
-  <div class="field">
-    <%= f.label :show_solution %><br />
-    <%= f.check_box :show_solution %>
-  </div>
-  <div class="field">
-    <%= f.label :show_status %><br />
-    <%= f.check_box :show_status %>
-  </div>
-  <div class="field">
-    <%= f.label :show_submitted_by %><br />
-    <%= f.check_box :show_submitted_by %>
-  </div>
-  <div class="field">
-    <%= f.label :show_completed_by %><br />
-    <%= f.check_box :show_completed_by %>
-  </div>
-  <div class="field">
-    <%= f.label :show_submitters_name %><br />
-    <%= f.check_box :show_submitters_name %>
-  </div>
-  <div class="field">
-    <%= f.label :show_submitters_email %><br />
-    <%= f.check_box :show_submitters_email %>
-  </div>
-  <div class="field">
-    <%= f.label :email_signature %><br />
-    <%= f.text_field :email_signature %>
-  </div>
-
-
+  <br />
   <div class="actions">
     <%= f.submit %>
   </div>
+  <br />
 <% end %>
