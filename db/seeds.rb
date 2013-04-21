@@ -30,9 +30,13 @@ Priority.create(id: 1, name: "priority1", created_at: DateTime.now, updated_at: 
 
 ProblemType.create(id: 1, name: "type1", created_at: DateTime.now, updated_at: DateTime.now)
 
-Status.create(id: 1, name: "first_status", created_at: DateTime.now, updated_at: DateTime.now, first_status: true, complete: false)
-Status.create(id: 2, name: "In Progress", created_at: DateTime.now, updated_at: DateTime.now, first_status: false, complete: false)
-Status.create(id: 3, name: "Completed", created_at: DateTime.now, updated_at: DateTime.now, first_status: false, complete: true)
+Status.create(id: 1, name: "pending", created_at: DateTime.now, updated_at: DateTime.now, first_status: true, complete: false)
+Status.create(id: 2, name: "active", created_at: DateTime.now, updated_at: DateTime.now, first_status: false, complete: false)
+Status.create(id: 3, name: "hold", created_at: DateTime.now, updated_at: DateTime.now, first_status: false, complete: false)
+Status.create(id: 4, name: "confirming completion", created_at: DateTime.now, updated_at: DateTime.now, first_status: false, complete: false)
+Status.create(id: 5, name: "resolved", created_at: DateTime.now, updated_at: DateTime.now, first_status: false, complete: true)
+Status.create(id: 6, name: "duplicate", created_at: DateTime.now, updated_at: DateTime.now, first_status: false, complete: true)
+Status.create(id: 7, name: "self-fixed", created_at: DateTime.now, updated_at: DateTime.now, first_status: false, complete: true)
 
 System.create(id: 1, name: "system1", created_at: DateTime.now, updated_at: DateTime.now)
 
