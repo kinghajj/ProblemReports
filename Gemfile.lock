@@ -29,6 +29,9 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
+    bourbon (3.1.4)
+      sass (>= 3.2.0)
+      thor
     builder (3.0.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -122,9 +125,11 @@ GEM
     will_paginate (3.0.3)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
+  bourbon
   coffee-rails (~> 3.2.1)
   jquery-rails
   mailman

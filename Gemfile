@@ -43,3 +43,6 @@ gem 'mailman'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+# SASS library
+gem 'bourbon'
