@@ -1,101 +1,85 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Subject:</b>
-  <%= @problem_report_record.subject %>
-</p>
+<h1>Problem Report Record #<%= @problem_report_record.id %></h1>
+<div class="show_problem_report_record">
+<table class="show_problem_report_record_table">
+  <tr>
+    <th>Subject:</th>
+    <td><%= @problem_report_record.subject %></td>
+  </tr>
+  <tr>
+    <th>Description:</th>
+    <td><%= @problem_report_record.description %></td>
+  </tr>
+  <tr>
+    <th>Category:</th>
+    <td><%= @problem_report_record.category_id %></td>
+  </tr>
+  <tr>
+    <th>Priority:</th>
+    <td><%= @problem_report_record.priority_id %></td>
+  </tr>
+  <tr>
+    <th>Date entered:</th>
+    <td><%= @problem_report_record.date_entered %></td>
+  </tr>
+  <tr>
+    <th>Date completed:</th>
+    <td><%= @problem_report_record.date_completed %></td>
+  </tr>
+  <tr>
+    <th>Date due:</th>
+    <td><%= @problem_report_record.date_due %></td>
+  </tr>
+  <tr>
+    <th>System type:</th>
+    <td><%= @problem_report_record.system_id %></td>
+  </tr>
+  <tr>
+    <th>Escalation:</th>
+    <td><%= @problem_report_record.escalation_id %></td>
+  </tr>
+  <tr>
+    <th>Problem type:</th>
+    <td><%= @problem_report_record.problem_type_id %></td>
+  </tr>
+  <tr>
+    <th>Room building:</th>
+    <td><%= @problem_report_record.room_building %></td>
+  </tr>
+  <tr>
+    <th>Room number:</th>
+    <td><%= @problem_report_record.room_number %></td>
+  </tr>
+  <tr>
+    <th>Computer name:</th>
+    <td><%= @problem_report_record.computer_name %></td>
+  </tr>
+  <tr>
+    <th>Status:</th>
+    <td><%= @problem_report_record.status_id %></td>
+  </tr>
+  <tr>
+    <th>Submitted by:</th>
+    <td><%= @problem_report_record.submitted_by_id %></td>
+  </tr>
+  <tr>
+    <th>Completed by:</th>
+    <td><%= @problem_report_record.completed_by_id %></td>
+  </tr>
+  <tr>
+    <th>Submitter's name:</th>
+    <td><%= @problem_report_record.submitters_name %></td>
+  </tr>
+  <tr>
+    <th>Submitter's email:</th>
+    <td><%= @problem_report_record.submitters_email %></td>
+  </tr>
+</table>
+<h2>Solution:</h2>
+<p><%= @problem_report_record.solution %></p>
+</div>
 
-<p>
-  <b>Description:</b>
-  <%= @problem_report_record.description %>
-</p>
-
-<p>
-  <b>Catagory:</b>
-  <%= @problem_report_record.category_id %>
-</p>
-
-<p>
-  <b>Priority:</b>
-  <%= @problem_report_record.priority_id %>
-</p>
-
-<p>
-  <b>Date entered:</b>
-  <%= @problem_report_record.date_entered %>
-</p>
-
-<p>
-  <b>Date completed:</b>
-  <%= @problem_report_record.date_completed %>
-</p>
-
-<p>
-  <b>Date due:</b>
-  <%= @problem_report_record.date_due %>
-</p>
-
-
-<p>
-  <b>System type:</b>
-  <%= @problem_report_record.system_id %>
-</p>
-
-<p>
-  <b>Escalation:</b>
-  <%= @problem_report_record.escalation_id %>
-</p>
-
-<p>
-  <b>Problem type:</b>
-  <%= @problem_report_record.problem_type_id %>
-</p>
-
-<p>
-  <b>Room building:</b>
-  <%= @problem_report_record.room_building %>
-</p>
-
-<p>
-  <b>Room number:</b>
-  <%= @problem_report_record.room_number %>
-</p>
-
-<p>
-  <b>Computer name:</b>
-  <%= @problem_report_record.computer_name %>
-</p>
-
-<p>
-  <b>Solution:</b>
-  <%= @problem_report_record.solution %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @problem_report_record.status_id %>
-</p>
-
-<p>
-  <b>Submitted by:</b>
-  <%= @problem_report_record.submitted_by_id %>
-</p>
-
-<p>
-  <b>Completed by:</b>
-  <%= @problem_report_record.completed_by_id %>
-</p>
-
-<p>
-  <b>Submitters name:</b>
-  <%= @problem_report_record.submitters_name %>
-</p>
-
-<p>
-  <b>Submitters email:</b>
-  <%= @problem_report_record.submitters_email %>
-</p>
-
-
-<%= link_to 'Edit', edit_problem_report_record_path(@problem_report_record) %> |
-<%= link_to 'Back', problem_report_records_path %>
+<%= link_to 'Edit', edit_problem_report_record_path(@problem_report_record),
+                    :class => 'button' %>
+<%= link_to 'Back', problem_report_records_path, :class => 'button' %>
