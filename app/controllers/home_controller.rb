@@ -95,7 +95,7 @@ class HomeController < ApplicationController
   end
 
   def problemsPerPage
-    5
+    50
   end
 
 =begin

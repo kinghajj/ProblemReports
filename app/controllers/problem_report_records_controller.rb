@@ -218,7 +218,7 @@ class ProblemReportRecordsController < ApplicationController
   end
 
   def problemsPerPage
-    5
+    50
   end
 
   def getAllReports
@@ -292,6 +292,12 @@ class ProblemReportRecordsController < ApplicationController
       format.html { render action: "index" }
       format.js {}
     end
+  end
+
+  def getAllReports
+    column = params[:column] ? params[:column] : defaultColumn
+    order = params[:direction] ? params[:direction] : defaultSortOrder
+    ProblemReportRecord.paginate(page: params[:page], :per_page => problemsPerPage).order(column + " " + order)
   end
 
 end

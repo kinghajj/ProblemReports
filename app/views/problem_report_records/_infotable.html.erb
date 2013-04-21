@@ -99,4 +99,4 @@
 
 <% end %>
 
-<%= will_paginate problem_report_records, :params => {:controller => "problem_report_records", :action => action,:column => params[:column], :direction => params[:direction]}%>
+<%= will_paginate @all_reports%>

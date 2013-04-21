@@ -101,14 +101,13 @@
                         enabled: false
                     },
                     series: [{
-                        name: 'Total Hours Worked',
-                        data: [<% @users.each do |user| %> <%= "'#{user.show_hours_worked}'," %> <% end %>]
-                    }, {
-                        name: 'Total Solved Problems',
-                        data: [133, 156]
+                        name: 'Total Tickets',
+                        data: [<% @status.each do |status| %> <%= "#{ProblemReportRecord.getNumberOfProblemReportsWithStatus(status)}," %> <% end %>]
                     }]
                 });
             });
+
+
 
 
             $(function () {
@@ -153,12 +152,11 @@
                         enabled: false
                     },
                     series: [{
-                        name: 'Total Hours Worked',
-                        data: [<% @users.each do |user| %> <%= "'#{user.show_hours_worked}'," %> <% end %>]
-                    }, {
-                        name: 'Total Solved Problems',
-                        data: [133, 156]
+                        name: 'Total Tickets',
+                        data: [<% @users.each do |user| %> <%= "#{ProblemReportRecord.getSubmittedProblemReports(user)}," %> <% end %>]
                     }]
                 });
             });
+
+
         </script>

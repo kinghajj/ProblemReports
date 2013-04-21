@@ -23,14 +23,7 @@ class User < ActiveRecord::Base
 
 	# ------------ THE FOLLOW METHODS MANAGE FOLLOWING AND WORKING ON REPORT MANAGEMENT ----------
 
-=begin
 
-	@author Chris Kipers
-	@date 2/12/13
-
-	This method creates a works on junction object between the user and the specified problem report record if it does not exist yet
-
-=end
 
   def self.getNumberOfCompletedProblemReports(user)
 
@@ -41,6 +34,17 @@ class User < ActiveRecord::Base
 
   end
 
+  def self.getSubmittedProblemReports(user)
+
+  end
+=begin
+
+	@author Chris Kipers
+	@date 2/12/13
+
+	This method creates a works on junction object between the user and the specified problem report record if it does not exist yet
+
+=end
 	def workOnReport report, assignee = nil
 
 		if assignee.nil?

@@ -1,6 +1,8 @@
 <div class="info-table">
     <%=link_to 'Refresh', {:controller => "home", :action => action,:column => params[:column], :direction => params[:direction], :page => params[:page]}, {:id => "refresh-#{action}",:method=>'GET',:remote=>true} %>
 
+
+
     <table>
       <tr>
         <th><%= sortable('id',action) %></th>

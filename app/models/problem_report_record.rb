@@ -215,4 +215,18 @@ class ProblemReportRecord < ActiveRecord::Base
       end
     end
 
+  def self.getNumberOfProblemReportsWithStatus(status)
+    problem_reports = ProblemReportRecord.where("status_id = ?", status.id)
+    number_of_problem_reports = problem_reports.count
+
+    return number_of_problem_reports
+  end
+
+  def self.getSubmittedProblemReports(user)
+    problem_reports = ProblemReportRecord.where("submitted_by_id = ?", user.id)
+    number_of_problem_reports = problem_reports.count
+
+    return number_of_problem_reports
+  end
+
 end
