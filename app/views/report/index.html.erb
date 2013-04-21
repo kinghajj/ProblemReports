@@ -1,162 +1,204 @@
 
 
+<div>
+    <h1>ECS Statistics</h1>
 
-        <h1>ECS Statistics</h1>
+    <div id="tickets_per_state_chart" style="width:1000px; height:500px;"></div>
 
+      <table border="1">
+        <tr>
+          <th>Status</th>
+          <th>Total Tickets</th>
+        </tr>
+        <% @status.each do |status| %>
+            <tr>
+              <td><%= "#{status.name}" %> </td>
+              <td><%= "#{ProblemReportRecord.getNumberOfProblemReportsWithStatus(status)}" %> </td>
+            </tr>
+        <% end %>
+      </table>
 
-        <div id="completed_tickets_chart" style="width:560px; height:300px;"></div>
-        <div id="tickets_per_state_chart" style="width:560px; height:300px;"></div>
-        <div id="tickets_submitted_per_user_chart" style="width:560px; height:300px;"></div>
+    <div id="completed_tickets_chart" style="width:1000px; height:500px;"></div>
 
+      <table border="1">
+        <tr>
+          <th>User</th>
+          <th>Completed Tickets</th>
+        </tr>
+        <% @users.each do |user| %>
+            <tr>
+              <td><%= "#{user.first_name} #{user.last_name}"%> </td>
+              <td><%= "#{User.getNumberOfCompletedProblemReports(user)}" %> </td>
+            </tr>
+        <% end %>
+      </table>
 
-        <script type="text/javascript" charset="utf-8">
-            $(function () {
-                new Highcharts.Chart({
-                    chart: { renderTo: 'completed_tickets_chart', type: 'bar' },
-                    title: {
-                        text: 'Completed Problem Reports Per User'
-                    },
+    <div id="tickets_submitted_per_user_chart" style="width:1000px; height:500px;"></div>
 
-                    xAxis: {
-                        categories: [<% @users.each do |user| %> <%= "'#{user.first_name} #{user.last_name}'," %> <% end %>],
-                        title: {
-                            text: null
-                        }
-                    },
-                    yAxis: {
-                        min: 0,
-                        title: {
-                            text: 'Scale',
-                            align: 'high'
-                        }
-                    },
-                    plotOptions: {
-                        bar: {
-                            dataLabels: {
-                                enabled: true
-                            }
-                        }
-                    },
-                    legend: {
-                        layout: 'vertical',
-                        align: 'right',
-                        verticalAlign: 'top',
-                        x: -100,
-                        y: 100,
-                        floating: true,
-                        borderWidth: 1,
-                        backgroundColor: '#FFFFFF',
-                        shadow: true
-                    },
-                    credits: {
-                        enabled: false
-                    },
-                    series: [{
-                        name: 'Total Solved Problems',
-                        data: [<% @users.each do |user| %> <%= "#{User.getNumberOfCompletedProblemReports(user)}," %> <% end %>]
-                    }]
-                });
-            });
+    <table border="1">
+    <tr>
+      <th>User</th>
+      <th>Submitted Tickets</th>
+    </tr>
+    <% @users.each do |user| %>
+        <tr>
+          <td><%= "#{user.first_name} #{user.last_name}" %> </td>
+          <td><%= "#{ProblemReportRecord.getSubmittedProblemReports(user)}" %>  </td>
+        </tr>
+    <% end %>
+    </table>
+
+</div>
 
 
-            $(function () {
-                new Highcharts.Chart({
-                    chart: { renderTo: 'tickets_per_state_chart', type: 'bar' },
-                    title: {
-                        text: 'Tickets Per State'
-                    },
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        new Highcharts.Chart({
+            chart: { renderTo: 'completed_tickets_chart', type: 'bar' },
+            title: {
+                text: 'Completed Tickets Per User'
+            },
 
-                    xAxis: {
-                        categories: [<% @status.each do |status| %> <%= "'#{status.name}'," %> <% end %>],
-                        title: {
-                            text: null
-                        }
-                    },
-                    yAxis: {
-                        min: 0,
-                        title: {
-                            text: 'Scale',
-                            align: 'high'
-                        }
-                    },
-                    plotOptions: {
-                        bar: {
-                            dataLabels: {
-                                enabled: true
-                            }
-                        }
-                    },
-                    legend: {
-                        layout: 'vertical',
-                        align: 'right',
-                        verticalAlign: 'top',
-                        x: -100,
-                        y: 100,
-                        floating: true,
-                        borderWidth: 1,
-                        backgroundColor: '#FFFFFF',
-                        shadow: true
-                    },
-                    credits: {
-                        enabled: false
-                    },
-                    series: [{
-                        name: 'Total Tickets',
-                        data: [<% @status.each do |status| %> <%= "#{ProblemReportRecord.getNumberOfProblemReportsWithStatus(status)}," %> <% end %>]
-                    }]
-                });
-            });
-
-
-
-
-            $(function () {
-                new Highcharts.Chart({
-                    chart: { renderTo: 'tickets_submitted_per_user_chart', type: 'bar' },
-                    title: {
-                        text: 'Tickets Submitted Per User'
-                    },
-
-                    xAxis: {
-                        categories: [<% @users.each do |user| %> <%= "'#{user.first_name} #{user.last_name}'," %> <% end %>],
-                        title: {
-                            text: null
-                        }
-                    },
-                    yAxis: {
-                        min: 0,
-                        title: {
-                            text: 'Scale',
-                            align: 'high'
-                        }
-                    },
-                    plotOptions: {
-                        bar: {
-                            dataLabels: {
-                                enabled: true
-                            }
-                        }
-                    },
-                    legend: {
-                        layout: 'vertical',
-                        align: 'right',
-                        verticalAlign: 'top',
-                        x: -100,
-                        y: 100,
-                        floating: true,
-                        borderWidth: 1,
-                        backgroundColor: '#FFFFFF',
-                        shadow: true
-                    },
-                    credits: {
-                        enabled: false
-                    },
-                    series: [{
-                        name: 'Total Tickets',
-                        data: [<% @users.each do |user| %> <%= "#{ProblemReportRecord.getSubmittedProblemReports(user)}," %> <% end %>]
-                    }]
-                });
-            });
+            xAxis: {
+                categories: [<% @users.each do |user| %> <%= "'#{user.first_name} #{user.last_name}'," %> <% end %>],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Scale',
+                    align: 'high'
+                }
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -100,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Total Solved Problems',
+                data: [<% @users.each do |user| %> <%= "#{User.getNumberOfCompletedProblemReports(user)}," %> <% end %>]
+            }]
+        });
+    });
 
 
-        </script>
+    $(function () {
+        new Highcharts.Chart({
+            chart: { renderTo: 'tickets_per_state_chart', type: 'bar' },
+            title: {
+                text: 'Tickets Per State'
+            },
+
+            xAxis: {
+                categories: [<% @status.each do |status| %> <%= "'#{status.name}'," %> <% end %>],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Scale',
+                    align: 'high'
+                }
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -100,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Total Tickets',
+                data: [<% @status.each do |status| %> <%= "#{ProblemReportRecord.getNumberOfProblemReportsWithStatus(status)}," %> <% end %>]
+            }]
+        });
+    });
+
+
+
+
+    $(function () {
+        new Highcharts.Chart({
+            chart: { renderTo: 'tickets_submitted_per_user_chart', type: 'bar' },
+            title: {
+                text: 'Tickets Submitted Per User'
+            },
+
+            xAxis: {
+                categories: [<% @users.each do |user| %> <%= "'#{user.first_name} #{user.last_name}'," %> <% end %>],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Scale',
+                    align: 'high'
+                }
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -100,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Total Tickets',
+                data: [<% @users.each do |user| %> <%= "#{ProblemReportRecord.getSubmittedProblemReports(user)}," %> <% end %>]
+            }]
+        });
+    });
+
+
+</script>
