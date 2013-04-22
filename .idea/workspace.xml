@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1bae7292-5da4-4b2d-b282-748c2f3d33b0" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/problem_report_record.rb" afterPath="$PROJECT_DIR$/app/models/problem_report_record.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/report/index.html.erb" afterPath="$PROJECT_DIR$/app/views/report/index.html.erb" />
     </list>
     <ignored path="ProblemReports.iws" />
@@ -28,19 +30,20 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/report/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="62" selection-start="999" selection-end="999" vertical-scroll-proportion="1.3773148">
+            <state line="4" column="0" selection-start="212" selection-end="212" vertical-scroll-proportion="0.10810811">
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_infotable.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/home/_infotable.html.erb">
+      <file leaf-file-name="report_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/report_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="97" selection-start="2298" selection-end="2298" vertical-scroll-proportion="18.307692">
+            <state line="2" column="12" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -49,7 +52,7 @@
       <file leaf-file-name="problem_report_record.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/problem_report_record.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="224" column="37" selection-start="5106" selection-end="5106" vertical-scroll-proportion="0.0">
+            <state line="246" column="77" selection-start="5817" selection-end="5880" vertical-scroll-proportion="-8.08">
               <folding />
             </state>
           </provider>
@@ -58,7 +61,7 @@
       <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="43" selection-start="1769" selection-end="1769" vertical-scroll-proportion="0.0">
+            <state line="31" column="46" selection-start="1676" selection-end="1676" vertical-scroll-proportion="-5.46">
               <folding />
             </state>
           </provider>
@@ -73,10 +76,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="report_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/report_controller.rb">
+      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="38" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0">
+            <state line="68" column="14" selection-start="2557" selection-end="2557" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/problem_report_records/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="41" selection-start="278" selection-end="278" vertical-scroll-proportion="-7.1923075">
               <folding />
             </state>
           </provider>
@@ -95,6 +107,12 @@
   <component name="GitLogSettings">
     <option name="myStructureFilterPaths" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///IRB console" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///IRB console" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///IRB console" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///IRB console" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
@@ -103,7 +121,6 @@
         <option value="$PROJECT_DIR$/app/models/priority.rb" />
         <option value="$PROJECT_DIR$/app/models/problem_type.rb" />
         <option value="$PROJECT_DIR$/app/models/system.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/report_controller.rb" />
         <option value="$PROJECT_DIR$/db/seeds.rb" />
         <option value="$PROJECT_DIR$/app/views/home/_infotable.html.erb" />
         <option value="$PROJECT_DIR$/app/views/problem_report_records/index.html.erb" />
@@ -111,8 +128,9 @@
         <option value="$PROJECT_DIR$/app/controllers/problem_report_records_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/problem_report_records/_infotable.html.erb" />
         <option value="$PROJECT_DIR$/app/models/status.rb" />
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/report_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/problem_report_record.rb" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/views/report/index.html.erb" />
       </list>
     </option>
@@ -238,29 +256,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="report" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProblemReports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProblemReports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
+              <option name="myItemId" value="problem_report_records" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -296,6 +292,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProblemReports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProblemReports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -307,7 +325,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="preferences.lookFeel" />
     <property name="recentsLimit" value="5" />
-    <property name="restartRequiresConfirmation" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
@@ -318,7 +336,7 @@
       <recent name="C:\Sites\senior_project\ProblemReports\app\assets\javascripts" />
     </key>
   </component>
-  <component name="RunManager" selected="Rake.db:reset">
+  <component name="RunManager" selected="Rails.Test: ProblemReports">
     <configuration default="false" name="db:reset" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
       <module name="ProblemReports" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -354,6 +372,23 @@
       <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$PROJECT_DIR$/script/rails" />
       <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="console development" />
       <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="true" />
+      <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="IRB console" type="IrbRunConfigurationType" factoryName="IRB console" temporary="true">
+      <module name="ProblemReports" />
+      <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
+      <IRB_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <IRB_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="C:/RailsInstaller/Ruby1.9.3/bin/irb" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="--prompt simple" />
+      <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="false" />
       <RunnerSettings RunnerId="RubyRunner" />
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
@@ -544,7 +579,9 @@
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="default" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="test" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
+      <RunnerSettings RunnerId="RubyDebugRunner" />
       <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
@@ -588,7 +625,7 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
       <method />
     </configuration>
-    <list size="7">
+    <list size="8">
       <item index="0" class="java.lang.String" itemvalue="Rails.Production: ProblemReports" />
       <item index="1" class="java.lang.String" itemvalue="Rails.Development: ProblemReports" />
       <item index="2" class="java.lang.String" itemvalue="Rails.Test: ProblemReports" />
@@ -596,12 +633,15 @@
       <item index="4" class="java.lang.String" itemvalue="Rake.spec" />
       <item index="5" class="java.lang.String" itemvalue="Rake.db:reset" />
       <item index="6" class="java.lang.String" itemvalue="IRB console.Rails console: ProblemReports" />
+      <item index="7" class="java.lang.String" itemvalue="IRB console.IRB console" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Rake.db:reset" />
-        <item index="1" class="java.lang.String" itemvalue="IRB console.Rails console: ProblemReports" />
-        <item index="2" class="java.lang.String" itemvalue="IRB console.Rails console: ProblemReports" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="IRB console.IRB console" />
+        <item index="1" class="java.lang.String" itemvalue="IRB console.IRB console" />
+        <item index="2" class="java.lang.String" itemvalue="IRB console.IRB console" />
+        <item index="3" class="java.lang.String" itemvalue="Rake.db:reset" />
+        <item index="4" class="java.lang.String" itemvalue="IRB console.Rails console: ProblemReports" />
       </list>
     </recent_temporary>
   </component>
@@ -639,14 +679,14 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32692307" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32799146" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23290598" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3985043" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32968882" sideWeight="0.67147434" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.24978974" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16435432" sideWeight="0.51602566" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4690171" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16435432" sideWeight="0.77991456" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22008547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32968882" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48397437" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48397437" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -724,93 +764,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/admin_layout.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="42" selection-start="215" selection-end="215" vertical-scroll-proportion="0.03935185">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="28" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/problem_report_records/_infotable.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="30" selection-start="6543" selection-end="6543" vertical-scroll-proportion="0.75656325">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="96" selection-start="988" selection-end="988" vertical-scroll-proportion="1.5704387">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/problem_report_records/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="106" selection-start="494" selection-end="507" vertical-scroll-proportion="0.7083333">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="37" selection-start="2309" selection-end="2309" vertical-scroll-proportion="-0.15065502">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.55676854">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/status.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="6" selection-start="411" selection-end="411" vertical-scroll-proportion="0.48253274">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/problem_report_records_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="6" selection-start="6" selection-end="25" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="18" selection-start="626" selection-end="626" vertical-scroll-proportion="0.53523237">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="43" selection-start="1769" selection-end="1769" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/_infotable.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="97" selection-start="2298" selection-end="2298" vertical-scroll-proportion="18.307692">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/report_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="38" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -822,19 +778,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/problem_report_records/_infotable.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="30" selection-start="6543" selection-end="6543" vertical-scroll-proportion="0.81861573">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/_infotable.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="44" selection-start="932" selection-end="932" vertical-scroll-proportion="0.3507014">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/problem_report_records/new.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/follow_junctions/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="10" selection-start="692" selection-end="692" vertical-scroll-proportion="0.7636719">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/problem_report_records/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="14" selection-start="361" selection-end="361" vertical-scroll-proportion="0.43287036">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="14" selection-start="2557" selection-end="2557" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/problem_report_records/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="41" selection-start="278" selection-end="278" vertical-scroll-proportion="-7.1923075">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/activesupport-3.2.1/lib/active_support/core_ext/string/output_safety.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="0" selection-start="3084" selection-end="3084" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-3.2.1/lib/action_view/buffers.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="226" selection-end="226" vertical-scroll-proportion="0.33262712">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/report_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="12" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/problem_report_record.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="224" column="37" selection-start="5106" selection-end="5106" vertical-scroll-proportion="0.0">
+        <state line="246" column="77" selection-start="5817" selection-end="5880" vertical-scroll-proportion="-8.08">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="46" selection-start="1676" selection-end="1676" vertical-scroll-proportion="-5.46">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/report/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="62" selection-start="999" selection-end="999" vertical-scroll-proportion="1.3773148">
+        <state line="4" column="0" selection-start="212" selection-end="212" vertical-scroll-proportion="0.10810811">
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

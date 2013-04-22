@@ -25,16 +25,23 @@ class User < ActiveRecord::Base
 
 
 
-  def self.getNumberOfCompletedProblemReports(user)
+  def self.getNumberOfCompletedProblemReports(user, start_date, end_date)
 
-    completed = ProblemReportRecord.where("completed_by_id = ?", user.id)
-    completed_count = completed.count
+    if start_date && end_date
+      time = (DateTime.now).strftime('%T%:z')
+
+      start_date = DateTime.parse(start_date)
+      end_date = DateTime.parse(end_date << 'T' << time)
+
+      completed = ProblemReportRecord.where("completed_by_id = ? AND created_at between ? AND ?", user.id, start_date, end_date)
+      completed_count = completed.count
+
+    else
+      completed = ProblemReportRecord.where("completed_by_id = ?", user.id)
+      completed_count = completed.count
+    end
 
     return completed_count
-
-  end
-
-  def self.getSubmittedProblemReports(user)
 
   end
 =begin

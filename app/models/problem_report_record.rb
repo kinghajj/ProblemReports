@@ -1,3 +1,5 @@
+require 'date'
+
 class ProblemReportRecord < ActiveRecord::Base
 	attr_accessible :subject , :description , :category_id , :priority_id , :date_entered , :date_completed , :date_due , :system_id , :escalation_id , :problem_type_id , :room_building , :room_number , :computer_name , :solution , :status_id , :submitted_by_id , :completed_by_id , :submitters_name , :submitters_email,  :last_modified_by_id,
                   :created_at, :updated_at, :initialized
@@ -215,16 +217,39 @@ class ProblemReportRecord < ActiveRecord::Base
       end
     end
 
-  def self.getNumberOfProblemReportsWithStatus(status)
-    problem_reports = ProblemReportRecord.where("status_id = ?", status.id)
-    number_of_problem_reports = problem_reports.count
+
+  def self.getNumberOfProblemReportsWithStatus(status, start_date, end_date)
+
+    if start_date && end_date
+      time = (DateTime.now).strftime('%T%:z')
+
+      start_date = DateTime.parse(start_date)
+      end_date = DateTime.parse(end_date << 'T' << time)
+
+      problem_reports = ProblemReportRecord.where("status_id = ? AND created_at between ? AND ?", status.id, start_date, end_date)
+      number_of_problem_reports = problem_reports.count
+    else
+      problem_reports = ProblemReportRecord.where("status_id = ?", status.id)
+      number_of_problem_reports = problem_reports.count
+    end
 
     return number_of_problem_reports
   end
 
-  def self.getSubmittedProblemReports(user)
-    problem_reports = ProblemReportRecord.where("submitted_by_id = ?", user.id)
-    number_of_problem_reports = problem_reports.count
+  def self.getSubmittedProblemReports(user, start_date, end_date)
+
+    if start_date && end_date
+      time = (DateTime.now).strftime('%T%:z')
+
+      start_date = DateTime.parse(start_date)
+      end_date = DateTime.parse(end_date << 'T' << time)
+
+      problem_reports = ProblemReportRecord.where("submitted_by_id = ? AND created_at between ? AND ?", user.id, start_date, end_date)
+      number_of_problem_reports = problem_reports.count
+    else
+      problem_reports = ProblemReportRecord.where("submitted_by_id = ?", user.id)
+      number_of_problem_reports = problem_reports.count
+    end
 
     return number_of_problem_reports
   end
