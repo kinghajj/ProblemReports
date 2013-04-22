@@ -20,6 +20,9 @@
             | <%= link_to "Manage Users" ,users_path %>
             | <%= link_to "Report", report_path %>
 		</div>
+        <% if defined?(notice) && !(notice.nil?) %>
+            <p id="notice"><%= notice %></p>
+        <% end %>
 		<%= yield %>
 	</div>
 </body>

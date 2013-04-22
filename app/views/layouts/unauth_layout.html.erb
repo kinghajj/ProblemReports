@@ -17,6 +17,9 @@
 			| <%= link_to "Create Problem Report", new_problem_report_record_path %>
 			| <%= link_to "Search for Problem Report" ,problem_report_records_path %>
 		</div>
+        <% if defined?(notice) && !(notice.nil?) %>
+            <p id="notice"><%= notice %></p>
+        <% end %>
 		<%= yield %>
 	</div>
 </body>

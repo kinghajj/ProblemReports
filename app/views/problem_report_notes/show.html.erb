@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>User:</b>
   <%= @problem_report_note.user_id %>
@@ -15,7 +13,6 @@
   <b>Comment:</b>
   <%= @problem_report_note.comment %>
 </p>
-
 
 <%= link_to 'Edit', edit_problem_report_note_path(@problem_report_note) %> |
 <%= link_to 'Back', problem_report_notes_path %>

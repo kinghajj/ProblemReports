@@ -102,3 +102,10 @@ a {
   clear: both;
   text-align: center;
 }
+
+#notice {
+  background-color: lighten($blue, 10%);
+  border: em(1) solid $dark;
+  color: white;
+  padding: em(7);
+}

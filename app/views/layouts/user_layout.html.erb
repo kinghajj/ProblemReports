@@ -18,8 +18,10 @@
             | <%= link_to "Search for Problem Report" ,problem_report_records_path %>
 			| <%= link_to "Edit Profile" ,edit_user_path(self.current_user) %>
 		</div>
+        <% if defined?(notice) && !(notice.nil?) %>
+            <p id="notice"><%= notice %></p>
+        <% end %>
 		<%= yield %>
 	</div>
-
 </body>
 </html>
