@@ -10,14 +10,14 @@
 <body>
 	<div id="content">
 		<div id="banner" class="box-shadow">
-			<h1>Problem Reports (UnAuth)</h1>
+			<h1>Problem Reports</h1>
 		</div>
 		<div id="links" class="box-shadow">
-			 <%= link_to "Create Problem Report" ,new_problem_report_record_path %> 
+              <%= link_to "Main Page" ,"/" %>
+			| <%= link_to "Create Problem Report", new_problem_report_record_path %>
 			| <%= link_to "Search for Problem Report" ,problem_report_records_path %>
 		</div>
 		<%= yield %>
 	</div>
-
 </body>
 </html>

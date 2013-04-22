@@ -55,8 +55,8 @@
 
 <div id = "notes-section">
     <h1> Notes &amp Emails</h1>
-    <input type="button" id="new-note-button" value="Add Note"/>
-    <input type="button" id="send-email-button" value="Send Email"/>
+    <input type="button" id="new-note-button" class="button" value="Add Note"/>
+    <input type="button" id="send-email-button" class="button" value="Send Email"/>
     <div id="notes">
     	<%= render :partial =>'notes', :locals => {:notes => @problem_report_record.getFeed,:id => @problem_report_record.id} %>
 	</div>
@@ -64,7 +64,7 @@
 
 <div id = "attachment-section">
 	<h1> Attachments </h1>
-	<input type="button" id="new-attachment-button" value="Add Attachment"/>
+	<input type="button" id="new-attachment-button" class="button" value="Add Attachment"/>
 
 	<div id="attachments">
 		<%= render :partial =>'attachments', :locals => {:attachments => @problem_report_record.attachments} %>
@@ -95,6 +95,6 @@
 <div id="new-attachment">
 	<%= render :partial =>'new_attachment_form', :locals => {:problem_report_record_id => @problem_report_record.id} %>
 </div>
-
-<%= link_to 'Show', @problem_report_record %> |
-<%= link_to 'Back', problem_report_records_path %>
+<br />
+<%= link_to 'Show', @problem_report_record, :class => 'button' %>
+<%= link_to 'Back', problem_report_records_path, :class => 'button' %>

@@ -24,7 +24,7 @@
     </td>
     <td><%= user.first_name %></td>
     <td><%= user.last_name %></td>
-    <td><%= user.position_id %></td>
+    <td><%= Position.find(user.position_id).name %></td>
     <td><%= user.main_phone %></td>
     <td><%= user.email %></td>
     <td><%= link_to 'Show', user, :class => 'button' %></td>

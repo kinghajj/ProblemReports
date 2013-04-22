@@ -10,21 +10,17 @@
 <body>
 	<div id="content">
 		<div id="banner" class="box-shadow">
-			<h1>Problem Reports (Admin)</h1>
+			<h1>Problem Reports</h1>
 		</div>
-		<div id="links" class="box-shadow">
+		<div id="admin-links" class="box-shadow">
 			<%= link_to "View Problem Reports" ,"/home" %>
 			| <%= link_to "Create Problem Report" ,new_problem_report_record_path %> 
 			| <%= link_to "Edit Profile" ,edit_user_path(self.current_user) %>
 			| <%= link_to "Search for Problem Report" ,problem_report_records_path %>
-		</div>
-		<div id="links-two" class="box-shadow">
-			<%= link_to "Manage Users" ,users_path %>
-			| <%= link_to "Manage Configuration" ,users_path %>
+            | <%= link_to "Manage Users" ,users_path %>
             | <%= link_to "Report", report_path %>
 		</div>
 		<%= yield %>
 	</div>
-
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%=link_to 'Refresh', {:controller => "problem_report_records", :action => action,:column => params[:column], :direction => params[:direction], :page => params[:page]}, {:id => "refresh-#{action}",:method=>'GET',:remote=>true} %>
+<%=link_to 'Refresh', {:controller => "problem_report_records", :action => action,:column => params[:column], :direction => params[:direction], :page => params[:page]}, {:id => "refresh-#{action}",:method=>'GET',:remote=>true, :class => 'button'} %>
 
 
 <% if current_user %>
@@ -56,21 +56,21 @@
             <td><%= problem_report_record.submitters_email if current_user.show_submitters_email %></td>
             <td>
                 <% if !current_user.workingOnReport? problem_report_record %>
-                    <%=link_to 'Work On', {:controller => "problem_report_records", :action => 'workOnReport',:id =>problem_report_record.id}, {:method=>'POST',:remote=>true} %>
+                    <%=link_to 'Work On', {:controller => "problem_report_records", :action => 'workOnReport',:id =>problem_report_record.id}, {:method=>'POST',:remote=>true, :class=>'button'} %>
                 <% else %>
                     <%=link_to 'Stop Working On', {:controller => "problem_report_records", :action => 'quitWorkingOnReport',:id =>problem_report_record.id}, {:method=>'DELETE',:remote=>true} %>
                 <% end %>
             </td>
             <td>
                 <% if !current_user.followingReport? problem_report_record %>
-                    <%=link_to 'Follow', {:controller => "problem_report_records", :action => 'followReport',:id =>problem_report_record.id}, {:method=>'POST',:remote=>true} %>
+                    <%=link_to 'Follow', {:controller => "problem_report_records", :action => 'followReport',:id =>problem_report_record.id}, {:method=>'POST',:remote=>true, :class=>'button'} %>
                 <% else %>
                     <%=link_to 'Unfollow', {:controller => "problem_report_records", :action => 'unfollowReport',:id =>problem_report_record.id}, {:method=>'DELETE',:remote=>true} %>
                 <% end %>
             </td>
             <% if admin? %>
                 <td>
-                    <%=link_to 'Assign', {:controller => "problem_report_records", :action => 'requestAssigningForm',:id =>problem_report_record.id}, {:method=>'GET',:remote=>true} %>
+                    <%=link_to 'Assign', {:controller => "problem_report_records", :action => 'requestAssigningForm',:id =>problem_report_record.id}, {:method=>'GET',:remote=>true, :class=>'button'} %>
                 </td>
             <% end %>
             <!--<td><%= link_to 'Show', problem_report_record %></td>

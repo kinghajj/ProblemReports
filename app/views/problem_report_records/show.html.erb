@@ -13,11 +13,11 @@
   </tr>
   <tr>
     <th>Category:</th>
-    <td><%= @problem_report_record.category_id %></td>
+    <td><%= Category.find(@problem_report_record.category_id).name %></td>
   </tr>
   <tr>
     <th>Priority:</th>
-    <td><%= @problem_report_record.priority_id %></td>
+    <td><%= Priority.find(@problem_report_record.priority_id).name %></td>
   </tr>
   <tr>
     <th>Date entered:</th>
@@ -33,15 +33,15 @@
   </tr>
   <tr>
     <th>System type:</th>
-    <td><%= @problem_report_record.system_id %></td>
+    <td><%= System.find(@problem_report_record.system_id).name %></td>
   </tr>
   <tr>
     <th>Escalation:</th>
-    <td><%= @problem_report_record.escalation_id %></td>
+    <td><%= Escalation.find(@problem_report_record.escalation_id).name %></td>
   </tr>
   <tr>
     <th>Problem type:</th>
-    <td><%= @problem_report_record.problem_type_id %></td>
+    <td><%= ProblemType.find(@problem_report_record.problem_type_id).name %></td>
   </tr>
   <tr>
     <th>Room building:</th>
@@ -57,15 +57,15 @@
   </tr>
   <tr>
     <th>Status:</th>
-    <td><%= @problem_report_record.status_id %></td>
+    <td><%= Status.find(@problem_report_record.status_id).name %></td>
   </tr>
   <tr>
     <th>Submitted by:</th>
-    <td><%= @problem_report_record.submitted_by_id %></td>
+    <td><%= User.find(@problem_report_record.submitted_by_id).user_name %></td>
   </tr>
   <tr>
     <th>Completed by:</th>
-    <td><%= @problem_report_record.completed_by_id %></td>
+    <td><%= User.find(@problem_report_record.completed_by_id).user_name %></td>
   </tr>
   <tr>
     <th>Submitter's name:</th>

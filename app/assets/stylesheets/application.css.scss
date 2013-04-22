@@ -17,14 +17,15 @@
 
 $blue: #1A82F7;
 $dark: #2F2727;
+$red:  #F71A00;
 
 body {
   background-color: $blue;
   color: $dark;
 
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-family: $verdana, $helvetica;
+  font-size: em(13);
+  line-height: em(18);
 }
 
 a {
@@ -41,6 +42,7 @@ a {
 // links of this class have the button look
 .button {
   @include button;
+  color: white !important;
 }
 
 // form submission has the button look
@@ -50,12 +52,17 @@ a {
   }
 }
 
+@mixin box-shadow {
+  box-shadow: em(2) em(2) em(2) lighten($dark, 40%);
+}
+
 #content {
   width: 80em;
   margin: 0px auto;
   background-color: white;
   padding: 1em;
-  border: 3px solid lighten($dark, 20%);
+  border: em(1) solid $dark;
+  @include box-shadow;
 }
 
 @mixin header-links($bgcolor, $maxwidth) {
@@ -79,19 +86,13 @@ a {
   @include header-links(darken($blue, 5%), 50em);
 }
 
-#links-two
-{
-  @include header-links($blue, 35em);
+#admin-links {
+  @include header-links(darken($red, 5%), 70em);
 }
 
 .box-shadow
 {
-  box-shadow: 2px 2px 2px lighten($dark, 40%);
-}
-
-.float_field
-{
-  float: left;
+  @include box-shadow;
 }
 
 #banner {
