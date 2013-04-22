@@ -1,3 +1,5 @@
+@import "bourbon";
+
 .show_problem_report_record {
     @include columns(2);
     table.show_problem_report_record_table {
